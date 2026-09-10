@@ -1,0 +1,3169 @@
+/* =========================================================
+   WAYPOINT — MARITIME ROUTE INTELLIGENCE
+   CLEAN MASTER STYLESHEET
+   ========================================================= */
+
+:root {
+  --ink-950: #080d11;
+  --ink-900: #10171d;
+  --ink-800: #172129;
+  --ink-700: #26323a;
+  --ink-600: #52616a;
+
+  --paper: #f4eee5;
+  --paper-dim: #c8ced0;
+  --paper-faint: #8e9ba2;
+
+  --ochre: #c99b61;
+  --ochre-soft: rgba(201, 155, 97, 0.12);
+
+  --slate: #48c9ff;
+  --slate-soft: rgba(72, 201, 255, 0.10);
+
+  --rust: #e07161;
+
+  --radius-sm: 7px;
+  --radius-md: 16px;
+
+  --edge: 1px solid rgba(255, 255, 255, 0.11);
+
+  --display: Georgia, "Times New Roman", serif;
+  --mono: "Courier New", monospace;
+}
+
+/* =========================================================
+   GLOBAL
+   ========================================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--ink-950);
+  color: var(--paper);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.wp {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--ink-950);
+  color: var(--paper);
+}
+
+.wp-eyebrow {
+  display: block;
+  margin-bottom: 8px;
+
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+
+  color: var(--paper-faint);
+}
+
+.wp-reveal {
+  opacity: 0;
+  transform: translateY(20px);
+
+  transition:
+    opacity 0.6s ease,
+    transform 0.6s ease;
+}
+
+.wp-reveal.wp-inview {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* =========================================================
+   NAVIGATION
+   ========================================================= */
+
+.wp-nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  min-height: 72px;
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  gap: 30px;
+
+  padding: 0 28px;
+
+  background: rgba(8, 13, 17, 0.97);
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+
+  backdrop-filter: blur(14px);
+}
+
+.wp-nav__brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  min-width: 220px;
+
+  color: var(--paper);
+  text-decoration: none;
+
+  font-family: var(--display);
+  font-size: 1.65rem;
+  font-weight: 700;
+}
+
+.wp-nav__mark {
+  width: 22px;
+  height: 22px;
+  color: var(--ochre);
+  flex-shrink: 0;
+}
+
+.wp-nav__links {
+  flex: 1;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  gap: 30px;
+}
+
+.wp-nav__links a {
+  position: relative;
+
+  padding: 26px 0;
+
+  color: #aeb5b7;
+  text-decoration: none;
+
+  font-size: 0.94rem;
+  white-space: nowrap;
+
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.wp-nav__links a:hover {
+  color: #ffffff;
+}
+
+.wp-nav__links a.active {
+  color: #ffffff;
+}
+
+.wp-nav__links a.active::after {
+  content: "";
+
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 13px;
+
+  height: 2px;
+
+  border-radius: 10px;
+
+  background: var(--slate);
+}
+
+.wp-nav__right {
+  min-width: 230px;
+
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+
+  white-space: nowrap;
+}
+
+.wp-dot {
+  width: 8px;
+  height: 8px;
+
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.wp-dot--on {
+  background: #47d7a0;
+  box-shadow: 0 0 10px rgba(71, 215, 160, 0.65);
+}
+
+.wp-dot--off {
+  background: var(--rust);
+}
+
+.wp-online-text {
+  color: var(--paper-dim);
+  font-size: 0.84rem;
+}
+
+.wp-nav__user {
+  color: var(--paper);
+  font-size: 0.88rem;
+}
+
+.wp-logout {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+
+  background: #34383b;
+  color: #ffffff;
+
+  padding: 9px 15px;
+
+  border-radius: 6px;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.wp-logout:hover {
+  background: #4a4f52;
+  transform: translateY(-1px);
+}
+
+/* =========================================================
+   GENERAL PAGE
+   ========================================================= */
+
+.wp-page {
+  width: 100%;
+  min-height: calc(100vh - 72px);
+
+  padding: 42px 6%;
+
+  background:
+    radial-gradient(
+      circle at 50% 0%,
+      rgba(72, 201, 255, 0.035),
+      transparent 38%
+    ),
+    var(--ink-950);
+}
+
+.wp-page-header {
+  max-width: 1200px;
+  margin: 0 auto 34px;
+}
+
+.wp-page-header h1 {
+  margin: 6px 0 10px;
+
+  font-family: var(--display);
+
+  font-size: clamp(2.2rem, 4vw, 4rem);
+  line-height: 1;
+
+  color: var(--paper);
+}
+
+.wp-page-header p {
+  max-width: 760px;
+
+  margin: 0;
+
+  color: var(--paper-dim);
+
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+/* =========================================================
+   BUTTONS
+   ========================================================= */
+
+.wp-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  min-height: 44px;
+
+  padding: 12px 22px;
+
+  border-radius: var(--radius-sm);
+
+  border: 1px solid transparent;
+
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+
+  text-decoration: none;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.wp-btn--primary {
+  background: var(--ochre);
+  color: var(--ink-950);
+}
+
+.wp-btn--primary:hover {
+  background: #d9aa70;
+  transform: translateY(-1px);
+}
+
+/*
+   IMPORTANT:
+   Disabled Plot Route keeps the Waypoint gold identity
+   instead of becoming completely ash/gray.
+*/
+
+.wp-btn--primary:disabled {
+  background: var(--ochre);
+  color: var(--ink-950);
+
+  opacity: 0.62;
+
+  cursor: not-allowed;
+
+  transform: none;
+}
+
+/* =========================================================
+   HOME / ROUTE PLANNER
+   ========================================================= */
+
+.wp-planner {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.wp-planner-card {
+  padding: 34px;
+
+  border: var(--edge);
+  border-radius: 18px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.055),
+      rgba(255, 255, 255, 0.015)
+    );
+
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.25);
+}
+
+/* =========================================================
+   FORM
+   ========================================================= */
+
+.wp-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+
+  padding: 26px;
+
+  background: var(--ink-900);
+
+  border: var(--edge);
+  border-radius: var(--radius-md);
+}
+
+.wp-field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.wp-field label {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+
+  color: var(--paper-faint);
+}
+
+.wp-field input,
+.wp-field select {
+  width: 100%;
+
+  padding: 12px;
+
+  background: var(--ink-950);
+
+  border: 1px solid var(--ink-600);
+  border-radius: var(--radius-sm);
+
+  color: var(--paper);
+
+  outline: none;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.wp-field input::placeholder {
+  color: var(--paper-faint);
+}
+
+.wp-field input:focus,
+.wp-field select:focus {
+  border-color: var(--slate);
+
+  box-shadow:
+    0 0 0 3px var(--slate-soft);
+}
+
+.wp-form__submit {
+  width: 100%;
+}
+
+/* =========================================================
+   ROUTE RESULTS
+   ========================================================= */
+
+.wp-results {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.wp-results-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+
+  gap: 30px;
+
+  margin-bottom: 28px;
+}
+
+.wp-results-header h1 {
+  margin: 5px 0;
+
+  font-family: var(--display);
+
+  font-size: clamp(2rem, 4vw, 3.5rem);
+
+  color: var(--paper);
+}
+
+.wp-results-header p {
+  margin: 0;
+
+  color: var(--paper-dim);
+}
+
+.wp-page__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+
+  margin-bottom: 25px;
+
+  padding: 9px 15px;
+
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 7px;
+
+  background: rgba(255, 255, 255, 0.04);
+
+  color: var(--paper);
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.wp-page__back:hover {
+  background: rgba(255, 255, 255, 0.09);
+  border-color: var(--slate);
+}
+
+/* =========================================================
+   BEST ROUTE
+   ========================================================= */
+
+.wp-best-route {
+  margin-bottom: 35px;
+  padding: 28px;
+
+  border: 1px solid rgba(72, 201, 255, 0.35);
+  border-radius: 16px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(72, 201, 255, 0.10),
+      rgba(255, 255, 255, 0.025)
+    );
+
+  box-shadow:
+    0 15px 45px rgba(0, 0, 0, 0.2);
+}
+
+.wp-best-route h2 {
+  margin: 6px 0 12px;
+
+  color: var(--paper);
+}
+
+.wp-best-route__route {
+  color: var(--paper);
+
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.wp-best-route__meta {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+  gap: 12px;
+
+  margin-top: 20px;
+}
+
+.wp-best-route__meta span {
+  padding: 11px 13px;
+
+  border-radius: 7px;
+
+  background: rgba(255, 255, 255, 0.06);
+
+  color: var(--paper-dim);
+
+  font-family: var(--mono);
+  font-size: 0.78rem;
+}
+
+/* =========================================================
+   COMPARISON HEADER
+   ========================================================= */
+
+.wp-comparison {
+  width: 100%;
+}
+
+.wp-comparison__heading {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 18px;
+}
+
+.wp-comparison__heading h2 {
+  margin: 0;
+
+  color: var(--paper);
+
+  font-family: var(--display);
+
+  font-size: 1.7rem;
+}
+
+.wp-comparison__count {
+  padding: 8px 13px;
+
+  border-radius: 20px;
+
+  background: rgba(72, 201, 255, 0.10);
+
+  color: #7fdcff;
+
+  font-family: var(--mono);
+
+  font-size: 0.72rem;
+}
+
+/* =========================================================
+   ROUTE GRID
+   ========================================================= */
+
+.wp-route-grid {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 20px;
+
+  align-items: stretch;
+}
+
+/* =========================================================
+   ROUTE CARD
+   ========================================================= */
+
+.wp-route-card {
+  position: relative;
+
+  width: 100%;
+  min-width: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  padding: 24px;
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #172129,
+      #0e151b
+    );
+
+  box-shadow:
+    0 12px 35px rgba(0, 0, 0, 0.25);
+
+  overflow: hidden;
+
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.wp-route-card:hover {
+  transform: translateY(-4px);
+
+  border-color: rgba(72, 201, 255, 0.38);
+
+  box-shadow:
+    0 18px 45px rgba(0, 0, 0, 0.32);
+}
+
+.wp-route-card--best {
+  border-color: var(--ochre);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(201, 155, 97, 0.14),
+      #10171d 65%
+    );
+
+  box-shadow:
+    0 0 0 1px rgba(201, 155, 97, 0.10),
+    0 16px 45px rgba(0, 0, 0, 0.28);
+}
+
+/* =========================================================
+   CARD TOP
+   ========================================================= */
+
+.wp-route-card__top {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: flex-start;
+
+  gap: 15px;
+
+  margin-bottom: 18px;
+}
+
+.wp-route-card__number {
+  display: block;
+
+  margin-bottom: 5px;
+
+  color: var(--paper-faint);
+
+  font-family: var(--mono);
+
+  font-size: 0.65rem;
+
+  letter-spacing: 0.08em;
+
+  text-transform: uppercase;
+}
+
+.wp-route-card__title {
+  margin: 0;
+
+  color: var(--paper);
+
+  font-family: var(--display);
+
+  font-size: 1.25rem;
+
+  font-weight: 700;
+
+  line-height: 1.3;
+
+  overflow-wrap: anywhere;
+}
+
+.wp-route-card__best {
+  flex-shrink: 0;
+
+  padding: 6px 9px;
+
+  border-radius: 999px;
+
+  background: var(--ochre);
+
+  color: var(--ink-950);
+
+  font-family: var(--mono);
+
+  font-size: 0.58rem;
+
+  font-weight: 700;
+
+  letter-spacing: 0.06em;
+
+  white-space: nowrap;
+}
+
+/* =========================================================
+   SCORE
+   ========================================================= */
+
+.wp-route-card__score {
+  margin: 10px 0 20px;
+}
+
+.wp-route-card__score-row {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 10px;
+
+  margin-bottom: 8px;
+}
+
+.wp-route-card__score-label {
+  color: var(--paper-faint);
+
+  font-family: var(--mono);
+
+  font-size: 0.72rem;
+}
+
+.wp-route-card__score-number {
+  color: var(--slate);
+
+  font-family: var(--mono);
+
+  font-size: 1.05rem;
+
+  font-weight: 700;
+}
+
+.wp-route-card--best
+.wp-route-card__score-number {
+  color: var(--ochre);
+}
+
+.wp-score-bar {
+  width: 100%;
+  height: 7px;
+
+  overflow: hidden;
+
+  border-radius: 20px;
+
+  background: rgba(255, 255, 255, 0.10);
+}
+
+.wp-score-bar span {
+  display: block;
+
+  height: 100%;
+
+  min-width: 2px;
+
+  border-radius: inherit;
+
+  background: var(--slate);
+
+  transition: width 0.7s ease;
+}
+
+.wp-route-card--best
+.wp-score-bar span {
+  background: var(--ochre);
+}
+
+/* =========================================================
+   ROUTE TYPE
+   ========================================================= */
+
+.wp-route-card__type {
+  align-self: flex-start;
+
+  margin-bottom: 5px;
+
+  padding: 5px 9px;
+
+  border: 1px solid var(--ink-600);
+
+  border-radius: 999px;
+
+  color: var(--paper-dim);
+
+  font-family: var(--mono);
+
+  font-size: 0.62rem;
+
+  letter-spacing: 0.05em;
+
+  text-transform: uppercase;
+}
+
+/* =========================================================
+   ROUTE PATH
+   ========================================================= */
+
+.wp-route-card__path {
+  margin: 2px 0 4px;
+
+  padding: 11px 12px;
+
+  border-left: 2px solid var(--slate);
+
+  border-radius: 0 7px 7px 0;
+
+  background: rgba(72, 201, 255, 0.055);
+
+  color: var(--paper);
+
+  font-family: var(--mono);
+
+  font-size: 0.76rem;
+
+  line-height: 1.55;
+
+  overflow-wrap: anywhere;
+}
+
+.wp-route-card--best
+.wp-route-card__path {
+  border-left-color: var(--ochre);
+
+  background: rgba(201, 155, 97, 0.06);
+}
+
+/* =========================================================
+   ROUTE STATS
+   ========================================================= */
+
+.wp-route-card__stats {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 10px;
+
+  margin: 16px 0 20px;
+}
+
+.wp-route-card__stat {
+  min-width: 0;
+
+  padding: 12px;
+
+  border: 1px solid rgba(255, 255, 255, 0.09);
+
+  border-radius: 9px;
+
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.wp-route-card__stat-label {
+  display: block;
+
+  margin-bottom: 6px;
+
+  color: var(--paper-faint);
+
+  font-family: var(--mono);
+
+  font-size: 0.58rem;
+
+  letter-spacing: 0.07em;
+
+  text-transform: uppercase;
+}
+
+.wp-route-card__stat-value {
+  display: block;
+
+  color: var(--paper) !important;
+
+  font-family: var(--mono);
+
+  font-size: 0.95rem;
+
+  font-weight: 700;
+
+  line-height: 1.25;
+
+  overflow-wrap: anywhere;
+}
+
+/* =========================================================
+   ROUTE FOOTER
+   ========================================================= */
+
+.wp-route-card__footer {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 12px;
+
+  margin-top: auto;
+
+  padding-top: 16px;
+
+  border-top: 1px dashed var(--ink-600);
+}
+
+.wp-route-card__price {
+  color: var(--paper);
+
+  font-family: var(--mono);
+
+  font-size: 0.92rem;
+
+  font-weight: 700;
+}
+
+.wp-route-card__price small {
+  display: block;
+
+  margin-bottom: 3px;
+
+  color: var(--paper-faint);
+
+  font-size: 0.55rem;
+
+  font-weight: 400;
+
+  letter-spacing: 0.05em;
+
+  text-transform: uppercase;
+}
+
+.wp-route-card__button {
+  flex-shrink: 0;
+
+  min-height: 40px;
+
+  padding: 10px 15px;
+
+  border: 1px solid var(--ochre);
+
+  border-radius: 7px;
+
+  background: var(--ochre);
+
+  color: var(--ink-950);
+
+  font-family: var(--mono);
+
+  font-size: 0.66rem;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease;
+}
+
+.wp-route-card__button:hover {
+  background: #d9aa70;
+
+  transform: translateY(-1px);
+}
+
+/* IMPORTANT: select button should never become ash */
+
+.wp-route-card__button:disabled {
+  background: var(--ochre);
+  color: var(--ink-950);
+
+  opacity: 0.65;
+
+  cursor: not-allowed;
+
+  transform: none;
+}
+
+/* =========================================================
+   LEGACY ROUTE CARD SUPPORT
+   ========================================================= */
+
+.wp-route-card .wp-stat {
+  min-width: 0;
+}
+
+.wp-route-card .wp-stat__value {
+  color: var(--paper) !important;
+
+  font-family: var(--mono);
+
+  font-size: 1rem;
+
+  font-weight: 700;
+}
+
+.wp-route-card .wp-stat__label {
+  display: block;
+
+  margin-top: 4px;
+
+  color: var(--paper-faint) !important;
+
+  font-family: var(--mono);
+
+  font-size: 0.58rem;
+
+  letter-spacing: 0.05em;
+
+  text-transform: uppercase;
+}
+
+/* =========================================================
+   RECOMMENDED TICKET
+   ========================================================= */
+
+.wp-ticket--recommended {
+  width: 100%;
+
+  margin-top: 28px;
+
+  padding: 28px;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 20px;
+
+  border: 1px solid var(--ochre);
+
+  border-radius: var(--radius-md);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(201, 155, 97, 0.12),
+      var(--ink-900)
+    );
+
+  overflow: hidden;
+}
+
+.wp-ticket__row--head {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: flex-start;
+
+  gap: 16px;
+}
+
+.wp-ticket__label {
+  display: block;
+
+  margin-bottom: 4px;
+
+  color: var(--ochre);
+
+  font-family: var(--mono);
+
+  font-size: 0.68rem;
+
+  letter-spacing: 0.10em;
+
+  text-transform: uppercase;
+}
+
+.wp-ticket__id {
+  color: var(--paper);
+
+  font-family: var(--display);
+
+  font-size: 1.8rem;
+
+  font-weight: 700;
+}
+
+.wp-badge {
+  padding: 6px 10px;
+
+  border: 1px solid var(--ochre);
+
+  border-radius: 999px;
+
+  background: var(--ochre-soft);
+
+  color: var(--ochre);
+
+  font-family: var(--mono);
+
+  font-size: 0.62rem;
+
+  white-space: nowrap;
+}
+
+.wp-ticket__lane {
+  display: flex;
+
+  align-items: center;
+
+  gap: 14px;
+
+  color: var(--paper);
+
+  font-family: var(--mono);
+
+  font-size: 0.9rem;
+}
+
+.wp-ticket__lane-line {
+  flex: 1;
+
+  height: 1px;
+
+  background:
+    repeating-linear-gradient(
+      to right,
+      var(--ochre) 0 6px,
+      transparent 6px 11px
+    );
+}
+
+.wp-ticket__stats {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+  gap: 14px;
+
+  padding-top: 18px;
+
+  border-top: 1px dashed var(--ink-600);
+}
+
+.wp-ticket__stats .wp-stat__value {
+  color: var(--paper) !important;
+
+  font-family: var(--mono);
+
+  font-size: 1.1rem;
+
+  font-weight: 700;
+}
+
+.wp-ticket__stats .wp-stat__label {
+  display: block;
+
+  margin-top: 4px;
+
+  color: var(--paper-faint) !important;
+
+  font-size: 0.60rem;
+
+  letter-spacing: 0.05em;
+
+  text-transform: uppercase;
+}
+
+.wp-ticket__foot {
+  display: flex;
+
+  justify-content: space-between;
+
+  gap: 16px;
+
+  flex-wrap: wrap;
+
+  color: var(--paper-faint);
+
+  font-size: 0.78rem;
+}
+
+.wp-ticket__reason {
+  max-width: 65ch;
+
+  color: var(--paper-dim);
+
+  font-style: italic;
+}
+
+/* =========================================================
+   CONNECTED PORTS
+   ========================================================= */
+
+.wp-port-section {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.wp-port-selector {
+  display: flex;
+
+  align-items: center;
+
+  gap: 15px;
+
+  margin-bottom: 32px;
+
+  padding: 20px 24px;
+
+  border: var(--edge);
+
+  border-radius: 14px;
+
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.wp-port-selector label {
+  color: var(--paper-dim);
+
+  font-size: 0.9rem;
+}
+
+.wp-port-selector select {
+  min-width: 220px;
+
+  padding: 11px 14px;
+
+  border: 1px solid rgba(255, 255, 255, 0.20);
+
+  border-radius: 7px;
+
+  background: #111920;
+
+  color: #ffffff;
+
+  outline: none;
+}
+
+.wp-port-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 20px;
+}
+
+.wp-port-card {
+  position: relative;
+
+  min-height: 190px;
+
+  padding: 24px;
+
+  border: 1px solid rgba(255, 255, 255, 0.11);
+
+  border-radius: 15px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #172129,
+      #10171d
+    );
+
+  color: var(--paper);
+
+  box-shadow:
+    0 12px 32px rgba(0, 0, 0, 0.20);
+
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.wp-port-card:hover {
+  transform: translateY(-4px);
+
+  border-color: rgba(72, 201, 255, 0.35);
+}
+
+.wp-port-card h3 {
+  margin: 5px 0 8px;
+
+  color: var(--paper) !important;
+
+  font-size: 1.25rem;
+}
+
+.wp-port-card p {
+  margin: 5px 0;
+
+  color: var(--paper-dim) !important;
+
+  font-size: 0.88rem;
+}
+
+.wp-port-card__routes {
+  display: inline-block;
+
+  margin-top: 15px;
+
+  padding: 6px 10px;
+
+  border-radius: 5px;
+
+  background: rgba(255, 255, 255, 0.06);
+
+  color: var(--paper) !important;
+
+  font-family: var(--mono);
+
+  font-size: 0.70rem;
+}
+
+/* =========================================================
+   HISTORY
+   ========================================================= */
+
+.wp-history {
+  width: 100%;
+
+  padding: 70px 6%;
+
+  background: var(--ink-950);
+}
+
+.wp-history__grid,
+.wp-history-grid {
+  max-width: 1200px;
+
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 20px;
+}
+
+.wp-history-card {
+  position: relative;
+
+  padding: 24px;
+
+  border: 1px solid rgba(255, 255, 255, 0.11);
+
+  border-radius: 15px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #172129,
+      #10171d
+    );
+
+  color: var(--paper);
+
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.wp-history-card:hover {
+  transform: translateY(-3px);
+
+  border-color: rgba(72, 201, 255, 0.3);
+}
+
+.wp-history-card h3 {
+  color: var(--paper);
+
+  margin: 4px 0;
+
+  font-size: 1.2rem;
+}
+
+.wp-history-card__date {
+  color: var(--paper-faint);
+
+  font-family: var(--mono);
+
+  font-size: 0.68rem;
+}
+
+.wp-history-card__route {
+  margin: 15px 0;
+
+  padding: 15px;
+
+  border-radius: 9px;
+
+  background: rgba(255, 255, 255, 0.035);
+
+  color: var(--paper);
+
+  font-size: 1rem;
+
+  font-weight: 600;
+}
+
+/* =========================================================
+   QUOTATION
+   ========================================================= */
+
+.wp-quotation {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.wp-quotation-route {
+  margin-bottom: 28px;
+
+  padding: 22px 25px;
+
+  border: 1px solid rgba(72, 201, 255, 0.25);
+
+  border-radius: 14px;
+
+  background: rgba(72, 201, 255, 0.06);
+
+  color: var(--paper);
+}
+
+.wp-quotation-route h2 {
+  margin: 5px 0 10px;
+
+  color: var(--paper);
+}
+
+.wp-quotation-route__meta {
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 10px;
+}
+
+.wp-quotation-route__meta span {
+  padding: 7px 11px;
+
+  border-radius: 6px;
+
+  background: rgba(255, 255, 255, 0.06);
+
+  color: var(--paper-dim);
+
+  font-size: 0.8rem;
+}
+
+.wp-quotation-form {
+  padding: 32px;
+
+  border: 1px solid rgba(255, 255, 255, 0.11);
+
+  border-radius: 16px;
+
+  background: #10171d;
+
+  color: var(--paper);
+
+  box-shadow:
+    0 18px 50px rgba(0, 0, 0, 0.23);
+}
+
+.wp-form-two {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 20px;
+}
+
+.wp-form-group {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 8px;
+}
+
+.wp-form-group label {
+  color: var(--paper-faint);
+
+  font-family: var(--mono);
+
+  font-size: 0.66rem;
+
+  letter-spacing: 0.10em;
+
+  text-transform: uppercase;
+}
+
+.wp-form-group input,
+.wp-form-group textarea,
+.wp-form-group select {
+  width: 100%;
+
+  padding: 13px 14px;
+
+  border: 1px solid rgba(255, 255, 255, 0.14);
+
+  border-radius: 8px;
+
+  outline: none;
+
+  background: #0c1319;
+
+  color: #ffffff !important;
+
+  caret-color: #ffffff;
+
+  font-size: 0.92rem;
+}
+
+.wp-form-group input::placeholder,
+.wp-form-group textarea::placeholder {
+  color: #73818a;
+}
+
+.wp-form-group input:focus,
+.wp-form-group textarea:focus,
+.wp-form-group select:focus {
+  border-color: rgba(72, 201, 255, 0.6);
+
+  box-shadow:
+    0 0 0 3px var(--slate-soft);
+}
+
+.wp-form-group textarea {
+  min-height: 120px;
+
+  resize: vertical;
+}
+
+.wp-form-submit {
+  width: 100%;
+
+  margin-top: 10px;
+
+  padding: 14px 20px;
+
+  border: none;
+
+  border-radius: 8px;
+
+  background: var(--ochre);
+
+  color: var(--ink-950);
+
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.wp-form-submit:hover {
+  background: #d9aa70;
+}
+
+/* =========================================================
+   ERROR / EMPTY
+   ========================================================= */
+
+.wp-error {
+  max-width: 700px;
+
+  margin: 40px auto;
+
+  padding: 22px;
+
+  border: 1px solid rgba(255, 100, 80, 0.35);
+
+  border-radius: 12px;
+
+  background: rgba(255, 80, 60, 0.06);
+
+  color: #ffb4a9;
+}
+
+.wp-empty {
+  padding: 50px 25px;
+
+  text-align: center;
+
+  border: 1px dashed rgba(255, 255, 255, 0.15);
+
+  border-radius: 14px;
+
+  color: var(--paper-faint);
+}
+
+/* =========================================================
+   AUTHENTICATION
+   ========================================================= */
+
+.auth-page {
+  min-height: 100vh;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  padding: 40px 20px;
+
+  background:
+    radial-gradient(
+      circle at 50% 20%,
+      rgba(201, 155, 97, 0.08),
+      transparent 45%
+    ),
+    var(--ink-950);
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 470px;
+
+  padding: 42px;
+
+  background:
+    linear-gradient(
+      145deg,
+      var(--ink-900),
+      var(--ink-950)
+    );
+
+  border: 1px solid var(--ink-600);
+
+  border-radius: var(--radius-md);
+
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.35);
+}
+
+.auth-brand {
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+
+  margin-bottom: 42px;
+}
+
+.auth-brand__icon {
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid var(--ochre);
+
+  border-radius: 10px;
+
+  color: var(--ochre);
+}
+
+.auth-brand h1 {
+  margin: 0;
+
+  color: var(--paper);
+
+  font-family: var(--display);
+
+  font-size: 1.5rem;
+}
+
+.auth-brand p {
+  margin: 2px 0 0;
+
+  color: var(--paper-faint);
+
+  font-family: var(--mono);
+
+  font-size: 0.58rem;
+
+  letter-spacing: 0.12em;
+}
+
+.auth-heading h2 {
+  margin: 7px 0;
+
+  color: var(--paper);
+
+  font-family: var(--display);
+
+  font-size: 2rem;
+}
+
+.auth-heading p {
+  color: var(--paper-faint);
+
+  font-size: 0.88rem;
+
+  line-height: 1.6;
+}
+
+.auth-form {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 18px;
+}
+
+.auth-field {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 7px;
+}
+
+.auth-field label {
+  color: var(--paper-faint);
+
+  font-family: var(--mono);
+
+  font-size: 0.68rem;
+
+  letter-spacing: 0.08em;
+
+  text-transform: uppercase;
+}
+
+.auth-field input {
+  width: 100%;
+
+  padding: 13px 14px;
+
+  background: var(--ink-950);
+
+  border: 1px solid var(--ink-600);
+
+  border-radius: var(--radius-sm);
+
+  color: var(--paper) !important;
+
+  caret-color: var(--paper);
+
+  outline: none;
+}
+
+.auth-button {
+  width: 100%;
+
+  padding: 14px;
+
+  border: none;
+
+  border-radius: var(--radius-sm);
+
+  background: var(--ochre);
+
+  color: var(--ink-950);
+
+  font-family: var(--mono);
+
+  font-weight: 700;
+
+  cursor: pointer;
+}
+
+.auth-button:hover {
+  background: #d9aa70;
+}
+
+/* =========================================================
+   OTP
+   ========================================================= */
+
+.otp-email {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 5px;
+
+  margin-bottom: 16px;
+
+  padding: 12px 14px;
+
+  border: 1px solid var(--ink-600);
+
+  border-radius: var(--radius-sm);
+
+  background: var(--ink-950);
+}
+
+.otp-email strong {
+  color: var(--paper);
+
+  font-family: var(--mono);
+}
+
+.otp-input {
+  text-align: center;
+
+  color: var(--paper) !important;
+
+  caret-color: var(--paper);
+
+  font-family: var(--mono) !important;
+
+  font-size: 1.45rem !important;
+
+  font-weight: 600;
+
+  letter-spacing: 0.35em;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1100px) {
+
+  .wp-route-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .wp-port-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .wp-history__grid,
+  .wp-history-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .wp-nav {
+    gap: 15px;
+  }
+
+  .wp-nav__brand {
+    min-width: auto;
+  }
+
+  .wp-nav__links {
+    gap: 18px;
+  }
+
+  .wp-nav__right {
+    min-width: auto;
+  }
+
+  .wp-online-text {
+    display: none;
+  }
+}
+
+@media (max-width: 850px) {
+
+  .wp-nav {
+    min-height: auto;
+
+    padding: 15px 20px;
+
+    flex-wrap: wrap;
+  }
+
+  .wp-nav__brand {
+    width: 100%;
+  }
+
+  .wp-nav__links {
+    order: 3;
+
+    width: 100%;
+
+    justify-content: flex-start;
+
+    overflow-x: auto;
+
+    gap: 25px;
+  }
+
+  .wp-nav__links a {
+    padding: 10px 0;
+  }
+
+  .wp-nav__links a.active::after {
+    bottom: 0;
+  }
+
+  .wp-nav__right {
+    position: absolute;
+
+    top: 17px;
+    right: 20px;
+  }
+
+  .wp-results-header {
+    flex-direction: column;
+
+    align-items: flex-start;
+  }
+
+  .wp-best-route__meta {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .wp-port-selector {
+    flex-direction: column;
+
+    align-items: flex-start;
+  }
+
+  .wp-form-two {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 650px) {
+
+  .wp-page {
+    padding: 30px 18px;
+  }
+
+  .wp-route-grid,
+  .wp-port-grid,
+  .wp-history__grid,
+  .wp-history-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .wp-best-route__meta {
+    grid-template-columns: 1fr;
+  }
+
+  .wp-ticket__stats {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+  .wp-route-card__footer {
+    align-items: flex-start;
+
+    flex-direction: column;
+  }
+
+  .wp-route-card__button {
+    width: 100%;
+  }
+
+  .wp-ticket__lane {
+    flex-direction: column;
+
+    align-items: flex-start;
+  }
+
+  .wp-ticket__lane-line {
+    width: 100%;
+  }
+
+  .wp-quotation-form {
+    padding: 22px;
+  }
+
+  .auth-card {
+    padding: 30px 22px;
+  }
+}
+
+@media (max-width: 420px) {
+
+  .wp-route-card {
+    padding: 18px;
+  }
+
+  .wp-route-card__stats {
+    grid-template-columns: 1fr;
+  }
+
+  .wp-ticket__stats {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+
+    animation-duration: 0.01ms !important;
+
+    animation-iteration-count: 1 !important;
+
+    transition-duration: 0.01ms !important;
+  }
+
+  .wp-reveal {
+    opacity: 1;
+
+    transform: none;
+  }
+}
+/* =========================================================
+   NAVBAR — SCREEN WIDTH FIX
+   ========================================================= */
+
+@media (max-width: 1250px) {
+
+  .wp-nav {
+    gap: 14px;
+    padding: 0 20px;
+  }
+
+  .wp-nav__brand {
+    min-width: 165px;
+    font-size: 1.45rem;
+  }
+
+  .wp-nav__links {
+    gap: 16px;
+  }
+
+  .wp-nav__links a {
+    font-size: 0.78rem;
+  }
+
+  .wp-nav__right {
+    min-width: 165px;
+  }
+
+  .wp-online-text {
+    font-size: 0.72rem;
+  }
+
+  .wp-nav__user {
+    font-size: 0.75rem;
+  }
+
+  .wp-logout {
+    padding: 7px 10px;
+    font-size: 0.70rem;
+  }
+}
+
+
+/* =========================================================
+   PREVENT HORIZONTAL PAGE OVERFLOW
+   ========================================================= */
+
+html,
+body,
+#root {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+
+/* =========================================================
+   PLOT ROUTE BUTTON — KEEP WAYPOINT GOLD
+   ========================================================= */
+
+.wp-btn--primary,
+.wp-btn--primary:disabled {
+  background: var(--ochre);
+  color: var(--ink-950);
+}
+
+.wp-btn--primary:hover:not(:disabled) {
+  background: #d9aa70;
+}
+
+
+/* =========================================================
+   ROUTE CARD BUTTON
+   ========================================================= */
+
+.wp-route-card__button {
+  background: var(--ochre);
+  color: var(--ink-950);
+  border: 1px solid var(--ochre);
+}
+
+.wp-route-card__button:hover {
+  background: #d9aa70;
+  color: var(--ink-950);
+}
+
+
+/* =========================================================
+   ROUTE CARD TEXT VISIBILITY
+   ========================================================= */
+
+.wp-route-card__title,
+.wp-route-card__stat-value,
+.wp-route-card__price {
+  color: var(--paper) !important;
+}
+
+.wp-route-card__stat-label,
+.wp-route-card__number {
+  color: var(--paper-faint) !important;
+}
+/* =========================================================
+   WAYPOINT HOME PAGE — RESTORED LAYOUT
+   These rules restore the Home/Route Planner layout without
+   changing the styling of the other pages.
+   ========================================================= */
+
+.wp-hero {
+  position: relative;
+  min-height: 84vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: var(--ink-950);
+}
+
+.wp-chart {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.wp-chart__land circle {
+  fill: var(--ink-700);
+}
+
+.wp-port circle {
+  fill: var(--ink-600);
+}
+
+.wp-port text {
+  font-family: var(--mono);
+  font-size: 11px;
+  fill: var(--paper-dim);
+}
+
+.wp-port--origin circle {
+  fill: var(--ochre);
+}
+
+.wp-port--origin text {
+  fill: var(--ochre);
+}
+
+.wp-port--destination circle {
+  fill: var(--slate);
+}
+
+.wp-port--destination text {
+  fill: var(--slate);
+}
+
+.wp-lane__path {
+  fill: none;
+  stroke: var(--paper-faint);
+  stroke-width: 1.5;
+  stroke-dasharray: 5 6;
+  stroke-linecap: round;
+  animation: wp-dash-flow 1.8s linear infinite;
+}
+
+.wp-lane--locked .wp-lane__path {
+  stroke: var(--slate);
+  stroke-width: 2;
+  stroke-dasharray: none;
+  animation: none;
+}
+
+.wp-lane--broken .wp-lane__path {
+  stroke: var(--rust);
+  stroke-dasharray: 2 6;
+  animation: none;
+  opacity: 0.8;
+}
+
+.wp-lane__ship path {
+  fill: var(--ochre);
+}
+
+.wp-lane--locked .wp-lane__ship path {
+  fill: var(--slate);
+}
+
+.wp-lane__ship {
+  offset-rotate: auto 90deg;
+  animation: wp-glide 6s linear infinite;
+}
+
+@keyframes wp-dash-flow {
+  to {
+    stroke-dashoffset: -22;
+  }
+}
+
+@keyframes wp-glide {
+  from {
+    offset-distance: 0%;
+  }
+
+  to {
+    offset-distance: 100%;
+  }
+}
+
+/* =========================================================
+   HOME HERO CONTENT
+   ========================================================= */
+
+.wp-hero__content {
+  position: relative;
+  z-index: 2;
+
+  width: min(560px, calc(100% - 48px));
+  max-width: 560px;
+
+  margin-left: 6vw;
+
+  padding: 44px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  background: rgba(20, 26, 31, 0.94);
+
+  border: var(--edge);
+
+  box-shadow:
+    0 24px 70px rgba(0, 0, 0, 0.28);
+
+  backdrop-filter: blur(10px);
+}
+
+.wp-hero__content .wp-eyebrow {
+  margin: 0;
+  color: var(--paper-faint);
+}
+
+.wp-hero__title {
+  margin: 0;
+
+  font-family: var(--display);
+
+  font-size: clamp(2.4rem, 5vw, 3.6rem);
+
+  color: var(--paper);
+
+  font-weight: 600;
+
+  line-height: 1.05;
+
+  letter-spacing: -0.02em;
+}
+
+.wp-hero__sub {
+  max-width: 46ch;
+
+  margin: 0;
+
+  color: var(--paper-dim);
+
+  font-size: 1.02rem;
+
+  line-height: 1.7;
+}
+
+.wp-hero__actions {
+  display: flex;
+
+  align-items: center;
+
+  gap: 24px;
+
+  flex-wrap: wrap;
+
+  margin-top: 8px;
+}
+
+.wp-hero__meta {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 2px;
+
+  font-family: var(--mono);
+
+  font-size: 0.78rem;
+
+  color: var(--paper-faint);
+}
+
+/* =========================================================
+   HOME ROUTE CONSOLE
+   ========================================================= */
+
+.wp-console {
+  width: min(1240px, 100%);
+
+  margin: 0 auto;
+
+  padding: 90px 40px;
+
+  border-top: var(--edge);
+}
+
+.wp-section-head {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 6px;
+
+  margin-bottom: 32px;
+}
+
+.wp-section-head .wp-eyebrow {
+  margin: 0;
+}
+
+.wp-section-head h2 {
+  margin: 0;
+
+  font-family: var(--display);
+
+  font-size: clamp(1.6rem, 3vw, 2.1rem);
+
+  color: var(--paper);
+}
+
+.wp-console__grid {
+  display: grid;
+
+  grid-template-columns:
+    minmax(280px, 380px)
+    minmax(0, 1fr);
+
+  gap: 28px;
+
+  align-items: start;
+}
+
+.wp-console .wp-form {
+  position: sticky;
+
+  top: 90px;
+
+  width: 100%;
+}
+
+.wp-console .wp-manifest {
+  width: 100%;
+  min-width: 0;
+
+  display: block;
+}
+
+.wp-manifest__empty {
+  min-height: 340px;
+
+  width: 100%;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  flex-direction: column;
+
+  gap: 14px;
+
+  padding: 40px;
+
+  text-align: center;
+
+  color: var(--paper-faint);
+}
+
+.wp-manifest__empty p {
+  margin: 0;
+
+  color: var(--paper-faint);
+}
+
+.wp-manifest__empty-mark {
+  width: 32px;
+  height: 32px;
+
+  color: var(--ink-600);
+}
+
+.wp-manifest__empty--warn p:first-child {
+  color: var(--ochre);
+}
+
+.wp-manifest__empty--error p {
+  color: var(--rust);
+}
+
+.wp-manifest__hint {
+  color: var(--paper-faint) !important;
+
+  font-size: 0.84rem;
+}
+
+.wp-spinner {
+  width: 30px;
+  height: 30px;
+
+  border: 2px solid var(--ink-600);
+
+  border-top-color: var(--slate);
+
+  border-radius: 50%;
+
+  animation: wp-spin 0.85s linear infinite;
+}
+
+/* =========================================================
+   HOME PORT NETWORK
+   ========================================================= */
+
+.wp-ports {
+  width: min(1240px, 100%);
+
+  margin: 0 auto;
+
+  padding: 90px 40px;
+
+  border-top: var(--edge);
+}
+
+.wp-ports__grid {
+  list-style: none;
+
+  margin: 0;
+  padding: 0;
+
+  display: flex;
+
+  flex-wrap: wrap;
+
+  gap: 10px;
+}
+
+.wp-ports__grid li {
+  padding: 8px 14px;
+
+  border: 1px solid var(--ink-600);
+
+  border-radius: 999px;
+
+  color: var(--paper-dim);
+
+  font-family: var(--mono);
+
+  font-size: 0.82rem;
+
+  transition:
+    border-color 0.2s ease,
+    color 0.2s ease,
+    background 0.2s ease;
+}
+
+.wp-ports__grid li:hover {
+  border-color: var(--slate);
+
+  color: var(--paper);
+}
+
+.wp-ports__chip--active {
+  border-color: var(--slate) !important;
+
+  background: var(--slate-soft);
+
+  color: var(--slate) !important;
+}
+
+/* =========================================================
+   HOME FOOTER
+   ========================================================= */
+
+.wp-footer {
+  margin-top: auto;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 16px;
+
+  flex-wrap: wrap;
+
+  padding: 26px 40px;
+
+  border-top: var(--edge);
+
+  color: var(--paper-faint);
+
+  font-size: 0.84rem;
+}
+
+.wp-footer .wp-nav__brand {
+  min-width: auto;
+
+  font-size: 1rem;
+
+  color: var(--paper-dim);
+}
+
+/* =========================================================
+   NAVBAR — COMPATIBLE WITH CURRENT APP JSX
+   ========================================================= */
+
+.wp-nav {
+  position: sticky;
+
+  top: 0;
+
+  z-index: 1000;
+
+  min-height: 72px;
+
+  width: 100%;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 20px;
+
+  padding: 0 28px;
+
+  background: rgba(8, 13, 17, 0.97);
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+
+  backdrop-filter: blur(14px);
+
+  overflow: hidden;
+}
+
+.wp-nav__brand {
+  flex: 0 0 auto;
+
+  min-width: 170px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+}
+
+.wp-nav__links {
+  flex: 1 1 auto;
+
+  min-width: 0;
+
+  display: flex;
+
+  justify-content: center;
+
+  align-items: center;
+
+  gap: 22px;
+
+  overflow-x: auto;
+
+  scrollbar-width: none;
+}
+
+.wp-nav__links::-webkit-scrollbar {
+  display: none;
+}
+
+.wp-nav__links a {
+  flex: 0 0 auto;
+
+  white-space: nowrap;
+}
+
+.wp-nav__status {
+  flex: 0 0 auto;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  color: var(--paper-faint);
+
+  font-family: var(--mono);
+
+  font-size: 0.72rem;
+
+  white-space: nowrap;
+}
+
+.wp-user {
+  flex: 0 0 auto;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  color: var(--paper-dim);
+
+  font-size: 0.78rem;
+
+  white-space: nowrap;
+}
+
+/* =========================================================
+   IMPORTANT — NEVER SHRINK THE HOME HERO
+   ========================================================= */
+
+@media (min-width: 761px) {
+
+  .wp-hero {
+    min-height: 84vh;
+  }
+
+  .wp-hero__content {
+    margin-left: 6vw;
+  }
+}
+
+@media (max-width: 1100px) {
+
+  .wp-nav {
+    gap: 12px;
+
+    padding: 0 18px;
+  }
+
+  .wp-nav__brand {
+    min-width: 145px;
+  }
+
+  .wp-nav__links {
+    gap: 15px;
+  }
+
+  .wp-nav__links a {
+    font-size: 0.78rem;
+  }
+
+  .wp-nav__status {
+    display: none;
+  }
+}
+
+@media (max-width: 920px) {
+
+  .wp-console__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .wp-console .wp-form {
+    position: static;
+  }
+}
+
+@media (max-width: 760px) {
+
+  .wp-hero {
+    min-height: 76vh;
+  }
+
+  .wp-hero__content {
+    width: calc(100% - 40px);
+
+    margin: 0 20px;
+
+    padding: 32px 26px;
+  }
+
+  .wp-console,
+  .wp-ports {
+    padding: 60px 20px;
+  }
+
+  .wp-nav {
+    min-height: auto;
+
+    padding: 14px 18px;
+
+    flex-wrap: wrap;
+  }
+
+  .wp-nav__brand {
+    min-width: auto;
+  }
+
+  .wp-nav__links {
+    order: 3;
+
+    width: 100%;
+
+    justify-content: flex-start;
+
+    padding-bottom: 3px;
+  }
+
+  .wp-nav__user {
+    margin-left: auto;
+  }
+}
+
+@media (max-width: 520px) {
+
+  .wp-hero__title {
+    font-size: 2.25rem;
+  }
+
+  .wp-hero__sub {
+    font-size: 0.92rem;
+  }
+
+  .wp-hero__actions {
+    align-items: flex-start;
+
+    flex-direction: column;
+  }
+
+  .wp-hero__meta {
+    padding-left: 2px;
+  }
+}
+
+/* =========================================================
+   GLOBAL SAFETY
+   ========================================================= */
+
+html,
+body,
+#root {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+/* =========================================================
+   NAVBAR + LANGUAGE SELECTOR — RESPONSIVE FIX
+   ========================================================= */
+
+/* Allow language dropdown to extend outside navbar */
+.wp-nav {
+  overflow: visible !important;
+}
+
+/* Keep right-side controls together */
+.wp-nav__right {
+  position: relative;
+  flex: 0 0 auto;
+  min-width: max-content;
+}
+
+/* Language dropdown should always appear above everything */
+.wp-nav__right > div {
+  z-index: 2000;
+}
+
+/* =========================================================
+   LARGE DESKTOP
+   ========================================================= */
+
+@media (min-width: 1251px) {
+
+  .wp-nav {
+    gap: 24px;
+  }
+
+  .wp-nav__brand {
+    min-width: 190px;
+  }
+
+  .wp-nav__links {
+    gap: 25px;
+  }
+
+  .wp-nav__links a {
+    font-size: 0.88rem;
+  }
+
+  .wp-nav__right {
+    min-width: 260px;
+  }
+}
+
+
+/* =========================================================
+   LAPTOP / SMALL DESKTOP
+   ========================================================= */
+
+@media (max-width: 1250px) and (min-width: 1001px) {
+
+  .wp-nav {
+    gap: 12px;
+    padding: 0 18px;
+  }
+
+  .wp-nav__brand {
+    min-width: 155px;
+  }
+
+  .wp-nav__brand span {
+    font-size: 1.35rem;
+  }
+
+  .wp-nav__links {
+    gap: 14px;
+  }
+
+  .wp-nav__links a {
+    font-size: 0.73rem;
+  }
+
+  .wp-nav__right {
+    min-width: max-content;
+    gap: 7px;
+  }
+
+  .wp-nav__user {
+    font-size: 0.72rem;
+  }
+
+  .wp-logout {
+    padding: 7px 10px;
+    font-size: 0.68rem;
+  }
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1000px) and (min-width: 761px) {
+
+  .wp-nav {
+    min-height: 68px;
+    gap: 10px;
+    padding: 0 15px;
+  }
+
+  .wp-nav__brand {
+    min-width: 145px;
+  }
+
+  .wp-nav__brand span {
+    font-size: 1.25rem;
+  }
+
+  .wp-nav__links {
+    justify-content: flex-start;
+    gap: 13px;
+  }
+
+  .wp-nav__links a {
+    font-size: 0.70rem;
+  }
+
+  .wp-nav__status,
+  .wp-online-text {
+    display: none !important;
+  }
+
+  .wp-nav__right {
+    min-width: max-content;
+    gap: 6px;
+  }
+
+  .wp-nav__user {
+    font-size: 0.68rem;
+  }
+
+  .wp-logout {
+    padding: 7px 9px;
+    font-size: 0.65rem;
+  }
+}
+
+
+/* =========================================================
+   MOBILE / SMALL TABLET
+   ========================================================= */
+
+@media (max-width: 760px) {
+
+  .wp-nav {
+    min-height: auto;
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 12px 16px;
+  }
+
+  /* Brand */
+  .wp-nav__brand {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  .wp-nav__brand span {
+    font-size: 1.25rem;
+  }
+
+  /* Right controls stay on first row */
+  .wp-nav__right {
+    position: static;
+
+    min-width: auto;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: flex-end;
+
+    gap: 7px;
+
+    margin-left: auto;
+  }
+
+  /* Hide system status on mobile */
+  .wp-nav__status,
+  .wp-online-text,
+  .wp-dot {
+    display: none !important;
+  }
+
+  /* Navigation gets its own row */
+  .wp-nav__links {
+    order: 3;
+
+    flex: 0 0 100%;
+
+    width: 100%;
+
+    display: flex;
+
+    justify-content: flex-start;
+
+    gap: 20px;
+
+    overflow-x: auto;
+
+    padding: 5px 0 3px;
+
+    scrollbar-width: none;
+  }
+
+  .wp-nav__links::-webkit-scrollbar {
+    display: none;
+  }
+
+  .wp-nav__links a {
+    flex: 0 0 auto;
+
+    padding: 8px 0;
+
+    font-size: 0.76rem;
+  }
+
+  .wp-nav__links a.active::after {
+    bottom: 0;
+  }
+
+  /* Language button */
+  .wp-nav__right > div > button {
+    min-height: 34px;
+
+    padding: 6px 9px !important;
+
+    font-size: 0.70rem !important;
+  }
+
+  /* User */
+  .wp-nav__user {
+    font-size: 0.70rem;
+
+    max-width: 100px;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+  }
+
+  /* Logout */
+  .wp-logout {
+    padding: 7px 9px;
+
+    font-size: 0.66rem;
+  }
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 560px) {
+
+  .wp-nav {
+    padding: 11px 13px;
+  }
+
+  .wp-nav__brand span {
+    font-size: 1.1rem;
+  }
+
+  .wp-nav__brand {
+    gap: 7px;
+  }
+
+  .wp-nav__mark {
+    width: 20px;
+    height: 20px;
+  }
+
+  .wp-nav__user {
+    display: none;
+  }
+
+  .wp-nav__links {
+    gap: 18px;
+  }
+
+  .wp-nav__links a {
+    font-size: 0.70rem;
+  }
+
+  .wp-logout {
+    padding: 6px 8px;
+
+    font-size: 0.62rem;
+  }
+
+  .wp-nav__right > div > button {
+    padding: 6px 8px !important;
+  }
+}
+
+
+/* =========================================================
+   LANGUAGE DROPDOWN
+   ========================================================= */
+
+.wp-nav__right > div > div {
+  max-height: 280px;
+
+  overflow-y: auto;
+}
+
+
+/* =========================================================
+   KEEP DROPDOWN ABOVE NAVIGATION
+   ========================================================= */
+
+.wp-nav,
+.wp-nav__right {
+  z-index: 1000;
+}
+
+.wp-nav__right > div {
+  z-index: 2000;
+}
+
+
+/* =========================================================
+   PREVENT DROPDOWN BUTTONS FROM BEING AFFECTED
+   BY NAVBAR LINK STYLES
+   ========================================================= */
+
+.wp-nav__right button {
+  text-decoration: none;
+}
+
+.wp-nav__right button:hover {
+  transform: none;
+}

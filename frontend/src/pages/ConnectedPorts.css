@@ -1,0 +1,1587 @@
+/* =========================================================
+   WAYPOINT — WEATHER & CONDITIONS
+   ========================================================= */
+
+.wp-weather-page {
+  min-height: calc(100vh - 72px);
+  padding: 48px 6% 80px;
+  background:
+    radial-gradient(
+      circle at 80% 0%,
+      rgba(72, 201, 255, 0.08),
+      transparent 32%
+    ),
+    var(--ink-950);
+  color: var(--paper);
+}
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.wp-weather-page .wp-page-header {
+  max-width: 1200px;
+  margin: 0 auto 34px;
+}
+
+.wp-weather-page .wp-page-header .wp-eyebrow {
+  color: var(--slate);
+}
+
+.wp-weather-page .wp-page-header h1 {
+  margin: 5px 0 12px;
+
+  color: var(--paper) !important;
+
+  font-family: var(--display);
+  font-size: clamp(2.4rem, 5vw, 4.3rem);
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+}
+
+.wp-weather-page .wp-page-header > p:last-child {
+  max-width: 720px;
+
+  margin: 0;
+
+  color: var(--paper-dim) !important;
+
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+/* =========================================================
+   ROUTE SELECTOR
+   ========================================================= */
+
+.wp-weather-page .wp-weather-route-selector {
+  max-width: 1200px;
+  margin: 0 auto 30px;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    60px
+    minmax(0, 1fr);
+
+  align-items: end;
+
+  gap: 18px;
+
+  padding: 22px;
+
+  border: var(--edge);
+  border-radius: var(--radius-md);
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.055),
+      rgba(255, 255, 255, 0.018)
+    );
+
+  box-shadow:
+    0 18px 50px rgba(0, 0, 0, 0.22);
+}
+
+.wp-weather-page .wp-weather-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.wp-weather-page .wp-weather-selector label {
+  color: var(--paper-faint);
+
+  font-family: var(--mono);
+  font-size: 0.65rem;
+  font-weight: 600;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+}
+
+.wp-weather-page .wp-weather-selector select {
+  width: 100%;
+
+  min-height: 46px;
+
+  padding: 11px 13px;
+
+  border: 1px solid var(--ink-600);
+  border-radius: var(--radius-sm);
+
+  background: var(--ink-950);
+  color: #ffffff;
+
+  outline: none;
+
+  cursor: pointer;
+}
+
+.wp-weather-page .wp-weather-selector select:focus {
+  border-color: var(--slate);
+
+  box-shadow:
+    0 0 0 3px var(--slate-soft);
+}
+
+.wp-weather-page .wp-weather-selector select option {
+  background: var(--ink-900);
+  color: #ffffff;
+}
+
+.wp-weather-page .wp-weather-route-arrow {
+  align-self: center;
+
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  width: 50px;
+  height: 50px;
+
+  border: 1px solid rgba(72, 201, 255, 0.25);
+  border-radius: 50%;
+
+  background: var(--slate-soft);
+
+  color: var(--slate);
+
+  font-size: 1.35rem;
+  font-weight: 700;
+}
+
+/* =========================================================
+   LOADING
+   ========================================================= */
+
+.wp-weather-page .wp-weather-loading {
+  max-width: 1200px;
+  margin: 25px auto;
+
+  padding: 30px;
+
+  text-align: center;
+
+  border: var(--edge);
+  border-radius: var(--radius-md);
+
+  background: var(--ink-900);
+
+  color: var(--paper-dim);
+}
+
+.wp-weather-page .wp-weather-spinner {
+  margin-bottom: 10px;
+
+  color: var(--slate);
+
+  font-size: 1.8rem;
+
+  animation: wp-weather-spin 1s linear infinite;
+}
+
+@keyframes wp-weather-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* =========================================================
+   ERROR
+   ========================================================= */
+
+.wp-weather-page .wp-weather-error {
+  max-width: 1200px;
+  margin: 25px auto;
+
+  padding: 17px 20px;
+
+  border: 1px solid rgba(224, 113, 97, 0.45);
+  border-radius: var(--radius-sm);
+
+  background: rgba(224, 113, 97, 0.08);
+
+  color: #ffb8ae;
+}
+
+/* =========================================================
+   WEATHER LOCATIONS
+   ========================================================= */
+
+.wp-weather-page .wp-weather-locations {
+  max-width: 1200px;
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 22px;
+}
+
+.wp-weather-page .wp-weather-location-card {
+  position: relative;
+
+  min-width: 0;
+
+  padding: 25px;
+
+  border: 1px solid rgba(72, 201, 255, 0.20);
+  border-radius: 17px;
+
+  background:
+    linear-gradient(
+      145deg,
+      #172129,
+      #10171d 65%,
+      #0b1116
+    );
+
+  color: var(--paper);
+
+  box-shadow:
+    0 18px 45px rgba(0, 0, 0, 0.28);
+
+  overflow: hidden;
+}
+
+.wp-weather-page .wp-weather-location-card::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+  right: 0;
+
+  height: 2px;
+
+  background: var(--slate);
+}
+
+.wp-weather-page .wp-weather-location-header {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: flex-start;
+
+  gap: 15px;
+
+  margin-bottom: 20px;
+}
+
+.wp-weather-page .wp-weather-label {
+  display: block;
+
+  margin-bottom: 5px;
+
+  color: var(--paper-faint);
+
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.12em;
+
+  text-transform: uppercase;
+}
+
+.wp-weather-page .wp-weather-location-header h2 {
+  margin: 0;
+
+  color: #ffffff !important;
+
+  font-family: var(--display);
+  font-size: 1.65rem;
+}
+
+.wp-weather-page .wp-weather-main-icon {
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  width: 58px;
+  height: 58px;
+
+  border-radius: 14px;
+
+  background: rgba(72, 201, 255, 0.08);
+
+  font-size: 2rem;
+}
+
+/* =========================================================
+   MAIN WEATHER
+   ========================================================= */
+
+.wp-weather-page .wp-weather-main {
+  display: flex;
+
+  justify-content: space-between;
+  align-items: flex-end;
+
+  gap: 20px;
+
+  margin-bottom: 22px;
+}
+
+.wp-weather-page .wp-weather-temperature {
+  color: #ffffff;
+
+  font-family: var(--display);
+
+  font-size: 3rem;
+  font-weight: 700;
+
+  line-height: 1;
+}
+
+.wp-weather-page .wp-weather-main p {
+  margin: 8px 0 0;
+
+  color: var(--paper-dim);
+
+  font-size: 0.85rem;
+
+  text-transform: capitalize;
+}
+
+.wp-weather-page .wp-weather-risk {
+  min-width: 120px;
+
+  padding: 11px 13px;
+
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  border-radius: 9px;
+
+  background: rgba(255, 255, 255, 0.035);
+
+  text-align: right;
+}
+
+.wp-weather-page .wp-weather-risk span {
+  display: block;
+
+  margin-bottom: 4px;
+
+  color: var(--paper-faint);
+
+  font-family: var(--mono);
+
+  font-size: 0.58rem;
+
+  text-transform: uppercase;
+}
+
+.wp-weather-page .wp-weather-risk strong {
+  color: var(--ochre);
+
+  font-family: var(--mono);
+
+  font-size: 0.85rem;
+}
+
+/* =========================================================
+   METRICS
+   ========================================================= */
+
+.wp-weather-page .wp-weather-metrics {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 9px;
+}
+
+.wp-weather-page .wp-weather-metric {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+
+  min-width: 0;
+
+  padding: 11px;
+
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  border-radius: 8px;
+
+  background: rgba(255, 255, 255, 0.035);
+}
+
+.wp-weather-page .wp-weather-metric .metric-icon {
+  flex-shrink: 0;
+
+  font-size: 1rem;
+}
+
+.wp-weather-page .wp-weather-metric small {
+  display: block;
+
+  margin-bottom: 3px;
+
+  color: var(--paper-faint);
+
+  font-family: var(--mono);
+
+  font-size: 0.54rem;
+
+  letter-spacing: 0.04em;
+
+  text-transform: uppercase;
+}
+
+.wp-weather-page .wp-weather-metric strong {
+  display: block;
+
+  color: #ffffff !important;
+
+  font-family: var(--mono);
+
+  font-size: 0.76rem;
+}
+
+/* =========================================================
+   WEATHER ADVICE
+   ========================================================= */
+
+.wp-weather-page .wp-weather-advice {
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 10px;
+
+  margin-top: 17px;
+
+  padding: 12px 14px;
+
+  border-left: 2px solid var(--ochre);
+
+  border-radius: 0 8px 8px 0;
+
+  background: var(--ochre-soft);
+}
+
+.wp-weather-page .wp-weather-advice span {
+  flex-shrink: 0;
+}
+
+.wp-weather-page .wp-weather-advice p {
+  margin: 0;
+
+  color: var(--paper-dim);
+
+  font-size: 0.76rem;
+
+  line-height: 1.5;
+}
+
+/* =========================================================
+   FORECAST SECTION
+   ========================================================= */
+
+.wp-weather-page .wp-weather-forecast-section {
+  max-width: 1200px;
+
+  margin: 32px auto 0;
+}
+
+.wp-weather-page .wp-weather-forecast-section h2 {
+  margin: 5px 0 18px;
+
+  color: var(--paper) !important;
+
+  font-family: var(--display);
+}
+
+.wp-weather-page .wp-weather-forecast-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(5, minmax(0, 1fr));
+
+  gap: 12px;
+}
+
+.wp-weather-page .wp-weather-day {
+  min-width: 0;
+
+  padding: 17px 13px;
+
+  border: var(--edge);
+  border-radius: 12px;
+
+  background: var(--ink-900);
+
+  text-align: center;
+}
+
+.wp-weather-page .wp-weather-day-name {
+  color: var(--paper-faint);
+
+  font-family: var(--mono);
+
+  font-size: 0.58rem;
+
+  text-transform: uppercase;
+}
+
+.wp-weather-page .wp-weather-day-icon {
+  margin: 12px 0;
+
+  font-size: 1.7rem;
+}
+
+.wp-weather-page .wp-weather-day-temp {
+  color: #ffffff;
+
+  font-family: var(--mono);
+
+  font-size: 1rem;
+
+  font-weight: 700;
+}
+
+.wp-weather-page .wp-weather-day-rain {
+  margin-top: 8px;
+
+  color: var(--slate);
+
+  font-family: var(--mono);
+
+  font-size: 0.65rem;
+}
+
+.wp-weather-page .wp-weather-empty {
+  padding: 30px;
+
+  border: 1px dashed var(--ink-600);
+  border-radius: 12px;
+
+  color: var(--paper-faint);
+
+  text-align: center;
+}
+
+/* =========================================================
+   OPERATIONAL INSTRUCTIONS
+   ========================================================= */
+
+.wp-weather-page .wp-weather-instructions {
+  max-width: 1200px;
+
+  margin: 35px auto 0;
+
+  padding: 27px;
+
+  border: var(--edge);
+  border-radius: 16px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.045),
+      rgba(255, 255, 255, 0.015)
+    );
+}
+
+.wp-weather-page .wp-weather-instructions h2 {
+  margin: 5px 0 22px;
+
+  color: var(--paper) !important;
+
+  font-family: var(--display);
+}
+
+.wp-weather-page .wp-weather-instruction-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 14px;
+}
+
+.wp-weather-page .wp-weather-instruction-grid > div {
+  padding: 18px;
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.wp-weather-page .wp-weather-instruction-grid span {
+  font-size: 1.35rem;
+}
+
+.wp-weather-page .wp-weather-instruction-grid h3 {
+  margin: 10px 0 7px;
+
+  color: #ffffff;
+
+  font-family: var(--display);
+
+  font-size: 1rem;
+}
+
+.wp-weather-page .wp-weather-instruction-grid p {
+  margin: 0;
+
+  color: var(--paper-dim);
+
+  font-size: 0.76rem;
+
+  line-height: 1.55;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+  .wp-weather-page .wp-weather-locations {
+    grid-template-columns: 1fr;
+  }
+
+  .wp-weather-page .wp-weather-forecast-grid {
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr));
+  }
+
+  .wp-weather-page .wp-weather-instruction-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 700px) {
+
+  .wp-weather-page {
+    padding: 32px 18px 60px;
+  }
+
+  .wp-weather-page .wp-weather-route-selector {
+    grid-template-columns: 1fr;
+  }
+
+  .wp-weather-page .wp-weather-route-arrow {
+    transform: rotate(90deg);
+  }
+
+  .wp-weather-page .wp-weather-forecast-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 450px) {
+
+  .wp-weather-page .wp-weather-main {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .wp-weather-page .wp-weather-metrics {
+    grid-template-columns: 1fr;
+  }
+
+  .wp-weather-page .wp-weather-forecast-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* =========================================================
+   WAYPOINT CONNECTED PORTS — CINEMATIC NETWORK UPGRADE
+   Visual-only layer. Existing port API and PortCard remain unchanged.
+   ========================================================= */
+
+.wp-connected-ports {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  min-height: calc(100vh - 70px);
+  padding: 48px 42px 80px;
+  background:
+    radial-gradient(circle at 76% 8%, rgba(42, 195, 239, .14), transparent 28%),
+    radial-gradient(circle at 12% 45%, rgba(22, 108, 145, .13), transparent 35%),
+    linear-gradient(180deg, #06121a 0%, #07131c 54%, #040b10 100%);
+  color: #edf6f8;
+}
+
+.wp-connected-ports::before {
+  content: "";
+  position: absolute;
+  z-index: -3;
+  inset: 0;
+  opacity: .20;
+  background-image: radial-gradient(circle, rgba(93, 214, 242, .65) 1px, transparent 1.5px);
+  background-size: 43px 43px;
+  mask-image: linear-gradient(to bottom, black, transparent 78%);
+}
+
+.wp-connected-ports::after {
+  content: "";
+  position: absolute;
+  z-index: -4;
+  width: 620px;
+  height: 620px;
+  right: -130px;
+  top: 90px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 34% 28%, rgba(69, 214, 255, .30), rgba(7, 61, 84, .16) 36%, rgba(2, 11, 17, .92) 73%);
+  border: 1px solid rgba(71, 205, 241, .28);
+  box-shadow:
+    inset -65px -45px 95px rgba(0,0,0,.78),
+    inset 30px 10px 70px rgba(55,207,246,.07),
+    0 0 100px rgba(0,170,232,.09);
+  animation: wpPortsGlobeFloat 13s ease-in-out infinite;
+}
+
+/* Globe latitude / longitude illusion */
+.wp-connected-ports .wp-page-header::before,
+.wp-connected-ports .wp-page-header::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+  z-index: -1;
+  right: 5%;
+  top: 125px;
+  width: 510px;
+  height: 510px;
+  border: 1px solid rgba(80, 209, 240, .10);
+  border-radius: 50%;
+}
+
+.wp-connected-ports .wp-page-header::before {
+  transform: rotate(27deg) scaleX(.55);
+}
+
+.wp-connected-ports .wp-page-header::after {
+  transform: rotate(-27deg) scaleY(.55);
+}
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.wp-connected-ports .wp-page-header {
+  position: relative;
+  width: min(1180px, 100%);
+  margin: 0 auto 38px;
+  text-align: left;
+  padding: 27px 30px;
+  border: 1px solid rgba(72, 199, 237, .16);
+  border-radius: 18px;
+  background: linear-gradient(135deg, rgba(10, 35, 48, .74), rgba(5, 16, 23, .58));
+  backdrop-filter: blur(12px);
+  box-shadow:
+    inset 0 1px rgba(255,255,255,.035),
+    0 24px 60px rgba(0,0,0,.25);
+}
+
+.wp-connected-ports .wp-page-header::marker {
+  display: none;
+}
+
+.wp-connected-ports .wp-eyebrow {
+  color: #6eb4ca !important;
+  letter-spacing: 3px;
+}
+
+.wp-connected-ports .wp-page-header h1 {
+  color: #f3f7f7 !important;
+  font-size: clamp(40px, 5vw, 62px);
+  letter-spacing: -2.2px;
+  text-shadow: 0 12px 35px rgba(0,0,0,.35);
+}
+
+.wp-connected-ports .wp-page-header h1::first-line {
+  background: linear-gradient(90deg, #f5f5f0, #66d9ff, #d4a256);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.wp-connected-ports .wp-page-header > p:last-child {
+  color: #8daab5 !important;
+}
+
+.wp-connected-ports .wp-page-header::after {
+  content: "GLOBAL PORT NETWORK";
+  position: absolute;
+  right: 25px;
+  top: 24px;
+  padding: 7px 10px;
+  border: 1px solid rgba(75, 208, 242, .20);
+  border-radius: 30px;
+  color: #5dbcd9;
+  background: rgba(23, 137, 174, .055);
+  font-family: "Courier New", monospace;
+  font-size: 8px;
+  letter-spacing: 1.4px;
+}
+
+/* =========================================================
+   SELECTOR
+   ========================================================= */
+
+.wp-port-selector {
+  position: relative;
+  z-index: 8;
+  width: min(820px, 100%);
+  margin: 0 auto 48px;
+  padding: 13px 16px;
+  border: 1px solid rgba(71, 198, 237, .20);
+  border-radius: 13px;
+  background: linear-gradient(135deg, rgba(10, 34, 47, .78), rgba(5, 17, 24, .76));
+  backdrop-filter: blur(15px);
+  box-shadow:
+    0 18px 48px rgba(0,0,0,.25),
+    inset 0 1px rgba(255,255,255,.04);
+}
+
+.wp-port-selector label {
+  color: #83a8b6 !important;
+  font-family: "Courier New", monospace;
+  font-size: 9px;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+}
+
+.wp-port-selector select {
+  border: 1px solid rgba(77, 190, 229, .30);
+  border-radius: 9px;
+  background: rgba(2, 14, 22, .90) !important;
+  color: #eef8fa !important;
+  box-shadow: 0 0 25px rgba(37, 183, 231, .05);
+}
+
+.wp-port-selector select:focus {
+  border-color: #49ccef;
+  box-shadow: 0 0 0 3px rgba(73, 204, 239, .09), 0 0 25px rgba(73,204,239,.08);
+}
+
+/* Network connector beneath selector */
+.wp-port-selector::after {
+  content: "●  ─────────  ●  ─────────  ●";
+  position: absolute;
+  left: 50%;
+  bottom: -35px;
+  transform: translateX(-50%);
+  color: rgba(73, 204, 239, .23);
+  font-family: "Courier New", monospace;
+  font-size: 9px;
+  letter-spacing: 4px;
+  white-space: nowrap;
+}
+
+/* =========================================================
+   RESULTS
+   ========================================================= */
+
+.wp-connected-results {
+  position: relative;
+  z-index: 5;
+}
+
+.wp-routes-heading {
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(88, 147, 166, .13);
+}
+
+.wp-routes-heading .wp-eyebrow {
+  color: #5f91a1 !important;
+}
+
+.wp-routes-heading h2 {
+  color: #edf5f7 !important;
+}
+
+.wp-route-total {
+  border-color: rgba(71, 198, 237, .22);
+  background: rgba(14, 49, 64, .55);
+  color: #72c7df !important;
+  box-shadow: 0 0 18px rgba(45,191,233,.05);
+}
+
+/* =========================================================
+   PORT GRID
+   ========================================================= */
+
+.wp-port-grid {
+  position: relative;
+  perspective: 1200px;
+  gap: 17px;
+}
+
+.wp-port-grid::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 8%;
+  right: 8%;
+  top: 50%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(67,201,239,.20), transparent);
+}
+
+.wp-port-grid .wp-port-card,
+.wp-port-grid .port-card {
+  position: relative;
+  min-height: 218px;
+  border: 1px solid rgba(75, 159, 189, .23);
+  border-radius: 16px;
+  background:
+    radial-gradient(circle at 92% 0%, rgba(52, 201, 240, .10), transparent 27%),
+    linear-gradient(145deg, #12232d 0%, #0d1820 57%, #071016 100%) !important;
+  color: #ffffff !important;
+  box-shadow:
+    0 20px 45px rgba(0,0,0,.32),
+    inset 0 1px rgba(255,255,255,.035);
+  transform-style: preserve-3d;
+  transition: transform .28s ease, border-color .28s ease, box-shadow .28s ease;
+}
+
+.wp-port-grid .wp-port-card::before,
+.wp-port-grid .port-card::before {
+  content: "";
+  position: absolute;
+  right: -55px;
+  bottom: -65px;
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+  border: 1px solid rgba(70, 203, 239, .11);
+  box-shadow:
+    0 0 0 18px rgba(70,203,239,.025),
+    0 0 0 40px rgba(70,203,239,.014);
+  pointer-events: none;
+}
+
+.wp-port-grid .wp-port-card::after,
+.wp-port-grid .port-card::after {
+  content: "PORT NODE";
+  position: absolute;
+  right: 14px;
+  top: 13px;
+  color: #4f8293;
+  font-family: "Courier New", monospace;
+  font-size: 7px;
+  letter-spacing: 1.2px;
+  opacity: .9;
+}
+
+.wp-port-grid .wp-port-card:hover,
+.wp-port-grid .port-card:hover {
+  transform: translateY(-8px) rotateX(2deg) rotateY(-1deg);
+  border-color: rgba(65, 204, 244, .48);
+  box-shadow:
+    0 28px 58px rgba(0,0,0,.40),
+    0 0 30px rgba(36,183,230,.08),
+    inset 0 1px rgba(255,255,255,.06);
+}
+
+.wp-port-grid .wp-port-card h3,
+.wp-port-grid .wp-port-card h4,
+.wp-port-grid .port-card h3,
+.wp-port-grid .port-card h4 {
+  color: #f6fafb !important;
+  letter-spacing: -.2px;
+}
+
+.wp-port-grid .wp-port-card p,
+.wp-port-grid .port-card p {
+  color: #a8c0ca !important;
+}
+
+.wp-port-grid .wp-port-card span,
+.wp-port-grid .port-card span {
+  color: #91b0bc !important;
+}
+
+.wp-port-grid .port-anchor,
+.wp-port-grid .anchor-icon,
+.wp-port-grid .wp-port-icon {
+  border: 1px solid rgba(66, 207, 244, .25);
+  color: #4bd8ff !important;
+  background: rgba(24, 160, 205, .10);
+  box-shadow: 0 0 22px rgba(45,199,239,.08);
+}
+
+/* =========================================================
+   SUMMARY
+   ========================================================= */
+
+.wp-connected-ports > section:last-child {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(72, 190, 229, .17);
+  border-radius: 16px;
+  background:
+    radial-gradient(circle at 90% 0%, rgba(47,191,233,.08), transparent 28%),
+    linear-gradient(135deg, rgba(11,34,46,.78), rgba(5,17,24,.75));
+  color: #e8f1f4;
+  box-shadow:
+    0 20px 55px rgba(0,0,0,.25),
+    inset 0 1px rgba(255,255,255,.035);
+}
+
+.wp-connected-ports > section:last-child::before {
+  content: "⚓  NETWORK STATUS  ·  CONNECTED";
+  position: absolute;
+  right: 20px;
+  top: 16px;
+  color: #51d4b4;
+  font-family: "Courier New", monospace;
+  font-size: 8px;
+  letter-spacing: 1.2px;
+}
+
+.wp-connected-ports > section:last-child strong {
+  color: #eef7f9 !important;
+}
+
+.wp-connected-ports > section:last-child p {
+  color: #89a8b4 !important;
+}
+
+/* =========================================================
+   LOADING / ERROR
+   ========================================================= */
+
+.wp-connected-ports .wp-error-message {
+  border: 1px solid rgba(238, 112, 112, .32) !important;
+  border-radius: 10px;
+  background: rgba(110, 27, 32, .18) !important;
+  color: #ffb9b9 !important;
+}
+
+.wp-connected-results > div[style*="text-align"] {
+  color: #7fa0ac !important;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 1050px) {
+  .wp-connected-ports::after {
+    right: -190px;
+    opacity: .55;
+  }
+
+  .wp-connected-ports .wp-page-header::before,
+  .wp-connected-ports .wp-page-header::after {
+    right: -90px;
+    opacity: .35;
+  }
+}
+
+@media (max-width: 760px) {
+  .wp-connected-ports {
+    padding: 30px 16px 55px;
+  }
+
+  .wp-connected-ports .wp-page-header {
+    text-align: left;
+    padding: 23px 20px;
+  }
+
+  .wp-connected-ports .wp-page-header::after {
+    display: none;
+  }
+
+  .wp-connected-ports::after {
+    width: 390px;
+    height: 390px;
+    right: -205px;
+    top: 230px;
+    opacity: .25;
+  }
+
+  .wp-port-selector {
+    margin-bottom: 42px;
+  }
+}
+
+@media (max-width: 500px) {
+  .wp-connected-ports .wp-page-header h1 {
+    font-size: 34px;
+  }
+
+  .wp-port-grid .wp-port-card,
+  .wp-port-grid .port-card {
+    min-height: 190px;
+  }
+
+  .wp-connected-ports > section:last-child::before {
+    position: static;
+    display: block;
+    margin-bottom: 10px;
+  }
+}
+
+
+
+/* =========================================================
+   CONNECTED PORTS — SMOOTH PORT SWITCHING
+   Keeps the existing real-data/API behavior unchanged.
+   ========================================================= */
+
+.wp-connected-ports-cinematic .wp-port-selector select {
+  transition:
+    border-color .22s ease,
+    box-shadow .22s ease,
+    background-color .22s ease,
+    transform .18s ease;
+}
+
+.wp-connected-ports-cinematic .wp-port-selector select:hover {
+  border-color: rgba(67, 216, 244, .38);
+}
+
+.wp-connected-ports-cinematic .wp-port-selector select:focus {
+  outline: none;
+  transform: translateY(-1px);
+  border-color: rgba(67, 216, 244, .55);
+  box-shadow:
+    0 0 0 3px rgba(0, 205, 240, .08),
+    0 12px 30px rgba(0,0,0,.14);
+}
+
+/* Prevent the entire page from feeling like it snaps when data changes. */
+.wp-connected-ports-cinematic .wp-connected-results {
+  transition: opacity .22s ease, transform .22s ease;
+}
+
+/* Loading state gets a clean cross-fade. */
+.wp-connected-ports-cinematic .wp-ports-loading {
+  min-height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: rgba(187, 225, 235, .72);
+  animation: wpPortsFadeIn .22s ease both;
+}
+
+.wp-connected-ports-cinematic .wp-loading-ring {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  flex: 0 0 auto;
+  border: 2px solid rgba(104, 224, 247, .18);
+  border-top-color: #62eaff;
+  border-radius: 50%;
+  animation: wpPortsSpin .7s linear infinite;
+}
+
+/* Cards enter softly after a port switch instead of popping in. */
+.wp-connected-ports-cinematic .wp-port-grid {
+  animation: wpPortsResultsIn .28s ease both;
+}
+
+.wp-connected-ports-cinematic .wp-port-grid > * {
+  animation: wpPortsCardIn .34s ease both;
+  animation-delay: calc(var(--port-card-index, 0) * 35ms);
+}
+
+/* If PortCard does not expose an index, the same fade still applies. */
+.wp-connected-ports-cinematic .wp-port-grid > *:nth-child(1) { --port-card-index: 0; }
+.wp-connected-ports-cinematic .wp-port-grid > *:nth-child(2) { --port-card-index: 1; }
+.wp-connected-ports-cinematic .wp-port-grid > *:nth-child(3) { --port-card-index: 2; }
+.wp-connected-ports-cinematic .wp-port-grid > *:nth-child(4) { --port-card-index: 3; }
+.wp-connected-ports-cinematic .wp-port-grid > *:nth-child(5) { --port-card-index: 4; }
+.wp-connected-ports-cinematic .wp-port-grid > *:nth-child(6) { --port-card-index: 5; }
+.wp-connected-ports-cinematic .wp-port-grid > *:nth-child(7) { --port-card-index: 6; }
+.wp-connected-ports-cinematic .wp-port-grid > *:nth-child(8) { --port-card-index: 7; }
+
+@keyframes wpPortsFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes wpPortsResultsIn {
+  from {
+    opacity: .35;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes wpPortsCardIn {
+  from {
+    opacity: 0;
+    transform: translateY(9px) scale(.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes wpPortsSpin {
+  to { transform: rotate(360deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wp-connected-ports-cinematic *,
+  .wp-connected-ports-cinematic *::before,
+  .wp-connected-ports-cinematic *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
+}
+
+
+
+/* =========================================================
+   CONNECTED PORTS — FINAL VISUAL FIX
+   Fixes header overlap and makes port switching smooth.
+   ========================================================= */
+
+/* ---------- Header: clean hierarchy ---------- */
+
+.wp-connected-ports-cinematic .wp-page-header {
+  position: relative;
+  z-index: 10;
+  min-height: 275px;
+  margin: 0 auto 42px;
+  padding: 34px 38px 30px;
+  display: block !important;
+  overflow: hidden;
+  border: 1px solid rgba(75, 202, 235, .20);
+  border-radius: 22px;
+  background:
+    linear-gradient(135deg, rgba(5, 27, 38, .96), rgba(4, 20, 29, .92));
+  box-shadow:
+    0 22px 60px rgba(0,0,0,.24),
+    inset 0 1px rgba(255,255,255,.045);
+  backdrop-filter: blur(18px);
+}
+
+/* Remove the old duplicate pseudo badge that was sitting over the header. */
+.wp-connected-ports-cinematic .wp-page-header::after {
+  content: none !important;
+}
+
+.wp-connected-ports-cinematic .wp-page-header::before {
+  content: "";
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  right: -155px;
+  top: -145px;
+  border: 1px solid rgba(70, 207, 240, .10);
+  border-radius: 50%;
+  transform: none;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Actual LIVE badge from JSX */
+.wp-connected-ports-cinematic .wp-ports-live {
+  position: relative;
+  z-index: 2;
+  display: inline-flex !important;
+  align-items: center;
+  gap: 9px;
+  margin: 0 0 16px !important;
+  padding: 7px 12px;
+  border: 1px solid rgba(75, 220, 248, .24);
+  border-radius: 999px;
+  background: rgba(7, 45, 58, .60);
+  color: #80e9fa !important;
+  font-family: "Courier New", monospace;
+  font-size: 9px !important;
+  font-weight: 800;
+  line-height: 1 !important;
+  letter-spacing: 1.4px;
+  white-space: nowrap;
+  box-shadow: 0 0 24px rgba(0,190,230,.045);
+}
+
+.wp-connected-ports-cinematic .wp-ports-live__dot {
+  width: 7px !important;
+  height: 7px !important;
+  flex: 0 0 7px;
+  border-radius: 50%;
+  background: #57e4c1;
+  box-shadow: 0 0 12px rgba(87,228,193,.85);
+  animation: wpPortsLivePulse 1.8s ease-in-out infinite;
+}
+
+/* Eyebrow must be its own line. */
+.wp-connected-ports-cinematic .wp-page-header > .wp-eyebrow {
+  position: relative;
+  z-index: 2;
+  display: block !important;
+  margin: 0 0 5px !important;
+  color: #7893a2 !important;
+  font-family: "Courier New", monospace !important;
+  font-size: 10px !important;
+  font-weight: 800;
+  line-height: 1.3 !important;
+  letter-spacing: 3px !important;
+  text-transform: uppercase;
+}
+
+/* Strong, readable title */
+.wp-connected-ports-cinematic .wp-page-header h1 {
+  position: relative;
+  z-index: 2;
+  display: block !important;
+  margin: 0 0 18px !important;
+  max-width: 760px;
+  color: #f1fbff !important;
+  font-family: var(--display, Georgia, serif) !important;
+  font-size: clamp(3rem, 6vw, 5rem) !important;
+  font-weight: 800;
+  line-height: .98 !important;
+  letter-spacing: -.045em !important;
+  text-shadow: 0 10px 30px rgba(0,0,0,.32);
+}
+
+/* Override the old first-line gradient; it was causing visual blending. */
+.wp-connected-ports-cinematic .wp-page-header h1::first-line {
+  background: none !important;
+  -webkit-background-clip: initial !important;
+  background-clip: initial !important;
+  color: #f1fbff !important;
+}
+
+/* Description */
+.wp-connected-ports-cinematic .wp-page-header > p:not(.wp-eyebrow) {
+  position: relative;
+  z-index: 2;
+  display: block !important;
+  max-width: 680px;
+  margin: 0 !important;
+  color: rgba(205, 230, 238, .70) !important;
+  font-size: 15px !important;
+  line-height: 1.65 !important;
+}
+
+/* Header metadata stays below the description */
+.wp-connected-ports-cinematic .wp-ports-header-meta {
+  position: relative;
+  z-index: 2;
+  display: flex !important;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 18px !important;
+}
+
+.wp-connected-ports-cinematic .wp-ports-header-meta span {
+  display: inline-flex !important;
+  align-items: center;
+  min-height: 25px;
+  padding: 5px 9px;
+  border: 1px solid rgba(111, 206, 229, .13);
+  border-radius: 6px;
+  background: rgba(255,255,255,.035);
+  color: rgba(163, 211, 224, .55) !important;
+  font-family: "Courier New", monospace;
+  font-size: 8px !important;
+  font-weight: 800;
+  line-height: 1 !important;
+  letter-spacing: 1.1px;
+}
+
+/* ---------- Selector: no text collisions ---------- */
+
+.wp-connected-ports-cinematic .wp-port-selector {
+  position: relative;
+  z-index: 20;
+  min-height: 94px;
+  display: grid !important;
+  grid-template-columns: minmax(170px, .85fr) minmax(240px, 1.25fr) auto;
+  align-items: center;
+  gap: 18px;
+  padding: 18px 22px !important;
+  margin: 0 auto 42px !important;
+  border-radius: 17px;
+}
+
+.wp-connected-ports-cinematic .wp-selector-copy {
+  min-width: 0;
+}
+
+.wp-connected-ports-cinematic .wp-selector-kicker {
+  display: block !important;
+  margin-bottom: 5px;
+  color: rgba(107, 207, 231, .50) !important;
+  font-family: "Courier New", monospace;
+  font-size: 8px !important;
+  font-weight: 800;
+  letter-spacing: 1.3px;
+}
+
+.wp-connected-ports-cinematic .wp-port-selector label {
+  display: block !important;
+  margin: 0 !important;
+  color: #8caab8 !important;
+  font-size: 10px !important;
+  letter-spacing: 1.2px;
+  white-space: nowrap;
+}
+
+.wp-connected-ports-cinematic .wp-port-selector select {
+  width: 100%;
+  min-height: 52px;
+  margin: 0 !important;
+  padding: 0 42px 0 15px !important;
+  border-radius: 10px;
+  font-size: 15px !important;
+}
+
+.wp-connected-ports-cinematic .wp-selector-status {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  color: rgba(96, 218, 242, .52) !important;
+  font-family: "Courier New", monospace;
+  font-size: 8px !important;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+/* Hide decorative connector that visually crossed the selector. */
+.wp-connected-ports-cinematic .wp-port-selector::after {
+  display: none !important;
+}
+
+/* ---------- Results ---------- */
+
+.wp-connected-ports-cinematic .wp-connected-results {
+  position: relative;
+  z-index: 5;
+}
+
+.wp-connected-ports-cinematic .wp-routes-heading {
+  position: relative;
+  z-index: 2;
+}
+
+.wp-connected-ports-cinematic .wp-routes-heading h2 {
+  color: #edf8fb !important;
+}
+
+/* Keep old cards visible during a port change and fade them slightly. */
+.wp-connected-ports-cinematic .wp-port-grid--loading {
+  opacity: .48;
+  filter: saturate(.72);
+  transform: translateY(2px);
+  transition: opacity .20s ease, filter .20s ease, transform .20s ease;
+  pointer-events: none;
+}
+
+.wp-connected-ports-cinematic .wp-ports-loading {
+  position: absolute;
+  top: 54px;
+  left: 50%;
+  z-index: 8;
+  display: inline-flex !important;
+  align-items: center;
+  gap: 10px;
+  transform: translateX(-50%);
+  min-height: 0 !important;
+  padding: 8px 13px !important;
+  border: 1px solid rgba(72, 213, 241, .18);
+  border-radius: 999px;
+  background: rgba(4, 25, 35, .86);
+  color: #9be7f5 !important;
+  font-family: "Courier New", monospace;
+  font-size: 8px !important;
+  font-weight: 800;
+  letter-spacing: 1px;
+  white-space: nowrap;
+  box-shadow: 0 10px 30px rgba(0,0,0,.18);
+  backdrop-filter: blur(12px);
+  animation: wpPortsLoadingIn .18s ease both;
+}
+
+.wp-connected-ports-cinematic .wp-loading-ring {
+  width: 15px !important;
+  height: 15px !important;
+  border-width: 2px !important;
+  border-color: rgba(100, 224, 247, .20) !important;
+  border-top-color: #64e6ff !important;
+  border-radius: 50%;
+  animation: wpPortsSpin .65s linear infinite;
+}
+
+/* ---------- Mobile ---------- */
+
+@media (max-width: 760px) {
+  .wp-connected-ports-cinematic .wp-page-header {
+    min-height: 0;
+    padding: 27px 22px 25px;
+    margin-bottom: 28px;
+  }
+
+  .wp-connected-ports-cinematic .wp-page-header h1 {
+    font-size: clamp(2.5rem, 12vw, 3.8rem) !important;
+  }
+
+  .wp-connected-ports-cinematic .wp-port-selector {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .wp-connected-ports-cinematic .wp-selector-status {
+    justify-content: flex-start;
+  }
+
+  .wp-connected-ports-cinematic .wp-ports-loading {
+    top: 58px;
+  }
+}
+
+@media (max-width: 430px) {
+  .wp-connected-ports-cinematic {
+    padding-left: 18px !important;
+    padding-right: 18px !important;
+  }
+
+  .wp-connected-ports-cinematic .wp-page-header {
+    padding: 23px 18px 22px;
+    border-radius: 17px;
+  }
+
+  .wp-connected-ports-cinematic .wp-page-header h1 {
+    font-size: 2.45rem !important;
+  }
+
+  .wp-connected-ports-cinematic .wp-page-header > p:not(.wp-eyebrow) {
+    font-size: 13px !important;
+  }
+
+  .wp-connected-ports-cinematic .wp-ports-header-meta {
+    display: none !important;
+  }
+}
+
+@keyframes wpPortsLivePulse {
+  0%, 100% { opacity: .5; transform: scale(.85); }
+  50% { opacity: 1; transform: scale(1.15); }
+}
+
+@keyframes wpPortsLoadingIn {
+  from { opacity: 0; transform: translate(-50%, -5px); }
+  to { opacity: 1; transform: translate(-50%, 0); }
+}

@@ -1,0 +1,804 @@
+/* =========================================================
+   WAYPOINT — CINEMATIC SEARCH HISTORY
+   Page-scoped styles only. Does not modify App.css.
+   ========================================================= */
+
+.wp-history-cinematic {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  min-height: calc(100vh - 72px);
+  padding-bottom: 80px;
+  background:
+    radial-gradient(circle at 78% 15%, rgba(0, 210, 255, 0.09), transparent 28%),
+    radial-gradient(circle at 12% 68%, rgba(255, 193, 7, 0.055), transparent 24%),
+    linear-gradient(180deg, #020b12 0%, #03131d 52%, #041a25 100%);
+  color: #edfaff;
+}
+
+.wp-history-cinematic::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(rgba(80, 210, 240, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(80, 210, 240, 0.025) 1px, transparent 1px);
+  background-size: 70px 70px;
+  mask-image: linear-gradient(to bottom, black, transparent 85%);
+  z-index: -2;
+}
+
+/* ---------- Atmospheric scene ---------- */
+
+.wp-history-scene {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.wp-history-stars {
+  position: absolute;
+  inset: 0;
+  opacity: 0.65;
+  background-image:
+    radial-gradient(circle, rgba(255,255,255,.7) 0 1px, transparent 1.5px),
+    radial-gradient(circle, rgba(87,220,255,.45) 0 1px, transparent 1.5px);
+  background-size: 83px 97px, 137px 121px;
+  background-position: 10px 18px, 42px 57px;
+  mask-image: linear-gradient(to bottom, black 0%, transparent 76%);
+}
+
+.wp-history-grid {
+  position: absolute;
+  left: -10%;
+  right: -10%;
+  bottom: -20%;
+  height: 52%;
+  transform: perspective(450px) rotateX(62deg);
+  transform-origin: bottom;
+  background-image:
+    linear-gradient(rgba(39, 202, 235, .08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(39, 202, 235, .08) 1px, transparent 1px);
+  background-size: 55px 55px;
+  opacity: .55;
+  mask-image: linear-gradient(to top, black, transparent);
+}
+
+.wp-history-glow {
+  position: absolute;
+  width: 520px;
+  height: 520px;
+  border-radius: 50%;
+  filter: blur(70px);
+  opacity: .15;
+}
+
+.wp-history-glow--one {
+  top: -230px;
+  right: -120px;
+  background: #00d9ff;
+}
+
+.wp-history-glow--two {
+  bottom: 8%;
+  left: -300px;
+  background: #ffc107;
+  opacity: .07;
+}
+
+.wp-history-globe {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  right: -90px;
+  top: 125px;
+  border-radius: 50%;
+  border: 1px solid rgba(84, 218, 248, .17);
+  background:
+    radial-gradient(circle at 35% 30%, rgba(72, 221, 255, .12), transparent 35%),
+    radial-gradient(circle at 50% 50%, rgba(0, 60, 84, .32), rgba(0, 8, 15, .86) 72%);
+  box-shadow:
+    inset -45px -35px 80px rgba(0, 0, 0, .55),
+    0 0 100px rgba(0, 205, 245, .08);
+  transform: rotate(-12deg);
+  opacity: .75;
+}
+
+.wp-history-globe-grid {
+  position: absolute;
+  inset: 12%;
+  border-radius: 50%;
+  background:
+    repeating-linear-gradient(
+      90deg,
+      transparent 0 45px,
+      rgba(94, 218, 245, .07) 46px 47px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent 0 38px,
+      rgba(94, 218, 245, .07) 39px 40px
+    );
+  transform: perspective(500px) rotateY(-18deg);
+  mask-image: radial-gradient(circle, black 45%, transparent 72%);
+}
+
+.wp-history-node {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #7eeeff;
+  box-shadow: 0 0 12px #00d9ff, 0 0 28px rgba(0,217,255,.5);
+}
+
+.wp-history-node--one { left: 28%; top: 38%; }
+.wp-history-node--two { left: 52%; top: 29%; }
+.wp-history-node--three { left: 67%; top: 53%; }
+.wp-history-node--four { left: 39%; top: 68%; }
+
+.wp-history-arc {
+  position: absolute;
+  border: 1px solid rgba(66, 221, 255, .32);
+  border-left-color: transparent;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  transform: rotate(-25deg);
+}
+
+.wp-history-arc--one {
+  width: 270px;
+  height: 135px;
+  left: 21%;
+  top: 35%;
+}
+
+.wp-history-arc--two {
+  width: 220px;
+  height: 110px;
+  left: 35%;
+  top: 44%;
+  transform: rotate(38deg);
+  border-color: rgba(255, 193, 7, .28);
+  border-left-color: transparent;
+  border-bottom-color: transparent;
+}
+
+.wp-history-wave {
+  position: absolute;
+  left: -5%;
+  width: 110%;
+  height: 120px;
+  border-radius: 50%;
+  border-top: 1px solid rgba(36, 208, 239, .12);
+  transform: rotate(-3deg);
+}
+
+.wp-history-wave--one { bottom: 11%; }
+.wp-history-wave--two { bottom: 6%; opacity: .5; transform: rotate(2deg); }
+
+/* ---------- CSS ship ---------- */
+
+.wp-history-ship {
+  position: absolute;
+  right: 18%;
+  top: 355px;
+  width: 170px;
+  height: 75px;
+  transform: rotate(-4deg);
+  opacity: .42;
+}
+
+.wp-history-ship__body {
+  position: absolute;
+  left: 0;
+  bottom: 4px;
+  width: 155px;
+  height: 28px;
+  background: linear-gradient(180deg, #163746, #06131c);
+  clip-path: polygon(0 0, 100% 0, 88% 100%, 13% 100%);
+  border: 1px solid rgba(103, 226, 250, .25);
+}
+
+.wp-history-ship__deck {
+  position: absolute;
+  left: 28px;
+  bottom: 32px;
+  width: 100px;
+  height: 13px;
+  background: #204c5c;
+  border: 1px solid rgba(103,226,250,.22);
+}
+
+.wp-history-ship__stack {
+  position: absolute;
+  right: 35px;
+  bottom: 45px;
+  width: 15px;
+  height: 25px;
+  background: #0d2c38;
+  box-shadow: -24px 0 #123745, -48px 0 #0d2c38;
+}
+
+.wp-history-ship__light {
+  position: absolute;
+  right: 8px;
+  bottom: 20px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #ffd66b;
+  box-shadow: 0 0 12px #ffc107;
+}
+
+/* ---------- Header ---------- */
+
+.wp-history-header {
+  position: relative;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 70px 28px 30px;
+  z-index: 1;
+}
+
+.wp-history-header .wp-eyebrow {
+  color: #72e9ff;
+  letter-spacing: .2em;
+}
+
+.wp-history-header h1 {
+  max-width: 720px;
+  margin: 10px 0 12px;
+  color: #f4fcff;
+  font-size: clamp(2.4rem, 5vw, 4.5rem);
+  line-height: .98;
+  letter-spacing: -.045em;
+  text-shadow: 0 8px 35px rgba(0,0,0,.35);
+}
+
+.wp-history-header > p:not(.wp-eyebrow) {
+  max-width: 650px;
+  color: rgba(213, 239, 247, .72);
+  font-size: 1.02rem;
+  line-height: 1.7;
+}
+
+.wp-history-live {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 18px;
+  padding: 8px 12px;
+  border: 1px solid rgba(79, 222, 248, .25);
+  border-radius: 999px;
+  background: rgba(4, 34, 46, .56);
+  color: #9aeeff;
+  font-size: .68rem;
+  font-weight: 800;
+  letter-spacing: .16em;
+  backdrop-filter: blur(14px);
+}
+
+.wp-history-live span,
+.wp-history-overview__signal span {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #62eaff;
+  box-shadow: 0 0 12px rgba(0,217,255,.9);
+  animation: wpHistoryPulse 1.8s ease-in-out infinite;
+}
+
+.wp-history-header-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-top: 22px;
+}
+
+.wp-history-header-meta span {
+  padding: 7px 10px;
+  border: 1px solid rgba(133, 218, 237, .13);
+  border-radius: 6px;
+  background: rgba(5, 25, 34, .42);
+  color: rgba(178, 227, 238, .54);
+  font-size: .6rem;
+  font-weight: 800;
+  letter-spacing: .13em;
+}
+
+/* ---------- Overview ---------- */
+
+.wp-history-overview {
+  position: relative;
+  z-index: 1;
+  max-width: 1180px;
+  margin: 10px auto 26px;
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  border: 1px solid rgba(96, 216, 239, .14);
+  border-radius: 18px;
+  background: rgba(5, 24, 34, .62);
+  box-shadow: 0 18px 50px rgba(0,0,0,.18);
+  backdrop-filter: blur(18px);
+}
+
+.wp-history-overview__label {
+  display: block;
+  margin-bottom: 4px;
+  color: rgba(162, 222, 235, .52);
+  font-size: .62rem;
+  font-weight: 800;
+  letter-spacing: .16em;
+}
+
+.wp-history-overview strong {
+  display: inline-block;
+  color: #effcff;
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.wp-history-overview p {
+  display: inline-block;
+  margin: 0 0 0 9px;
+  color: rgba(204, 232, 239, .55);
+  font-size: .8rem;
+}
+
+.wp-history-overview__signal {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: rgba(135, 221, 239, .58);
+  font-size: .62rem;
+  font-weight: 800;
+  letter-spacing: .14em;
+}
+
+/* ---------- Loading / error ---------- */
+
+.wp-history-state,
+.wp-history-error,
+.wp-history-empty,
+.wp-history-page-grid,
+.wp-history-overview {
+  width: calc(100% - 56px);
+  max-width: 1180px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.wp-history-state {
+  position: relative;
+  z-index: 1;
+}
+
+.wp-history-loading {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 28px;
+  border: 1px solid rgba(92, 217, 240, .13);
+  border-radius: 18px;
+  background: rgba(5, 26, 36, .58);
+  color: #e8faff;
+  backdrop-filter: blur(16px);
+}
+
+.wp-history-loading strong {
+  display: block;
+}
+
+.wp-history-loading p {
+  margin: 4px 0 0;
+  color: rgba(199, 231, 239, .58);
+}
+
+.wp-history-loading .wp-spinner {
+  width: 26px;
+  height: 26px;
+  border-color: rgba(125, 226, 246, .2);
+  border-top-color: #65e7ff;
+}
+
+.wp-history-error {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 20px;
+  border: 1px solid rgba(255, 98, 98, .25);
+  border-radius: 16px;
+  background: rgba(70, 16, 20, .42);
+}
+
+.wp-history-error__icon {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: rgba(255, 90, 90, .12);
+  color: #ff9898;
+  font-weight: 900;
+}
+
+.wp-history-error strong {
+  display: block;
+  color: #ffe7e7;
+}
+
+.wp-history-error p {
+  margin: 3px 0 0;
+  color: rgba(255, 210, 210, .65);
+}
+
+.wp-history-error button {
+  margin-left: auto;
+  padding: 9px 15px;
+  border: 1px solid rgba(255, 145, 145, .25);
+  border-radius: 9px;
+  background: rgba(255,255,255,.04);
+  color: #fff;
+  cursor: pointer;
+}
+
+/* ---------- Empty ---------- */
+
+.wp-history-empty {
+  position: relative;
+  z-index: 1;
+  margin-top: 18px;
+  padding: 60px 25px;
+  text-align: center;
+  border: 1px solid rgba(91, 216, 239, .14);
+  border-radius: 24px;
+  background: rgba(4, 25, 35, .65);
+  box-shadow: 0 25px 70px rgba(0,0,0,.22);
+  backdrop-filter: blur(20px);
+}
+
+.wp-history-empty__icon {
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 15px;
+  border: 1px solid rgba(86, 221, 246, .2);
+  border-radius: 18px;
+  background: rgba(52, 212, 243, .07);
+  color: #6deaff;
+  font-size: 2rem;
+  box-shadow: 0 0 35px rgba(0,213,255,.08);
+}
+
+.wp-history-empty__label {
+  color: rgba(118, 226, 245, .58);
+  font-size: .62rem;
+  font-weight: 800;
+  letter-spacing: .18em;
+}
+
+.wp-history-empty h2 {
+  margin: 8px 0;
+  color: #f0fbff;
+}
+
+.wp-history-empty p {
+  max-width: 480px;
+  margin: 0 auto 24px;
+  color: rgba(207, 232, 239, .58);
+}
+
+/* ---------- Cards ---------- */
+
+.wp-history-page-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.wp-history-card {
+  position: relative;
+  overflow: hidden;
+  padding: 23px;
+  border: 1px solid rgba(99, 218, 241, .14);
+  border-radius: 20px;
+  background:
+    linear-gradient(145deg, rgba(10, 42, 54, .76), rgba(3, 19, 28, .82));
+  box-shadow:
+    0 20px 55px rgba(0,0,0,.2),
+    inset 0 1px rgba(255,255,255,.035);
+  backdrop-filter: blur(18px);
+  transition: transform .28s ease, border-color .28s ease, box-shadow .28s ease;
+  animation: wpHistoryCardIn .45s ease both;
+  animation-delay: calc(var(--history-index) * 45ms);
+}
+
+.wp-history-card:hover {
+  transform: translateY(-5px);
+  border-color: rgba(78, 222, 248, .32);
+  box-shadow:
+    0 28px 70px rgba(0,0,0,.3),
+    0 0 35px rgba(0, 203, 242, .055),
+    inset 0 1px rgba(255,255,255,.06);
+}
+
+.wp-history-card__line {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #35d8f7, transparent);
+  opacity: .55;
+}
+
+.wp-history-card__top {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.wp-history-card__label {
+  color: rgba(112, 224, 244, .55);
+  font-size: .59rem;
+  font-weight: 800;
+  letter-spacing: .17em;
+}
+
+.wp-history-card h3 {
+  margin: 8px 0 0;
+  color: #f2fcff;
+  font-size: 1.35rem;
+  line-height: 1.25;
+}
+
+.wp-history-card h3 span {
+  display: inline-block;
+  margin: 0 9px;
+  color: #67e5ff;
+  font-weight: 400;
+  text-shadow: 0 0 12px rgba(0,216,255,.45);
+}
+
+.wp-history-card__date {
+  flex: 0 0 auto;
+  color: rgba(194, 225, 234, .45);
+  font-size: .72rem;
+  padding-top: 4px;
+}
+
+.wp-history-card__cargo {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin: 15px 0;
+  color: rgba(192, 226, 235, .62);
+  font-size: .76rem;
+  font-weight: 700;
+}
+
+.wp-history-card__cargo i {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #6ce8ff;
+}
+
+.wp-history-card__route {
+  display: grid;
+  grid-template-columns: 1.35fr .75fr .9fr;
+  gap: 10px;
+  padding: 14px;
+  border: 1px solid rgba(107, 215, 237, .09);
+  border-radius: 13px;
+  background: rgba(0, 9, 15, .28);
+}
+
+.wp-history-card__route > div {
+  min-width: 0;
+}
+
+.wp-history-card__route span {
+  display: block;
+  margin-bottom: 6px;
+  color: rgba(155, 209, 220, .45);
+  font-size: .59rem;
+  font-weight: 800;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+}
+
+.wp-history-card__route strong {
+  display: block;
+  overflow: hidden;
+  color: #e9fbff;
+  font-size: .82rem;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.wp-history-card__route strong b {
+  color: #ffd36a;
+  margin-right: 3px;
+}
+
+.wp-history-card__actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.wp-history-view {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border: 1px solid rgba(74, 220, 247, .2);
+  border-radius: 10px;
+  background: rgba(52, 211, 239, .07);
+  color: #9cefff;
+  font-weight: 800;
+  font-size: .74rem;
+  cursor: pointer;
+  transition: .2s ease;
+}
+
+.wp-history-view b {
+  font-size: 1rem;
+  transition: transform .2s ease;
+}
+
+.wp-history-view:hover {
+  background: rgba(52, 211, 239, .13);
+  border-color: rgba(74, 220, 247, .4);
+}
+
+.wp-history-view:hover b {
+  transform: translateX(3px);
+}
+
+.wp-history-delete {
+  border: 0;
+  background: transparent;
+  color: rgba(255, 150, 150, .62);
+  font-size: .72rem;
+  cursor: pointer;
+}
+
+.wp-history-delete:hover {
+  color: #ff9999;
+}
+
+/* ---------- Motion ---------- */
+
+@keyframes wpHistoryPulse {
+  0%, 100% { opacity: .45; transform: scale(.85); }
+  50% { opacity: 1; transform: scale(1.15); }
+}
+
+@keyframes wpHistoryCardIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 900px) {
+  .wp-history-page-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .wp-history-globe {
+    right: -210px;
+    top: 190px;
+    opacity: .42;
+  }
+
+  .wp-history-ship {
+    right: 12%;
+    top: 410px;
+    opacity: .25;
+  }
+}
+
+@media (max-width: 650px) {
+  .wp-history-header {
+    padding: 45px 20px 24px;
+  }
+
+  .wp-history-state,
+  .wp-history-error,
+  .wp-history-empty,
+  .wp-history-page-grid,
+  .wp-history-overview {
+    width: calc(100% - 32px);
+  }
+
+  .wp-history-header h1 {
+    font-size: 2.5rem;
+  }
+
+  .wp-history-overview {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .wp-history-overview p {
+    display: block;
+    margin: 5px 0 0;
+  }
+
+  .wp-history-error {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .wp-history-error button {
+    margin-left: 48px;
+  }
+
+  .wp-history-card {
+    padding: 18px;
+  }
+
+  .wp-history-card__top {
+    flex-direction: column;
+    gap: 7px;
+  }
+
+  .wp-history-card__date {
+    padding: 0;
+  }
+
+  .wp-history-card__route {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .wp-history-card__route > div:first-child {
+    grid-column: 1 / -1;
+  }
+
+  .wp-history-grid {
+    opacity: .4;
+  }
+}
+
+@media (max-width: 420px) {
+  .wp-history-header-meta {
+    display: none;
+  }
+
+  .wp-history-card h3 {
+    font-size: 1.15rem;
+  }
+
+  .wp-history-card__actions {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .wp-history-delete {
+    padding: 4px 0;
+  }
+}

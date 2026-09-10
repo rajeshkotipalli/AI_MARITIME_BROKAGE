@@ -1,0 +1,1189 @@
+/* =========================================================
+   WAYPOINT — REQUEST QUOTATION
+   MATCHING EXISTING MARITIME UI
+   ========================================================= */
+
+.wp-page {
+  min-height: calc(100vh - 70px);
+  padding: 42px 24px 70px;
+  background:
+    radial-gradient(
+      circle at 50% -10%,
+      rgba(32, 95, 140, 0.22),
+      transparent 45%
+    ),
+    #f5f7f9;
+  box-sizing: border-box;
+}
+
+.wp-quotation {
+  width: min(920px, 100%);
+  margin: 0 auto;
+}
+
+
+/* =========================================================
+   BACK
+   ========================================================= */
+
+.wp-page__back {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+
+  margin: 0 0 22px;
+  padding: 0;
+
+  border: none;
+  background: transparent;
+
+  color: #526273;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.wp-page__back:hover {
+  color: #0c3156;
+  transform: translateX(-3px);
+}
+
+
+/* =========================================================
+   PAGE HEADER
+   ========================================================= */
+
+.wp-page-header {
+  margin-bottom: 28px;
+}
+
+.wp-eyebrow {
+  display: block;
+
+  margin-bottom: 8px;
+
+  color: #7d8b98;
+
+  font-size: 10px;
+  font-weight: 800;
+
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+}
+
+.wp-page-header h1 {
+  margin: 0;
+
+  color: #17344f;
+
+  font-size: 34px;
+  line-height: 1.15;
+  font-weight: 800;
+
+  letter-spacing: -0.7px;
+}
+
+.wp-page-header h2 {
+  margin: 0;
+
+  color: #17344f;
+
+  font-size: 25px;
+  font-weight: 800;
+}
+
+.wp-page-header p {
+  max-width: 680px;
+
+  margin: 9px 0 0;
+
+  color: #778592;
+
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+
+/* =========================================================
+   SELECTED ROUTE
+   ========================================================= */
+
+.wp-quotation-route {
+  position: relative;
+
+  margin-bottom: 22px;
+  padding: 24px 26px;
+
+  overflow: hidden;
+
+  border-radius: 15px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #111923 0%,
+      #172636 55%,
+      #0d1721 100%
+    );
+
+  color: white;
+
+  box-shadow:
+    0 12px 30px rgba(15, 28, 41, 0.16);
+}
+
+.wp-quotation-route::after {
+  content: "⚓";
+
+  position: absolute;
+
+  right: 26px;
+  bottom: -34px;
+
+  color: #fff;
+
+  font-size: 105px;
+
+  opacity: 0.035;
+
+  pointer-events: none;
+}
+
+.wp-quotation-route .wp-eyebrow {
+  position: relative;
+  z-index: 1;
+
+  margin-bottom: 9px;
+
+  color: #aebdca;
+}
+
+.wp-quotation-route h2 {
+  position: relative;
+  z-index: 1;
+
+  margin: 0 0 18px;
+
+  color: #ffffff;
+
+  font-size: 24px;
+  font-weight: 800;
+
+  letter-spacing: -0.3px;
+}
+
+.wp-quotation-route__meta {
+  position: relative;
+  z-index: 1;
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.wp-quotation-route__meta span {
+  display: inline-flex;
+  align-items: center;
+
+  padding: 7px 11px;
+
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 5px;
+
+  background: rgba(255, 255, 255, 0.055);
+
+  color: #c4d0da;
+
+  font-size: 10px;
+  font-weight: 600;
+}
+
+
+/* =========================================================
+   FORM
+   ========================================================= */
+
+.wp-quotation-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+
+/* =========================================================
+   FORM SECTIONS
+   ========================================================= */
+
+.wp-form-section {
+  padding: 24px 25px;
+
+  border: 1px solid #dfe5e9;
+  border-radius: 14px;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 5px 18px rgba(30, 50, 70, 0.045);
+}
+
+.wp-form-section h3 {
+  margin: 0 0 19px;
+
+  color: #506273;
+
+  font-size: 10px;
+  font-weight: 800;
+
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+
+/* =========================================================
+   TWO COLUMN
+   ========================================================= */
+
+.wp-form-two {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 18px;
+}
+
+
+/* =========================================================
+   FORM GROUP
+   ========================================================= */
+
+.wp-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.wp-form-group label {
+  color: #677685;
+
+  font-size: 10px;
+  font-weight: 800;
+
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+
+.wp-form-group input,
+.wp-form-group textarea {
+  width: 100%;
+
+  box-sizing: border-box;
+
+  border: 1px solid #d5dde3;
+  border-radius: 7px;
+
+  outline: none;
+
+  background: #f8fafb;
+
+  color: #263b4d;
+
+  font-family: inherit;
+  font-size: 13px;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.wp-form-group input {
+  height: 43px;
+  padding: 0 12px;
+}
+
+.wp-form-group textarea {
+  min-height: 110px;
+  padding: 11px 12px;
+
+  resize: vertical;
+
+  line-height: 1.5;
+}
+
+.wp-form-group input::placeholder,
+.wp-form-group textarea::placeholder {
+  color: #9aa5ae;
+}
+
+.wp-form-group input:focus,
+.wp-form-group textarea:focus {
+  border-color: #839aaa;
+
+  background: #ffffff;
+
+  box-shadow:
+    0 0 0 3px rgba(39, 70, 92, 0.07);
+}
+
+
+/* =========================================================
+   ERROR / SUCCESS
+   ========================================================= */
+
+.wp-error,
+.wp-success {
+  padding: 13px 15px;
+
+  border-radius: 8px;
+
+  font-size: 12px;
+  font-weight: 650;
+
+  line-height: 1.5;
+}
+
+.wp-error {
+  border: 1px solid #eccaca;
+  background: #fff5f5;
+  color: #ad3838;
+}
+
+.wp-success {
+  border: 1px solid #c7e4d2;
+  background: #f1faf4;
+  color: #28784b;
+}
+
+
+/* =========================================================
+   SUBMIT BUTTON
+   ========================================================= */
+
+.wp-form-submit {
+  width: 100%;
+  min-height: 47px;
+
+  margin-top: 2px;
+
+  border: none;
+  border-radius: 5px;
+
+  background:
+    linear-gradient(
+      180deg,
+      #e6ad32,
+      #d79816
+    );
+
+  color: #2a2417;
+
+  font-family: inherit;
+
+  font-size: 12px;
+  font-weight: 800;
+
+  letter-spacing: 0.1px;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 5px 14px rgba(180, 126, 17, 0.17);
+
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    filter 0.18s ease;
+}
+
+.wp-form-submit:hover:not(:disabled) {
+  transform: translateY(-1px);
+
+  filter: brightness(1.04);
+
+  box-shadow:
+    0 8px 18px rgba(180, 126, 17, 0.23);
+}
+
+.wp-form-submit:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.wp-form-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+
+/* =========================================================
+   MY QUOTATIONS
+   ========================================================= */
+
+.wp-my-quotations {
+  margin-top: 42px;
+}
+
+.wp-my-quotations .wp-page-header {
+  margin-bottom: 18px;
+}
+
+.wp-my-quotations > p {
+  margin: 0;
+
+  padding: 20px;
+
+  border: 1px solid #dfe5e9;
+  border-radius: 12px;
+
+  background: #ffffff;
+
+  color: #778592;
+
+  font-size: 12px;
+}
+
+
+/* =========================================================
+   QUOTATION HISTORY CARDS
+   ========================================================= */
+
+.wp-my-quotations > div:last-child {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.wp-my-quotations > div:last-child > div {
+  margin-bottom: 0 !important;
+
+  padding: 17px !important;
+
+  border: 1px solid #dfe5e9 !important;
+  border-radius: 11px !important;
+
+  background: #ffffff !important;
+
+  box-shadow:
+    0 4px 14px rgba(30, 50, 70, 0.04);
+
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+.wp-my-quotations > div:last-child > div:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 8px 20px rgba(30, 50, 70, 0.08);
+}
+
+.wp-my-quotations > div:last-child strong {
+  color: #233b50;
+
+  font-size: 13px;
+}
+
+.wp-my-quotations > div:last-child div {
+  color: #71808d;
+}
+
+
+/* =========================================================
+   NUMBER INPUT
+   ========================================================= */
+
+.wp-form-group input[type="number"] {
+  appearance: auto;
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 760px) {
+
+  .wp-page {
+    padding: 30px 16px 55px;
+  }
+
+  .wp-page-header h1 {
+    font-size: 29px;
+  }
+
+  .wp-form-two {
+    grid-template-columns: 1fr;
+  }
+
+  .wp-form-section {
+    padding: 21px;
+  }
+
+  .wp-quotation-route {
+    padding: 21px;
+  }
+
+  .wp-quotation-route h2 {
+    font-size: 21px;
+  }
+
+}
+
+
+@media (max-width: 480px) {
+
+  .wp-page {
+    padding: 24px 11px 45px;
+  }
+
+  .wp-page-header h1 {
+    font-size: 26px;
+  }
+
+  .wp-form-section {
+    padding: 18px;
+  }
+
+  .wp-quotation-route {
+    padding: 19px;
+  }
+
+  .wp-quotation-route__meta {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+}
+/* =========================================================
+   VISIBILITY FIX
+   Prevent global styles from making text invisible
+   ========================================================= */
+
+.wp-page,
+.wp-page * {
+  box-sizing: border-box;
+}
+
+.wp-page {
+  color: #263746 !important;
+}
+
+.wp-page .wp-page-header h1,
+.wp-page .wp-page-header h2,
+.wp-page .wp-page-header p {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
+
+.wp-page .wp-page-header h1 {
+  color: #102b45 !important;
+}
+
+.wp-page .wp-page-header p {
+  color: #647585 !important;
+}
+
+
+/* Selected route */
+
+.wp-page .wp-quotation-route {
+  background: #101b27 !important;
+  color: #ffffff !important;
+}
+
+.wp-page .wp-quotation-route h2 {
+  color: #ffffff !important;
+}
+
+.wp-page .wp-quotation-route .wp-eyebrow {
+  color: #aebdcc !important;
+}
+
+.wp-page .wp-quotation-route__meta span {
+  color: #d7e1e9 !important;
+}
+
+
+/* Form cards */
+
+.wp-page .wp-form-section {
+  background: #ffffff !important;
+  color: #263746 !important;
+}
+
+.wp-page .wp-form-section h3 {
+  color: #334b60 !important;
+}
+
+
+/* Labels */
+
+.wp-page .wp-form-group label {
+  color: #536779 !important;
+}
+
+
+/* Inputs */
+
+.wp-page .wp-form-group input,
+.wp-page .wp-form-group textarea {
+  background: #f8fafc !important;
+  color: #172d40 !important;
+
+  -webkit-text-fill-color: #172d40 !important;
+
+  caret-color: #172d40 !important;
+
+  opacity: 1 !important;
+}
+
+
+/* Placeholder */
+
+.wp-page .wp-form-group input::placeholder,
+.wp-page .wp-form-group textarea::placeholder {
+  color: #8a98a5 !important;
+  opacity: 1 !important;
+}
+
+
+/* When typing */
+
+.wp-page .wp-form-group input:focus,
+.wp-page .wp-form-group textarea:focus {
+  background: #ffffff !important;
+  color: #102b45 !important;
+
+  -webkit-text-fill-color: #102b45 !important;
+
+  caret-color: #102b45 !important;
+}
+
+
+/* Number input */
+
+.wp-page .wp-form-group input[type="number"] {
+  color: #102b45 !important;
+  -webkit-text-fill-color: #102b45 !important;
+}
+
+
+/* Textarea */
+
+.wp-page .wp-form-group textarea {
+  color: #172d40 !important;
+  -webkit-text-fill-color: #172d40 !important;
+}
+
+
+/* Back button */
+
+.wp-page .wp-page__back {
+  color: #526779 !important;
+}
+
+
+/* Success */
+
+.wp-page .wp-success {
+  color: #176b42 !important;
+}
+
+
+/* Error */
+
+.wp-page .wp-error {
+  color: #a83232 !important;
+}
+
+
+/* =========================================================
+   WAYPOINT — REQUEST QUOTATION CINEMATIC LAYER
+   Visual-only additions. Existing form/API logic preserved.
+   ========================================================= */
+
+.wp-quotation-cinematic {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  min-height: calc(100vh - 70px);
+  background:
+    radial-gradient(circle at 78% 9%, rgba(0, 214, 255, .10), transparent 28%),
+    radial-gradient(circle at 10% 70%, rgba(255, 193, 7, .055), transparent 25%),
+    linear-gradient(180deg, #020a11 0%, #03131c 54%, #041923 100%);
+  color: #eafaff;
+}
+
+.wp-quotation-cinematic .wp-quotation {
+  position: relative;
+  z-index: 2;
+}
+
+.wp-quotation-cinematic::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(rgba(73, 211, 240, .025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(73, 211, 240, .025) 1px, transparent 1px);
+  background-size: 68px 68px;
+  mask-image: linear-gradient(to bottom, black, transparent 88%);
+  z-index: -3;
+}
+
+/* ---------- Background scene ---------- */
+
+.wp-quotation-scene {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: -2;
+}
+
+.wp-quotation-stars {
+  position: absolute;
+  inset: 0;
+  opacity: .62;
+  background-image:
+    radial-gradient(circle, rgba(255,255,255,.7) 0 1px, transparent 1.5px),
+    radial-gradient(circle, rgba(75,222,255,.45) 0 1px, transparent 1.5px);
+  background-size: 86px 103px, 141px 127px;
+  background-position: 11px 19px, 47px 63px;
+  mask-image: linear-gradient(to bottom, black, transparent 78%);
+}
+
+.wp-quotation-grid {
+  position: absolute;
+  left: -10%;
+  right: -10%;
+  bottom: -20%;
+  height: 48%;
+  transform: perspective(450px) rotateX(62deg);
+  transform-origin: bottom;
+  background-image:
+    linear-gradient(rgba(39, 202, 235, .075) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(39, 202, 235, .075) 1px, transparent 1px);
+  background-size: 55px 55px;
+  mask-image: linear-gradient(to top, black, transparent);
+}
+
+.wp-quotation-glow {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  filter: blur(75px);
+}
+
+.wp-quotation-glow--one {
+  top: -250px;
+  right: -100px;
+  background: #00d9ff;
+  opacity: .13;
+}
+
+.wp-quotation-glow--two {
+  bottom: 7%;
+  left: -300px;
+  background: #ffc107;
+  opacity: .055;
+}
+
+.wp-quotation-globe {
+  position: absolute;
+  width: 470px;
+  height: 470px;
+  right: -115px;
+  top: 135px;
+  border-radius: 50%;
+  border: 1px solid rgba(84, 218, 248, .16);
+  background:
+    radial-gradient(circle at 34% 28%, rgba(72,221,255,.12), transparent 34%),
+    radial-gradient(circle at 50% 50%, rgba(0,60,84,.30), rgba(0,8,15,.88) 73%);
+  box-shadow:
+    inset -45px -35px 80px rgba(0,0,0,.58),
+    0 0 100px rgba(0,205,245,.065);
+  transform: rotate(-10deg);
+  opacity: .68;
+}
+
+.wp-quotation-globe-grid {
+  position: absolute;
+  inset: 11%;
+  border-radius: 50%;
+  background:
+    repeating-linear-gradient(90deg, transparent 0 44px, rgba(94,218,245,.065) 45px 46px),
+    repeating-linear-gradient(0deg, transparent 0 37px, rgba(94,218,245,.065) 38px 39px);
+  transform: perspective(500px) rotateY(-18deg);
+  mask-image: radial-gradient(circle, black 45%, transparent 73%);
+}
+
+.wp-quotation-node {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #7eeeff;
+  box-shadow: 0 0 12px #00d9ff, 0 0 28px rgba(0,217,255,.45);
+}
+
+.wp-quotation-node--one { left: 27%; top: 38%; }
+.wp-quotation-node--two { left: 51%; top: 28%; }
+.wp-quotation-node--three { left: 68%; top: 53%; }
+.wp-quotation-node--four { left: 39%; top: 68%; }
+
+.wp-quotation-arc {
+  position: absolute;
+  border: 1px solid rgba(66,221,255,.29);
+  border-left-color: transparent;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+}
+
+.wp-quotation-arc--one {
+  width: 255px;
+  height: 128px;
+  left: 21%;
+  top: 35%;
+  transform: rotate(-25deg);
+}
+
+.wp-quotation-arc--two {
+  width: 215px;
+  height: 105px;
+  left: 35%;
+  top: 45%;
+  transform: rotate(38deg);
+  border-color: rgba(255,193,7,.25);
+  border-left-color: transparent;
+  border-bottom-color: transparent;
+}
+
+.wp-quotation-wave {
+  position: absolute;
+  left: -5%;
+  width: 110%;
+  height: 115px;
+  border-radius: 50%;
+  border-top: 1px solid rgba(36,208,239,.11);
+}
+
+.wp-quotation-wave--one { bottom: 10%; transform: rotate(-3deg); }
+.wp-quotation-wave--two { bottom: 5%; transform: rotate(2deg); opacity: .5; }
+
+/* ---------- Ship ---------- */
+
+.wp-quotation-ship {
+  position: absolute;
+  right: 18%;
+  top: 360px;
+  width: 165px;
+  height: 74px;
+  transform: rotate(-4deg);
+  opacity: .35;
+}
+
+.wp-quotation-ship__body {
+  position: absolute;
+  left: 0;
+  bottom: 4px;
+  width: 152px;
+  height: 27px;
+  background: linear-gradient(180deg, #163746, #06131c);
+  clip-path: polygon(0 0, 100% 0, 88% 100%, 13% 100%);
+  border: 1px solid rgba(103,226,250,.23);
+}
+
+.wp-quotation-ship__deck {
+  position: absolute;
+  left: 28px;
+  bottom: 31px;
+  width: 98px;
+  height: 13px;
+  background: #204c5c;
+  border: 1px solid rgba(103,226,250,.2);
+}
+
+.wp-quotation-ship__stack {
+  position: absolute;
+  right: 35px;
+  bottom: 44px;
+  width: 15px;
+  height: 25px;
+  background: #0d2c38;
+  box-shadow: -24px 0 #123745, -48px 0 #0d2c38;
+}
+
+.wp-quotation-ship__light {
+  position: absolute;
+  right: 8px;
+  bottom: 20px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #ffd66b;
+  box-shadow: 0 0 12px #ffc107;
+}
+
+/* ---------- Header ---------- */
+
+.wp-quotation-cinematic .wp-page-header {
+  position: relative;
+}
+
+.wp-quotation-cinematic .wp-page-header h1 {
+  color: #f2fcff !important;
+  font-size: clamp(2.35rem, 5vw, 4rem);
+  letter-spacing: -.045em;
+  text-shadow: 0 8px 35px rgba(0,0,0,.32);
+}
+
+.wp-quotation-cinematic .wp-page-header p {
+  color: rgba(211,236,244,.68) !important;
+}
+
+.wp-quotation-live,
+.wp-route-live {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 11px;
+  margin-bottom: 14px;
+  border: 1px solid rgba(77,222,248,.23);
+  border-radius: 999px;
+  background: rgba(4,34,46,.55);
+  color: #9cefff;
+  font-size: .62rem;
+  font-weight: 800;
+  letter-spacing: .15em;
+  backdrop-filter: blur(14px);
+}
+
+.wp-quotation-live span,
+.wp-route-live span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #63eaff;
+  box-shadow: 0 0 12px rgba(0,217,255,.9);
+  animation: wpQuotationPulse 1.8s ease-in-out infinite;
+}
+
+/* ---------- Selected route ---------- */
+
+.wp-quotation-cinematic .wp-quotation-route {
+  border: 1px solid rgba(91,219,241,.16);
+  border-radius: 20px;
+  background:
+    radial-gradient(circle at 80% 0%, rgba(0,215,255,.08), transparent 32%),
+    linear-gradient(135deg, rgba(10,31,43,.90), rgba(4,17,25,.94));
+  box-shadow:
+    0 25px 70px rgba(0,0,0,.26),
+    inset 0 1px rgba(255,255,255,.04);
+  backdrop-filter: blur(18px);
+}
+
+.wp-quotation-cinematic .wp-quotation-route .wp-eyebrow {
+  color: #86d9ea !important;
+}
+
+.wp-quotation-cinematic .wp-quotation-route h2 {
+  color: #f5fdff !important;
+  font-size: clamp(1.55rem, 3vw, 2.15rem);
+}
+
+.wp-quotation-cinematic .wp-quotation-route__meta span {
+  border-color: rgba(109,221,242,.13);
+  background: rgba(255,255,255,.045);
+  color: #c9e5ed !important;
+}
+
+/* ---------- Form cards ---------- */
+
+.wp-quotation-cinematic .wp-form-section {
+  border-color: rgba(94,210,235,.13);
+  border-radius: 18px;
+  background: rgba(6,27,37,.72) !important;
+  box-shadow:
+    0 18px 50px rgba(0,0,0,.17),
+    inset 0 1px rgba(255,255,255,.025);
+  backdrop-filter: blur(18px);
+}
+
+.wp-quotation-cinematic .wp-form-section h3 {
+  color: #86d9e9 !important;
+  letter-spacing: .18em;
+}
+
+.wp-quotation-cinematic .wp-form-group label {
+  color: rgba(184,221,231,.66) !important;
+}
+
+.wp-quotation-cinematic .wp-form-group input,
+.wp-quotation-cinematic .wp-form-group textarea {
+  border-color: rgba(123,205,222,.16);
+  background: rgba(1,13,20,.55) !important;
+  color: #eafaff !important;
+  -webkit-text-fill-color: #eafaff !important;
+  caret-color: #6de8ff !important;
+}
+
+.wp-quotation-cinematic .wp-form-group input::placeholder,
+.wp-quotation-cinematic .wp-form-group textarea::placeholder {
+  color: rgba(176,209,218,.43) !important;
+}
+
+.wp-quotation-cinematic .wp-form-group input:focus,
+.wp-quotation-cinematic .wp-form-group textarea:focus {
+  border-color: rgba(70,220,248,.48);
+  background: rgba(3,22,31,.82) !important;
+  box-shadow:
+    0 0 0 3px rgba(35,211,239,.07),
+    0 0 25px rgba(0,213,255,.045);
+}
+
+/* ---------- Submit ---------- */
+
+.wp-quotation-cinematic .wp-form-submit {
+  min-height: 51px;
+  border-radius: 10px;
+  background: linear-gradient(180deg, #f0c45d, #d99a1d);
+  color: #241d0d;
+  box-shadow:
+    0 8px 25px rgba(180,126,17,.17),
+    0 0 30px rgba(255,193,7,.035);
+  letter-spacing: .03em;
+}
+
+.wp-quotation-cinematic .wp-form-submit:hover:not(:disabled) {
+  box-shadow:
+    0 12px 30px rgba(180,126,17,.24),
+    0 0 35px rgba(255,193,7,.07);
+}
+
+/* ---------- Status messages ---------- */
+
+.wp-quotation-cinematic .wp-error,
+.wp-quotation-cinematic .wp-success {
+  border-radius: 12px;
+  backdrop-filter: blur(12px);
+}
+
+.wp-quotation-cinematic .wp-error {
+  border-color: rgba(255,105,105,.22);
+  background: rgba(74,17,22,.55);
+  color: #ffb1b1 !important;
+}
+
+.wp-quotation-cinematic .wp-success {
+  border-color: rgba(91,222,155,.2);
+  background: rgba(12,64,43,.45);
+  color: #8ff1bd !important;
+}
+
+/* ---------- Quotation history ---------- */
+
+.wp-quotation-cinematic .wp-my-quotations {
+  position: relative;
+  padding-top: 8px;
+}
+
+.wp-quotation-cinematic .wp-my-quotations .wp-page-header h2 {
+  color: #eefbff !important;
+}
+
+.wp-quotation-cinematic .wp-my-quotations > p,
+.wp-quotation-cinematic .wp-my-quotations > div:last-child > div {
+  border-color: rgba(94,210,235,.13) !important;
+  background: rgba(5,25,35,.70) !important;
+  color: rgba(199,228,236,.67) !important;
+  box-shadow:
+    0 14px 40px rgba(0,0,0,.15),
+    inset 0 1px rgba(255,255,255,.025);
+  backdrop-filter: blur(16px);
+}
+
+.wp-quotation-cinematic .wp-my-quotations > div:last-child > div:hover {
+  transform: translateY(-3px);
+  border-color: rgba(78,222,248,.28) !important;
+}
+
+.wp-quotation-cinematic .wp-my-quotations > div:last-child strong {
+  color: #ecfbff !important;
+}
+
+.wp-quotation-cinematic .wp-my-quotations > div:last-child div {
+  color: rgba(181,220,229,.62) !important;
+}
+
+/* ---------- Back button ---------- */
+
+.wp-quotation-cinematic .wp-page__back {
+  color: rgba(180,220,230,.66) !important;
+}
+
+.wp-quotation-cinematic .wp-page__back:hover {
+  color: #79e8ff !important;
+}
+
+/* ---------- No route selected ---------- */
+
+.wp-quotation-cinematic .wp-quotation > .wp-page-header {
+  position: relative;
+}
+
+/* ---------- Motion ---------- */
+
+@keyframes wpQuotationPulse {
+  0%, 100% { opacity: .45; transform: scale(.85); }
+  50% { opacity: 1; transform: scale(1.15); }
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 900px) {
+  .wp-quotation-globe {
+    right: -225px;
+    top: 210px;
+    opacity: .38;
+  }
+
+  .wp-quotation-ship {
+    right: 9%;
+    top: 430px;
+    opacity: .22;
+  }
+}
+
+@media (max-width: 760px) {
+  .wp-quotation-cinematic .wp-page-header h1 {
+    font-size: 2.7rem;
+  }
+
+  .wp-quotation-cinematic .wp-form-section {
+    background: rgba(6,27,37,.82) !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .wp-quotation-cinematic .wp-page-header h1 {
+    font-size: 2.25rem;
+  }
+
+  .wp-quotation-live,
+  .wp-route-live {
+    font-size: .56rem;
+    letter-spacing: .11em;
+  }
+
+  .wp-quotation-globe {
+    right: -280px;
+    top: 280px;
+  }
+}
