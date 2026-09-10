@@ -224,36 +224,8 @@ The platform includes security mechanisms such as:
 
 ## 🏗️ High-Level Architecture
 
-``` text
-                    ┌───────────────────────┐
-                    │      Waypoint UI      │
-                    │      React Frontend   │
-                    └───────────┬───────────┘
-                                │
-                                ▼
-                    ┌───────────────────────┐
-                    │      FastAPI API      │
-                    │      Backend Layer    │
-                    └───────────┬───────────┘
-                                │
-          ┌─────────────────────┼─────────────────────┐
-          ▼                     ▼                     ▼
-   ┌─────────────┐       ┌─────────────┐       ┌─────────────┐
-   │ Route       │       │ Weather     │       │ Quotation   │
-   │ Intelligence│       │ Intelligence│       │ Management  │
-   └──────┬──────┘       └─────────────┘       └──────┬──────┘
-          │                                             │
-          ▼                                             ▼
-   ┌─────────────┐                              ┌─────────────┐
-   │ Route Score │                              │ Brokerage / │
-   │ & Selection │                              │ Commercial  │
-   └─────────────┘                              └─────────────┘
+![Uploading ChatGPT Image Sep 10, 2026, 08_24_31 PM.png…]()
 
-                    ┌───────────────────────┐
-                    │      Waypoint AI      │
-                    │ Context-aware Assist. │
-                    └───────────────────────┘
-```
 
 ## 🔄 Application Data Flow
 
