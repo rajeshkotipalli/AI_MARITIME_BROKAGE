@@ -23,6 +23,10 @@ function Navbar({
       label: "Plot Route",
     },
     {
+      path: "/map-tracing",
+      label: "Intelligent Map",
+    },
+    {
       path: "/history",
       label: "History",
     },

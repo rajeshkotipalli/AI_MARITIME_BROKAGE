@@ -2,7 +2,11 @@ import { useState } from "react";
 
 const API_ROOT = "http://127.0.0.1:8000";
 
-function Login({ onLoginSuccess, onRegister }) {
+function Login({
+  onLoginSuccess,
+  onRegister,
+  onAdminLogin,
+}) {
 
   const [username, setUsername] =
     useState("");
@@ -65,6 +69,7 @@ function Login({ onLoginSuccess, onRegister }) {
         }
       );
 
+
       const data =
         await response.json();
 
@@ -110,8 +115,8 @@ function Login({ onLoginSuccess, onRegister }) {
       );
 
       setError(
-        "Unable to connect to the server. "
-        + "Make sure the backend is running."
+        "Unable to connect to the server. " +
+        "Make sure the backend is running."
       );
 
     } finally {
@@ -269,6 +274,50 @@ function Login({ onLoginSuccess, onRegister }) {
           </button>
 
         </div>
+
+
+        {/* ADMIN PORTAL */}
+
+        <div className="admin-login-divider">
+
+          <span></span>
+
+          <p>
+            ADMINISTRATORS
+          </p>
+
+          <span></span>
+
+        </div>
+
+
+        <button
+          type="button"
+          className="admin-portal-button"
+          onClick={onAdminLogin}
+        >
+
+          <span className="admin-portal-icon">
+            🔐
+          </span>
+
+          <span className="admin-portal-text">
+
+            <strong>
+              Admin Portal
+            </strong>
+
+            <small>
+              Secure administrator access
+            </small>
+
+          </span>
+
+          <span className="admin-portal-arrow">
+            →
+          </span>
+
+        </button>
 
 
         {/* SECURITY */}

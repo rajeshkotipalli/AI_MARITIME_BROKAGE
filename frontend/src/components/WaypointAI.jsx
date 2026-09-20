@@ -10,12 +10,40 @@ import {
 
 import "./WaypointAI.css";
 
-const QUICK_QUESTIONS = [
-  "What is the best route?",
-  "Why is this route better?",
-  "Explain the route score",
-  "What is transshipment?",
-];
+const QUICK_QUESTIONS = {
+  route: [
+    "Best route?",
+    "Compare routes",
+    "Route score?",
+    "Transit time?",
+    "Weather risk?",
+    "Quotation logic?",
+  ],
+  weather: [
+    "Weather risk?",
+    "Wind & visibility?",
+    "Forecast summary",
+    "Route impact?",
+    "Port conditions?",
+    "Weather basics",
+  ],
+  quotation: [
+    "How is price calculated?",
+    "What affects freight?",
+    "Explain my quotation",
+    "Route used?",
+    "Transit time?",
+    "Shipment summary",
+  ],
+  general: [
+    "What is transshipment?",
+    "Explain ETA",
+    "Connected ports?",
+    "Shipping basics",
+    "How does Waypoint work?",
+    "What can I ask?",
+  ],
+};
 
 function WaypointAI({
   currentPage = "Waypoint",
@@ -43,6 +71,9 @@ function WaypointAI({
 
   const [isTyping, setIsTyping] =
     useState(false);
+
+  const [speakingId, setSpeakingId] =
+    useState(null);
 
   // ============================================================
   // AI RESPONSE LANGUAGE
@@ -326,6 +357,20 @@ function WaypointAI({
       };
 
     })();
+
+  // ============================================================
+  // COMPACT QUICK PROMPTS
+  // ============================================================
+
+  const quickQuestions =
+    isRoutePage && routeContext
+      ? QUICK_QUESTIONS.route
+      : isWeatherPage && weatherContext
+        ? QUICK_QUESTIONS.weather
+        : location.pathname === "/quotation"
+          ? QUICK_QUESTIONS.quotation
+          : QUICK_QUESTIONS.general;
+
 
   // ============================================================
   // STORE ONLY THE CURRENT REAL ROUTE RESULT
@@ -750,6 +795,49 @@ function WaypointAI({
   };
 
   // ============================================================
+  // AUDIO OUTPUT
+  // ============================================================
+
+  const speakMessage = (text, id) => {
+    if (typeof window === "undefined" || !("speechSynthesis" in window)) {
+      return;
+    }
+
+    window.speechSynthesis.cancel();
+
+    if (speakingId === id) {
+      setSpeakingId(null);
+      return;
+    }
+
+    const cleanText = String(text || "")
+      .replace(/\*\*/g, "")
+      .replace(/[🚢⭐📊⚓🌦️💰📜📈🔊]/g, "")
+      .trim();
+
+    if (!cleanText) {
+      return;
+    }
+
+    const utterance = new SpeechSynthesisUtterance(cleanText);
+    const languageMap = {
+      en: "en-IN",
+      te: "te-IN",
+      ta: "ta-IN",
+      hi: "hi-IN",
+    };
+    utterance.lang = languageMap[aiLanguage] || "en-IN";
+    utterance.rate = 0.95;
+    utterance.pitch = 1;
+
+    utterance.onend = () => setSpeakingId(null);
+    utterance.onerror = () => setSpeakingId(null);
+
+    setSpeakingId(id);
+    window.speechSynthesis.speak(utterance);
+  };
+
+  // ============================================================
   // CLEAR
   // ============================================================
 
@@ -897,7 +985,7 @@ function WaypointAI({
 
                 <div className="wp-ai-status">
                   <span />
-                  Local assistant · Online
+                  Gemini AI · Online
                 </div>
 
               </div>
@@ -1000,6 +1088,30 @@ function WaypointAI({
                     {formatText(
                       item.text
                     )}
+
+                    {item.type === "ai" && (
+                      <button
+                        type="button"
+                        className={`wp-ai-audio ${
+                          speakingId === item.id ? "active" : ""
+                        }`}
+                        onClick={() =>
+                          speakMessage(item.text, item.id)
+                        }
+                        title={
+                          speakingId === item.id
+                            ? "Stop audio"
+                            : "Read this response aloud"
+                        }
+                        aria-label={
+                          speakingId === item.id
+                            ? "Stop audio"
+                            : "Read response aloud"
+                        }
+                      >
+                        {speakingId === item.id ? "■" : "🔊"}
+                      </button>
+                    )}
                   </div>
 
                 </div>
@@ -1036,19 +1148,12 @@ function WaypointAI({
           <div className="wp-ai-quick">
 
             <div className="wp-ai-quick-title">
-
-              {routeContext
-                ? "Ask about this route"
-                : isWeatherPage &&
-                  weatherContext
-                  ? "Ask about this weather"
-                  : "Try asking"}
-
+              Suggested
             </div>
 
             <div className="wp-ai-quick-list">
 
-              {QUICK_QUESTIONS.map(
+              {quickQuestions.map(
                 (
                   question
                 ) => (

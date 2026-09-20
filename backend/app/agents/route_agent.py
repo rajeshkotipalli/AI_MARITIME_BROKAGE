@@ -526,19 +526,10 @@ class RouteAgent:
     # =========================================================
     # CALCULATE ROUTE SCORES
     # =========================================================
-    #
-    # Lower is better for:
-    # - transit days
-    # - distance
-    # - transshipments
-    #
-    # We normalize against the actual candidate routes.
-    #
-    # Weights:
+    # Uses the same weighted route-scoring logic as the website:
     # Transit       40%
     # Distance      25%
-    # Transshipment 15%
-    # Overall       20%
+    # Transshipment 35%
     # =========================================================
 
     def _score_routes(
@@ -550,36 +541,17 @@ class RouteAgent:
             return routes
 
         # -----------------------------------------------------
-        # Extract values
+        # Maximum values among the actual candidate routes
         # -----------------------------------------------------
 
-        days = [
+        max_transit = max(
             float(route["transit_days"])
             for route in routes
-        ]
-
-        distances = [
-            float(route["distance_nm"])
-            for route in routes
-        ]
-
-        transshipments = [
-            float(route["transshipments"])
-            for route in routes
-        ]
-
-        min_days = min(days)
-        max_days = max(days)
-
-        min_distance = min(distances)
-        max_distance = max(distances)
-
-        min_transshipments = min(
-            transshipments
         )
 
-        max_transshipments = max(
-            transshipments
+        max_distance = max(
+            float(route["distance_nm"])
+            for route in routes
         )
 
         for route in routes:
@@ -588,111 +560,79 @@ class RouteAgent:
             # TRANSIT SCORE
             # =============================================
 
-            if max_days == min_days:
-
-                transit_score = 40
-
+            if max_transit == 0:
+                transit_score = 100
             else:
-
                 transit_score = (
-
-                    (
-                        max_days
-                        -
-                        route["transit_days"]
+                    100
+                    - (
+                        float(route["transit_days"])
+                        / max_transit
+                        * 100
                     )
-                    /
-                    (
-                        max_days
-                        -
-                        min_days
-                    )
-
-                ) * 40
+                )
 
             # =============================================
             # DISTANCE SCORE
             # =============================================
 
-            if max_distance == min_distance:
-
-                distance_score = 25
-
+            if max_distance == 0:
+                distance_score = 100
             else:
-
                 distance_score = (
-
-                    (
-                        max_distance
-                        -
-                        route["distance_nm"]
+                    100
+                    - (
+                        float(route["distance_nm"])
+                        / max_distance
+                        * 100
                     )
-                    /
-                    (
-                        max_distance
-                        -
-                        min_distance
-                    )
-
-                ) * 25
+                )
 
             # =============================================
             # TRANSSHIPMENT SCORE
             # =============================================
 
-            if (
-                max_transshipments
-                ==
-                min_transshipments
-            ):
-
-                transshipment_score = 15
-
-            else:
-
-                transshipment_score = (
-
-                    (
-                        max_transshipments
-                        -
-                        route["transshipments"]
-                    )
-                    /
-                    (
-                        max_transshipments
-                        -
-                        min_transshipments
-                    )
-
-                ) * 15
-
-            # =============================================
-            # OVERALL SCORE
-            # =============================================
-
-            # Base reliability / route availability
-            base_score = 20
-
-            score = (
-                transit_score
-                +
-                distance_score
-                +
-                transshipment_score
-                +
-                base_score
+            transshipment_score = (
+                100
+                - (
+                    float(route["transshipments"])
+                    * 20
+                )
             )
 
-            route["score"] = round(
-                max(
-                    0,
-                    min(
-                        100,
-                        score
-                    )
-                ),
-                1
+            # =============================================
+            # FINAL ROUTE SCORE
+            # =============================================
+
+            route_score = (
+                transit_score * 0.40
+                + distance_score * 0.25
+                + transshipment_score * 0.35
             )
+
+            route["transit_score"] = round(
+                max(0, min(100, transit_score)),
+                2
+            )
+
+            route["distance_score"] = round(
+                max(0, min(100, distance_score)),
+                2
+            )
+
+            route["transshipment_score"] = round(
+                max(0, min(100, transshipment_score)),
+                2
+            )
+
+            route["route_score"] = round(
+                max(0, min(100, route_score)),
+                2
+            )
+
+            # Keep the existing score field for frontend/backward
+            # compatibility with the current route UI.
+            route["score"] = route["route_score"]
 
         # -----------------------------------------------------
         # Sort best to worst
@@ -700,7 +640,7 @@ class RouteAgent:
 
         routes.sort(
             key=lambda route: (
-                route["score"],
+                route["route_score"],
                 -route["transit_days"],
                 -route["distance_nm"]
             ),
@@ -711,9 +651,7 @@ class RouteAgent:
         # Assign rank
         # -----------------------------------------------------
 
-        for index, route in enumerate(
-            routes
-        ):
+        for index, route in enumerate(routes):
 
             route["rank"] = index + 1
 
@@ -1056,7 +994,10 @@ class RouteAgent:
                     best_route["route_display"],
 
                 "recommended_score":
-                    best_route["score"],
+                    best_route["route_score"],
+
+                "route_score":
+                    best_route["route_score"],
 
                 "transit_time_days":
                     best_route["transit_days"],

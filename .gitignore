@@ -1,28 +1,32 @@
-# Environment variables
+# Python
+venv/
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+
+# Environment / secrets
 .env
 .env.*
 !.env.example
 
-# Python
-__pycache__/
-*.py[cod]
-venv/
-.venv/
-env/
+# Database
+*.db
+*.sqlite
+*.sqlite3
 
 # Node
 node_modules/
+frontend/dist/
+frontend/.vite/
 
-# Build files
-dist/
-build/
+# Logs
+*.log
 
-# VS Code
-.vscode/
-
-# OS files
+# OS
 .DS_Store
 Thumbs.db
 
-# Database
-*.db
+# IDE
+.vscode/
+.idea/

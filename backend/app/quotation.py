@@ -101,6 +101,19 @@ class Quotation(Base):
     )
 
     # -----------------------------------------------------
+    # PRICING SNAPSHOT
+    # -----------------------------------------------------
+    # Exact pricing result captured when the quotation is
+    # submitted. This powers historical quotation details,
+    # PDF generation and email attachments.
+    # -----------------------------------------------------
+
+    pricing_snapshot = Column(
+        Text,
+        nullable=True
+    )
+
+    # -----------------------------------------------------
     # STATUS
     # -----------------------------------------------------
 

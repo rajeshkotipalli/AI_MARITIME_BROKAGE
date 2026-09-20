@@ -662,87 +662,101 @@
 }
 
 /* =========================================================
-   QUICK QUESTIONS
+   QUICK QUESTIONS — COMPACT COMMAND STRIP
    ========================================================= */
 
 .wp-ai-quick {
   position: relative;
   z-index: 3;
 
-  padding: 12px 15px 13px;
+  flex: 0 0 auto;
+  padding: 8px 13px 9px;
 
-  border-top: 1px solid rgba(84,177,202,.12);
-  border-bottom: 1px solid rgba(84,177,202,.09);
+  border-top: 1px solid rgba(84,177,202,.10);
+  border-bottom: 1px solid rgba(84,177,202,.08);
 
   background:
     linear-gradient(180deg, #081d29, #071923);
 }
 
 .wp-ai-quick::before {
-  content: "AI COMMANDS";
+  content: "QUICK PROMPTS";
   display: block;
 
-  margin-bottom: 7px;
+  margin-bottom: 5px;
 
-  color: rgba(89,201,225,.42);
+  color: rgba(89,201,225,.38);
 
   font: 800 7px "Courier New", monospace;
-  letter-spacing: 1.4px;
+  letter-spacing: 1.25px;
 }
 
 .wp-ai-quick-title {
-  margin-bottom: 8px;
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 6px;
 
   color: #b8d1d9;
 
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 800;
 }
 
 .wp-ai-quick-list {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 7px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 5px;
 }
 
 .wp-ai-quick-list button {
-  min-height: 38px;
-  padding: 7px 10px;
+  min-width: 0;
+  min-height: 31px;
+  padding: 5px 7px;
 
-  border: 1px solid rgba(84,177,202,.16);
-  border-radius: 10px;
+  overflow: hidden;
+
+  border: 1px solid rgba(84,177,202,.13);
+  border-radius: 8px;
 
   background:
-    linear-gradient(145deg, rgba(15,43,56,.90), rgba(8,28,39,.90));
+    linear-gradient(145deg, rgba(15,43,56,.82), rgba(8,28,39,.88));
 
-  color: #b9dbe4;
+  color: #a9cbd4;
 
-  font-size: 10px;
+  font-size: 9px;
   font-weight: 700;
-  text-align: left;
+  line-height: 1.15;
+  text-align: center;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 
   cursor: pointer;
 
   transition:
-    transform .18s ease,
-    border-color .18s ease,
-    background .18s ease,
-    color .18s ease;
+    transform .16s ease,
+    border-color .16s ease,
+    background .16s ease,
+    color .16s ease;
 }
 
 .wp-ai-quick-list button:hover {
-  transform: translateY(-2px);
+  transform: translateY(-1px);
 
-  border-color: rgba(80,211,240,.40);
+  border-color: rgba(80,211,240,.35);
 
   background:
-    linear-gradient(145deg, rgba(17,66,83,.96), rgba(8,35,48,.96));
+    linear-gradient(145deg, rgba(17,66,83,.94), rgba(8,35,48,.96));
 
   color: #ecfbff;
 
   box-shadow:
-    0 8px 18px rgba(0,0,0,.16),
-    0 0 18px rgba(0,190,235,.05);
+    0 5px 12px rgba(0,0,0,.14),
+    0 0 14px rgba(0,190,235,.045);
+}
+
+.wp-ai-quick-list button:focus-visible {
+  outline: 1px solid rgba(90,220,245,.60);
+  outline-offset: 1px;
 }
 
 /* =========================================================
@@ -955,7 +969,26 @@
   }
 
   .wp-ai-quick {
-    padding: 10px 11px 11px;
+    padding: 7px 9px 8px;
+  }
+
+  .wp-ai-quick::before {
+    margin-bottom: 4px;
+  }
+
+  .wp-ai-quick-title {
+    margin-bottom: 5px;
+    font-size: 9px;
+  }
+
+  .wp-ai-quick-list {
+    gap: 4px;
+  }
+
+  .wp-ai-quick-list button {
+    min-height: 29px;
+    padding: 4px 5px;
+    font-size: 8px;
   }
 
   .wp-ai-input-area {
@@ -990,13 +1023,13 @@
   }
 
   .wp-ai-quick-list {
-    gap: 5px;
+    gap: 4px;
   }
 
   .wp-ai-quick-list button {
-    min-height: 35px;
-    padding: 6px 8px;
-    font-size: 9px;
+    min-height: 28px;
+    padding: 4px 4px;
+    font-size: 7.5px;
   }
 }
 

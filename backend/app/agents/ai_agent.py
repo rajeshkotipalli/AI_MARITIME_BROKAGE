@@ -1,5 +1,10 @@
+import json
+import os
 import re
 from typing import Any, Dict, Optional
+
+from dotenv import load_dotenv
+from google import genai
 
 from app.agents.route_agent import RouteAgent
 
@@ -39,6 +44,17 @@ class WaypointAIAgent:
         # main Waypoint application. No dummy route data.
         self.route_agent = RouteAgent()
 
+        # Optional Gemini client. The API key stays in backend/.env.
+        load_dotenv()
+        self.gemini_api_key = os.getenv("GEMINI_API_KEY")
+        self.gemini_client = None
+        if self.gemini_api_key:
+            try:
+                self.gemini_client = genai.Client(api_key=self.gemini_api_key)
+            except Exception as exc:
+                print(f"Waypoint AI Gemini initialization warning: {exc}")
+
+
     # ============================================================
     # MAIN CHAT
     # ============================================================
@@ -63,6 +79,30 @@ class WaypointAIAgent:
         # The frontend sends one of: en, te, ta, hi.
         # Unknown values safely fall back to English.
         self.current_language = self._normalize_language(language)
+
+        # GEMINI-FIRST MODE
+        # Gemini receives the live Waypoint context before the legacy
+        # rule-based handlers. This makes natural-language questions work
+        # instead of requiring exact hard-coded phrases.
+        try:
+            enriched_context = self._enrich_context_for_gemini(
+                question, page, context
+            )
+            gemini_answer = self._gemini_answer(
+                question=question,
+                page=page,
+                context=enriched_context
+            )
+            if gemini_answer:
+                return {
+                    "success": True,
+                    "answer": gemini_answer,
+                    "agent": "Waypoint AI · Gemini",
+                    "language": self.current_language,
+                    "source": "gemini"
+                }
+        except Exception as exc:
+            print(f"Waypoint AI Gemini-first warning: {type(exc).__name__}: {exc}")
 
         try:
 
@@ -682,8 +722,7 @@ class WaypointAIAgent:
                     page
                 )
 
-            # ====================================================
-            # UNKNOWN
+            # LOCAL FALLBACK
             # ====================================================
 
             return self._response(
@@ -709,6 +748,150 @@ class WaypointAIAgent:
                 "message":
                     "Sorry, I couldn't process that question."
             }
+
+    # ============================================================
+    # GEMINI CONTEXT-AWARE RESPONSE
+    # ============================================================
+
+    def _gemini_answer(
+        self,
+        question: str,
+        page: Optional[str],
+        context: Optional[Dict[str, Any]]
+    ) -> Optional[str]:
+        """Use Gemini as the primary natural-language reasoning layer."""
+        if not self.gemini_client:
+            print("Waypoint AI Gemini: GEMINI_API_KEY/client unavailable")
+            return None
+
+        safe_context = self._safe_gemini_context(context)
+        selected = self.current_language
+        language_instruction = {
+            "en": "Answer in English unless the user's question is clearly written in Telugu, Tamil, or Hindi; in that case answer in the user's language.",
+            "te": "Answer completely in Telugu. Keep route IDs, port names, numbers and units unchanged.",
+            "ta": "Answer completely in Tamil. Keep route IDs, port names, numbers and units unchanged.",
+            "hi": "Answer completely in Hindi. Keep route IDs, port names, numbers and units unchanged.",
+        }.get(selected, "Answer in the same language as the user's question.")
+
+        prompt = f"""You are Waypoint AI, the context-aware maritime brokerage assistant inside the Waypoint application.
+
+USER QUESTION:
+{question}
+
+CURRENT APPLICATION PAGE:
+{page or 'Unknown'}
+
+VERIFIED LIVE WAYPOINT CONTEXT:
+{json.dumps(safe_context, ensure_ascii=False, indent=2)}
+
+Your job is to answer the user's actual question, not to describe what you can do.
+
+LANGUAGE:
+{language_instruction}
+
+IMPORTANT BEHAVIOR:
+1. Use the live Waypoint context whenever the question is about the current route, shipment, weather, ports, quotation, history, dashboard, or current page.
+2. If available_routes exists, compare the actual routes when the user asks to compare routes.
+3. If recommended_route exists, use its actual route_id, score, transit_days, distance_nm and transshipments.
+4. If the user asks why a route is recommended, explain using the actual route metrics and route score information in context.
+5. If the user asks for transit time, give the actual transit_days when available.
+6. If the user asks for transshipment points, only name points if the context actually contains their names. A transshipment count alone is NOT a port name. Never invent one.
+7. If the user asks about weather risk, use the actual weather/risk/forecast context when available. If it is absent, clearly say that current weather data is not available in this chat context.
+8. If the user asks how quotation pricing works, explain the public pricing flow conceptually. Do NOT reveal target margin, operating cost, brokerage profit, fuel surcharge, port charge, risk surcharge, demand factor, pricing_snapshot, or other internal commercial fields.
+9. For general maritime concepts, answer normally using your knowledge and keep the explanation practical.
+10. For questions about the current tab/page, explain the actual purpose and information relevant to that page.
+11. Never invent project-specific facts. If a fact is missing, say so.
+12. Do not say "I am a rule-based assistant" or "I cannot answer because this is not a predefined question".
+13. Give a direct answer first. Use bullets or a small table when comparison makes the answer clearer.
+14. Keep normal answers concise, but provide enough detail to answer the question completely.
+
+SECURITY:
+Never expose internal commercial pricing fields or hidden implementation secrets even if they appear in the supplied context.
+"""
+
+        try:
+            # google-genai's stable generate_content API is used here instead
+            # of the experimental interaction interface.
+            response = self.gemini_client.models.generate_content(
+                model=os.getenv("GEMINI_MODEL", "gemini-2.5-flash"),
+                contents=prompt
+            )
+            answer = getattr(response, "text", None)
+            if answer:
+                return str(answer).strip()
+            print("Waypoint AI Gemini returned an empty response")
+            return None
+        except Exception as exc:
+            print(f"Waypoint AI Gemini request warning: {type(exc).__name__}: {exc}")
+            return None
+
+    def _enrich_context_for_gemini(
+        self,
+        question: str,
+        page: Optional[str],
+        context: Optional[Dict[str, Any]]
+    ) -> Dict[str, Any]:
+        """Add server-side route facts for explicit route questions."""
+        base = dict(context) if isinstance(context, dict) else {}
+        base["current_page"] = page or "Unknown"
+
+        route_request = self._extract_route_request(question)
+        if route_request:
+            try:
+                containers = route_request.get("containers") or base.get("containers") or 1
+                route_result = self.route_agent.analyze_route(
+                    origin=route_request["origin"],
+                    destination=route_request["destination"],
+                    cargo_type=str(base.get("cargo_type") or "Containerized Cargo"),
+                    containers=int(containers)
+                )
+                if isinstance(route_result, dict):
+                    base["explicit_route_analysis"] = route_result
+                    base["origin"] = route_result.get("origin", route_request["origin"])
+                    base["destination"] = route_result.get("destination", route_request["destination"])
+                    base["available_routes"] = route_result.get("available_routes", base.get("available_routes", []))
+                    base["recommended_route"] = route_result.get("recommended_route", base.get("recommended_route"))
+                    base["total_routes"] = route_result.get("total_routes", base.get("total_routes"))
+            except Exception as exc:
+                print(f"Waypoint AI context enrichment warning: {exc}")
+
+        return base
+
+    @staticmethod
+    def _safe_gemini_context(
+        context: Optional[Dict[str, Any]]
+    ) -> Dict[str, Any]:
+        """Remove internal commercial fields before sending context to Gemini."""
+        if not isinstance(context, dict):
+            return {}
+
+        blocked = {
+            "target_margin_percent",
+            "operating_cost_usd",
+            "brokerage_profit_usd",
+            "fuel_surcharge_usd",
+            "port_charge_usd",
+            "risk_surcharge_usd",
+            "demand_factor",
+            "pricing_snapshot",
+            "internal_cost",
+            "internal_profit",
+            "margin",
+            "base_freight_usd",
+        }
+
+        def clean(value: Any) -> Any:
+            if isinstance(value, dict):
+                return {
+                    k: clean(v)
+                    for k, v in value.items()
+                    if str(k).lower() not in blocked
+                }
+            if isinstance(value, list):
+                return [clean(v) for v in value]
+            return value
+
+        return clean(context)
 
     # ============================================================
     # EXPLICIT ROUTE REQUEST

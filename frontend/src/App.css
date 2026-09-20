@@ -3167,3 +3167,194 @@ body,
 .wp-nav__right button:hover {
   transform: none;
 }
+/* =====================================================
+   ADMIN PORTAL BUTTON
+===================================================== */
+
+.admin-login-divider {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  margin: 24px 0 14px;
+}
+
+.admin-login-divider span {
+  flex: 1;
+
+  height: 1px;
+
+  background: #e4e7ec;
+}
+
+.admin-login-divider p {
+  margin: 0;
+
+  color: #98a2b3;
+
+  font-size: 9px;
+  font-weight: 700;
+
+  letter-spacing: 1.3px;
+}
+
+.admin-portal-button {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+
+  gap: 11px;
+
+  padding: 13px 14px;
+
+  border: 1px solid #d0d5dd;
+
+  border-radius: 10px;
+
+  background: #ffffff;
+
+  color: #102a43;
+
+  text-align: left;
+
+  cursor: pointer;
+
+  transition:
+    border-color 0.2s,
+    background 0.2s,
+    transform 0.2s;
+}
+
+.admin-portal-button:hover {
+  border-color: #102a43;
+
+  background: #f8fafc;
+
+  transform: translateY(-1px);
+}
+
+.admin-portal-icon {
+  width: 34px;
+  height: 34px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 8px;
+
+  background: #f2f4f7;
+
+  font-size: 16px;
+}
+
+.admin-portal-text {
+  flex: 1;
+}
+
+.admin-portal-text strong,
+.admin-portal-text small {
+  display: block;
+}
+
+.admin-portal-text strong {
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.admin-portal-text small {
+  margin-top: 3px;
+
+  color: #667085;
+
+  font-size: 9px;
+}
+
+.admin-portal-arrow {
+  color: #667085;
+
+  font-size: 17px;
+
+  transition: transform 0.2s;
+}
+
+.admin-portal-button:hover .admin-portal-arrow {
+  transform: translateX(3px);
+}
+
+/* =========================================================
+   AUTHENTICATION — ACCOUNT SWITCH
+   ========================================================= */
+
+.auth-switch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 18px;
+  color: var(--paper-faint);
+  font-size: 0.84rem;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.auth-switch span {
+  color: var(--paper-dim);
+}
+
+.auth-switch button {
+  position: relative;
+  margin: 0;
+  padding: 2px 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--ochre);
+  font-family: var(--mono);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.035em;
+  line-height: 1.5;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.auth-switch button::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  border-radius: 2px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.2s ease;
+}
+
+.auth-switch button:hover {
+  color: #d9aa70;
+  background: transparent;
+  transform: translateY(-1px);
+}
+
+.auth-switch button:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.auth-switch button:focus-visible {
+  outline: 2px solid var(--slate);
+  outline-offset: 5px;
+}
+
+@media (max-width: 480px) {
+  .auth-switch {
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+}

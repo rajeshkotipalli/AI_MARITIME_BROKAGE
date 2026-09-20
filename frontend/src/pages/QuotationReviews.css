@@ -1,0 +1,494 @@
+
+/* =========================================================
+   WAYPOINT — QUOTATION REVIEW INTELLIGENCE
+   ========================================================= */
+
+.wp-review-page {
+  min-height: calc(100vh - 70px);
+  padding: 42px 24px 80px;
+  background:
+    radial-gradient(circle at 82% 0%, rgba(0, 214, 255, .08), transparent 30%),
+    linear-gradient(180deg, #031018 0%, #041a24 55%, #f5f7f9 100%);
+  color: #eafaff;
+}
+
+.wp-review-shell {
+  width: min(1080px, 100%);
+  margin: 0 auto;
+}
+
+.wp-review-back {
+  border: 0;
+  background: transparent;
+  color: #a8dbe7;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  margin-bottom: 26px;
+}
+
+.wp-review-back:hover {
+  color: #ffffff;
+}
+
+.wp-review-header {
+  padding: 28px 0 32px;
+}
+
+.wp-review-live {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 11px;
+  margin-bottom: 15px;
+  border: 1px solid rgba(77, 222, 248, .22);
+  border-radius: 999px;
+  background: rgba(4, 34, 46, .55);
+  color: #9cefff;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .14em;
+}
+
+.wp-review-live span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #63eaff;
+  box-shadow: 0 0 12px rgba(0, 217, 255, .9);
+}
+
+.wp-review-eyebrow {
+  display: block;
+  margin-bottom: 8px;
+  color: #7fcfe0;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.wp-review-header h1 {
+  margin: 0;
+  color: #f2fcff;
+  font-size: clamp(2rem, 4.5vw, 3.6rem);
+  line-height: 1.08;
+  letter-spacing: -.045em;
+}
+
+.wp-review-header p {
+  max-width: 700px;
+  margin: 12px 0 0;
+  color: rgba(211, 236, 244, .68);
+  line-height: 1.7;
+  font-size: 13px;
+}
+
+.wp-review-status-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.wp-review-status-row > div {
+  padding: 17px 18px;
+  border: 1px solid rgba(94, 210, 235, .13);
+  border-radius: 15px;
+  background: rgba(5, 25, 35, .72);
+  backdrop-filter: blur(16px);
+}
+
+.wp-review-status-row span:first-child {
+  display: block;
+  margin-bottom: 7px;
+  color: rgba(184, 221, 231, .55);
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 1.4px;
+}
+
+.wp-review-status-row strong {
+  color: #eefbff;
+  font-size: 14px;
+}
+
+.wp-review-status {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  padding: 5px 9px;
+  border-radius: 999px;
+  font-size: 10px !important;
+  font-weight: 800 !important;
+}
+
+.wp-review-status--pending {
+  background: rgba(255, 193, 7, .12);
+  color: #ffd875 !important;
+}
+
+.wp-review-status--approved {
+  background: rgba(66, 220, 145, .13);
+  color: #8ff1bd !important;
+}
+
+.wp-review-status--rejected {
+  background: rgba(255, 93, 93, .12);
+  color: #ffabab !important;
+}
+
+.wp-review-card,
+.wp-citation-card {
+  margin-bottom: 16px;
+  padding: 23px;
+  border: 1px solid rgba(94, 210, 235, .13);
+  border-radius: 17px;
+  background: rgba(6, 27, 37, .76);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, .14);
+  backdrop-filter: blur(18px);
+}
+
+.wp-review-card-title {
+  margin-bottom: 18px;
+  color: #86d9e9;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .18em;
+}
+
+.wp-review-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.wp-review-grid > div {
+  padding: 15px;
+  border: 1px solid rgba(123, 205, 222, .10);
+  border-radius: 12px;
+  background: rgba(1, 13, 20, .42);
+}
+
+.wp-review-grid span {
+  display: block;
+  margin-bottom: 6px;
+  color: rgba(184, 221, 231, .55);
+  font-size: 10px;
+}
+
+.wp-review-grid strong {
+  color: #eafaff;
+  font-size: 14px;
+}
+
+.wp-review-price {
+  margin: 18px 0;
+  padding: 32px 25px;
+  border: 1px solid rgba(255, 193, 7, .20);
+  border-radius: 18px;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(255, 193, 7, .09), transparent 40%),
+    rgba(7, 28, 37, .86);
+  text-align: center;
+  box-shadow: 0 18px 55px rgba(0, 0, 0, .17);
+}
+
+.wp-review-price > div {
+  margin: 6px 0;
+  color: #f6d878;
+  font-size: clamp(38px, 6vw, 64px);
+  font-weight: 850;
+  letter-spacing: -.04em;
+}
+
+.wp-review-price p {
+  margin: 0;
+  color: rgba(211, 236, 244, .65);
+  font-size: 12px;
+}
+
+.wp-citation-record {
+  margin: 0 0 20px;
+  padding: 16px;
+  border-left: 3px solid #f0c45d;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, .035);
+  color: #d9f2f7;
+  line-height: 1.7;
+  font-size: 12px;
+}
+
+.wp-citation-sources {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.wp-citation-sources > div {
+  padding: 13px;
+  border: 1px solid rgba(123, 205, 222, .10);
+  border-radius: 11px;
+  background: rgba(1, 13, 20, .35);
+}
+
+.wp-citation-sources span {
+  display: block;
+  margin-bottom: 5px;
+  color: rgba(184, 221, 231, .52);
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.wp-citation-sources strong {
+  color: #eafaff;
+  font-size: 11px;
+}
+
+.wp-review-copy {
+  margin-top: 16px;
+  min-height: 42px;
+  padding: 0 17px;
+  border: 1px solid rgba(255, 193, 7, .30);
+  border-radius: 9px;
+  background: rgba(255, 193, 7, .08);
+  color: #f6d878;
+  font-size: 11px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.wp-review-copy:hover {
+  background: rgba(255, 193, 7, .14);
+}
+
+.wp-review-footer-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 18px;
+}
+
+.wp-review-footer-actions button,
+.wp-review-list-bottom button {
+  min-height: 43px;
+  padding: 0 17px;
+  border: 1px solid rgba(91, 219, 241, .20);
+  border-radius: 9px;
+  background: rgba(4, 34, 46, .72);
+  color: #bdeaf3;
+  font-size: 11px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.wp-review-footer-actions button:hover,
+.wp-review-list-bottom button:hover {
+  background: rgba(20, 73, 89, .8);
+}
+
+.wp-review-list {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+
+.wp-review-list-card {
+  padding: 20px;
+  border: 1px solid rgba(94, 210, 235, .13);
+  border-radius: 16px;
+  background: rgba(5, 25, 35, .74);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, .12);
+  backdrop-filter: blur(16px);
+}
+
+.wp-review-list-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.wp-review-list-top h2 {
+  margin: 0;
+  color: #eefbff;
+  font-size: 19px;
+}
+
+.wp-review-list-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 15px;
+}
+
+.wp-review-list-meta span {
+  padding: 7px 10px;
+  border: 1px solid rgba(109, 221, 242, .11);
+  border-radius: 7px;
+  background: rgba(255, 255, 255, .035);
+  color: #afd4dc;
+  font-size: 10px;
+}
+
+.wp-review-list-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  margin-top: 17px;
+  padding-top: 15px;
+  border-top: 1px solid rgba(123, 205, 222, .10);
+}
+
+.wp-review-list-bottom > strong {
+  color: #f6d878;
+  font-size: 20px;
+}
+
+.wp-review-loading,
+.wp-review-empty,
+.wp-review-error {
+  padding: 28px;
+  border-radius: 15px;
+  background: rgba(5, 25, 35, .75);
+  color: #c6e5eb;
+  text-align: center;
+}
+
+.wp-review-error {
+  border: 1px solid rgba(255, 93, 93, .18);
+  color: #ffb0b0;
+}
+
+/* =========================================================
+   REQUEST QUOTATION — NEW ACTION / REVIEW CARDS
+   ========================================================= */
+
+.wp-quotation-review-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 18px;
+  padding: 17px 19px;
+  border: 1px solid rgba(94, 210, 235, .13);
+  border-radius: 15px;
+  background: rgba(5, 25, 35, .75);
+  color: #eefbff;
+}
+
+.wp-quotation-review-banner > div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.wp-quotation-review-banner .wp-eyebrow {
+  margin: 0;
+}
+
+.wp-customer-price-card {
+  margin-top: 20px;
+  padding: 31px 24px;
+  border: 1px solid rgba(255, 193, 7, .20);
+  border-radius: 18px;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(255, 193, 7, .09), transparent 40%),
+    #071d27;
+  text-align: center;
+}
+
+.wp-customer-price {
+  margin: 7px 0;
+  color: #f6d878;
+  font-size: clamp(38px, 6vw, 64px);
+  font-weight: 850;
+  letter-spacing: -.04em;
+}
+
+.wp-customer-price-card p {
+  margin: 0;
+  color: rgba(211, 236, 244, .68);
+  font-size: 12px;
+}
+
+.wp-price-note {
+  max-width: 620px;
+  margin: 18px auto 0;
+  padding-top: 15px;
+  border-top: 1px solid rgba(123, 205, 222, .10);
+  color: rgba(184, 221, 231, .52);
+  font-size: 10px;
+  line-height: 1.6;
+}
+
+.wp-quotation-actions {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.wp-quotation-action {
+  min-height: 47px;
+  padding: 0 15px;
+  border: 1px solid rgba(91, 219, 241, .18);
+  border-radius: 10px;
+  background: rgba(4, 34, 46, .72);
+  color: #c2edf5;
+  font-size: 11px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.wp-quotation-action:hover:not(:disabled) {
+  background: rgba(20, 73, 89, .82);
+}
+
+.wp-quotation-action--primary {
+  border-color: rgba(255, 193, 7, .28);
+  background: linear-gradient(180deg, #f0c45d, #d99a1d);
+  color: #241d0d;
+}
+
+.wp-quotation-action:disabled {
+  opacity: .45;
+  cursor: not-allowed;
+}
+
+@media (max-width: 760px) {
+  .wp-review-page {
+    padding: 30px 16px 60px;
+  }
+
+  .wp-review-status-row,
+  .wp-review-grid,
+  .wp-citation-sources,
+  .wp-quotation-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .wp-quotation-review-banner {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .wp-review-list-top,
+  .wp-review-list-bottom {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  .wp-review-page {
+    padding: 24px 11px 45px;
+  }
+
+  .wp-review-card,
+  .wp-citation-card {
+    padding: 18px;
+  }
+}

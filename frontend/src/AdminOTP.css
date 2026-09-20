@@ -1,0 +1,227 @@
+.admin-otp-page {
+  min-height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 24px;
+
+  background: linear-gradient(
+    135deg,
+    #07111f 0%,
+    #0d1b2a 50%,
+    #102a43 100%
+  );
+
+  box-sizing: border-box;
+}
+
+.admin-otp-card {
+  width: 100%;
+  max-width: 430px;
+
+  padding: 42px 38px;
+
+  border-radius: 22px;
+
+  background: rgba(255, 255, 255, 0.97);
+
+  box-shadow:
+    0 25px 70px rgba(0, 0, 0, 0.35);
+
+  text-align: center;
+
+  box-sizing: border-box;
+}
+
+.admin-otp-icon {
+  width: 64px;
+  height: 64px;
+
+  margin: 0 auto 18px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 18px;
+
+  background: #0d1b2a;
+
+  font-size: 28px;
+}
+
+.admin-otp-card h1 {
+  margin: 0 0 10px;
+
+  color: #102a43;
+
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.admin-otp-subtitle {
+  margin: 0;
+
+  color: #667085;
+
+  font-size: 14px;
+}
+
+.admin-otp-email {
+  margin: 6px 0 28px;
+
+  color: #102a43;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  word-break: break-word;
+}
+
+.admin-otp-card form {
+  display: flex;
+  flex-direction: column;
+
+  text-align: left;
+}
+
+.admin-otp-card label {
+  margin-bottom: 8px;
+
+  color: #344054;
+
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.admin-otp-card input {
+  width: 100%;
+
+  padding: 15px;
+
+  margin-bottom: 16px;
+
+  border: 1px solid #d0d5dd;
+
+  border-radius: 10px;
+
+  outline: none;
+
+  box-sizing: border-box;
+
+  text-align: center;
+
+  letter-spacing: 8px;
+
+  font-size: 24px;
+  font-weight: 700;
+
+  color: #102a43;
+
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+}
+
+.admin-otp-card input:focus {
+  border-color: #2563eb;
+
+  box-shadow:
+    0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+.admin-otp-card form button {
+  width: 100%;
+
+  padding: 14px;
+
+  border: none;
+
+  border-radius: 10px;
+
+  background: #102a43;
+
+  color: white;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.admin-otp-card form button:disabled {
+  cursor: not-allowed;
+
+  opacity: 0.55;
+}
+
+.admin-otp-error {
+  margin-bottom: 16px;
+
+  padding: 11px 12px;
+
+  border-radius: 8px;
+
+  background: #fef3f2;
+
+  color: #b42318;
+
+  font-size: 13px;
+
+  text-align: left;
+}
+
+.admin-otp-back {
+  width: 100%;
+
+  margin-top: 16px;
+
+  padding: 11px;
+
+  border: none;
+
+  background: transparent;
+
+  color: #475467;
+
+  font-size: 14px;
+
+  cursor: pointer;
+}
+
+.admin-otp-back:hover {
+  color: #102a43;
+}
+
+.admin-otp-security {
+  margin-top: 22px;
+
+  padding: 12px;
+
+  border-radius: 10px;
+
+  background: #f2f4f7;
+
+  color: #667085;
+
+  font-size: 12px;
+
+  line-height: 1.5;
+}
+
+@media (max-width: 480px) {
+
+  .admin-otp-page {
+    padding: 16px;
+  }
+
+  .admin-otp-card {
+    padding: 32px 24px;
+  }
+
+  .admin-otp-card h1 {
+    font-size: 25px;
+  }
+}

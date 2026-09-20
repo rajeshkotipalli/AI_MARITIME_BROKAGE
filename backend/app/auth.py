@@ -69,6 +69,16 @@ class User(Base):
         nullable=False
     )
 
+    # --------------------------------------------------
+    # USER ROLE
+    # --------------------------------------------------
+
+    role = Column(
+        String(20),
+        default="user",
+        nullable=False
+    )
+
 
 # ======================================================
 # REGISTER USER
@@ -154,7 +164,9 @@ def register_user(
 
         password_hash=password_hash,
 
-        is_verified=False
+        is_verified=False,
+
+        role="user"
     )
 
 
@@ -260,10 +272,47 @@ def create_user_token(
 
         "username": user.username,
 
-        "email": user.email
+        "email": user.email,
+
+        "role": user.role
 
     }
 
+
+    return create_access_token(
+        token_data
+    )
+# ======================================================
+# CHECK ADMIN
+# ======================================================
+
+def is_admin(user: User):
+
+    if not user:
+        return False
+
+    return user.role == "admin"
+
+
+# ======================================================
+# CREATE ADMIN JWT TOKEN
+# ======================================================
+
+def create_admin_token(
+    user: User
+):
+
+    token_data = {
+
+        "sub": str(user.id),
+
+        "username": user.username,
+
+        "email": user.email,
+
+        "role": "admin"
+
+    }
 
     return create_access_token(
         token_data

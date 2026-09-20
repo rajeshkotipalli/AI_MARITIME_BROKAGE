@@ -8,169 +8,83 @@ function RouteResults() {
   const result = location.state?.result;
   const error = location.state?.error;
 
-  /* =========================================================
-     NO RESULT
-     ========================================================= */
-
   if (!result && !error) {
     return (
       <main className="wp-page wp-route-results wp-route-cinematic">
-      <div className="wp-route-scene" aria-hidden="true">
-        <div className="wp-route-stars" />
-        <div className="wp-route-glow wp-route-glow--one" />
-        <div className="wp-route-glow wp-route-glow--two" />
-        <div className="wp-route-globe">
-          <span className="wp-route-globe-line wp-route-globe-line--a" />
-          <span className="wp-route-globe-line wp-route-globe-line--b" />
-          <span className="wp-route-globe-line wp-route-globe-line--c" />
-          <span className="wp-route-globe-route" />
-          <i className="wp-route-globe-dot wp-route-globe-dot--a" />
-          <i className="wp-route-globe-dot wp-route-globe-dot--b" />
+        <div className="wp-route-scene" aria-hidden="true">
+          <div className="wp-route-stars" />
+          <div className="wp-route-glow wp-route-glow--one" />
+          <div className="wp-route-glow wp-route-glow--two" />
+          <div className="wp-route-globe">
+            <span className="wp-route-globe-line wp-route-globe-line--a" />
+            <span className="wp-route-globe-line wp-route-globe-line--b" />
+            <span className="wp-route-globe-line wp-route-globe-line--c" />
+            <span className="wp-route-globe-route" />
+            <i className="wp-route-globe-dot wp-route-globe-dot--a" />
+            <i className="wp-route-globe-dot wp-route-globe-dot--b" />
+          </div>
+          <div className="wp-route-ship">
+            <div className="wp-rship-smoke wp-rship-smoke--a" />
+            <div className="wp-rship-smoke wp-rship-smoke--b" />
+            <div className="wp-rship-bridge"><b /><b /><b /></div>
+            <div className="wp-rship-containers">
+              <i /><i /><i /><i /><i /><i />
+              <b /><b /><b /><b />
+            </div>
+            <div className="wp-rship-deck" />
+            <div className="wp-rship-hull">
+              <strong>WAYPOINT</strong>
+              <em>W</em>
+            </div>
+            <div className="wp-rship-water" />
+          </div>
         </div>
-        <div className="wp-route-ship">
-          <div className="wp-rship-smoke wp-rship-smoke--a" />
-          <div className="wp-rship-smoke wp-rship-smoke--b" />
-          <div className="wp-rship-bridge">
-            <b /><b /><b />
-          </div>
-          <div className="wp-rship-containers">
-            <i /><i /><i /><i /><i /><i />
-            <b /><b /><b /><b />
-          </div>
-          <div className="wp-rship-deck" />
-          <div className="wp-rship-hull">
-            <strong>WAYPOINT</strong>
-            <em>W</em>
-          </div>
-          <div className="wp-rship-water" />
-        </div>
-      </div>
 
         <div className="wp-route-empty">
-
-          <div className="wp-route-empty__icon">
-            ⚓
-          </div>
-
-          <p className="wp-eyebrow">
-            Route Intelligence
-          </p>
-
-          <h1>
-            No route analysis found
-          </h1>
-
-          <p>
-            Start by selecting an origin and destination
-            from the route planner.
-          </p>
-
-          <button
-            type="button"
-            className="wp-btn wp-btn--primary"
-            onClick={() => navigate("/")}
-          >
+          <div className="wp-route-empty__icon">⚓</div>
+          <p className="wp-eyebrow">Route Intelligence</p>
+          <h1>No route analysis found</h1>
+          <p>Start by selecting an origin and destination from the route planner.</p>
+          <button type="button" className="wp-btn wp-btn--primary" onClick={() => navigate("/")}>
             ← Back to route planner
           </button>
-
         </div>
-
       </main>
     );
   }
-
-  /* =========================================================
-     ERROR
-     ========================================================= */
 
   if (error) {
     return (
       <main className="wp-page wp-route-results">
-
         <div className="wp-route-empty wp-route-empty--error">
-
-          <div className="wp-route-empty__icon">
-            ⚠
-          </div>
-
-          <div className="wp-route-status">
-            <span />
-            LIVE ROUTE ANALYSIS
-          </div>
-
-          <p className="wp-eyebrow">
-            Route Analysis
-          </p>
-
-          <h1>
-            No routes found
-          </h1>
-
-          <p>
-            {typeof error === "string"
-              ? error
-              : "Unable to find a route for the selected ports."}
-          </p>
-
-          <button
-            type="button"
-            className="wp-btn wp-btn--primary"
-            onClick={() => navigate("/")}
-          >
+          <div className="wp-route-empty__icon">⚠</div>
+          <div className="wp-route-status"><span /> LIVE ROUTE ANALYSIS</div>
+          <p className="wp-eyebrow">Route Analysis</p>
+          <h1>No routes found</h1>
+          <p>{typeof error === "string" ? error : "Unable to find a route for the selected ports."}</p>
+          <button type="button" className="wp-btn wp-btn--primary" onClick={() => navigate("/")}>
             Try another route
           </button>
-
         </div>
-
       </main>
     );
   }
 
-  /* =========================================================
-     ROUTES
-     ========================================================= */
-
-  const routes = Array.isArray(result.available_routes)
-    ? result.available_routes
-    : [];
-
-  /*
-   * Backend:
-   *
-   * recommended_route: "R0010"
-   *
-   * So we normalize it into an ID.
-   */
+  const routes = Array.isArray(result.available_routes) ? result.available_routes : [];
 
   const recommendedRouteId =
     typeof result.recommended_route === "string"
       ? result.recommended_route
       : result.recommended_route?.route_id || null;
 
-  /*
-   * Find the complete best-route object.
-   */
-
   const recommendedRoute =
-    routes.find(
-      (route) =>
-        route.route_id === recommendedRouteId
-    ) ||
-    (
-      typeof result.recommended_route === "object"
-        ? result.recommended_route
-        : null
-    );
+    routes.find((route) => route.route_id === recommendedRouteId) ||
+    (typeof result.recommended_route === "object" ? result.recommended_route : null);
 
-  /* =========================================================
-     SELECT ROUTE
-     ========================================================= */
+  const containers = Number(result.containers) || 1;
 
   const handleSelectRoute = (route) => {
-
-    if (!route) {
-      return;
-    }
+    if (!route) return;
 
     navigate("/quotation", {
       state: {
@@ -180,521 +94,567 @@ function RouteResults() {
     });
   };
 
-  /* =========================================================
-     FORMAT MONEY
-     ========================================================= */
-
   const formatMoney = (value) => {
-
     const number = Number(value);
-
-    if (Number.isNaN(number)) {
-      return "—";
-    }
-
-    return `$${number.toLocaleString()}`;
+    if (!Number.isFinite(number)) return "—";
+    return `$${number.toLocaleString("en-US", {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    })}`;
   };
 
-  /* =========================================================
-     FORMAT NUMBER
-     ========================================================= */
+  const formatMoneyCompact = (value) => {
+    const number = Number(value);
+    if (!Number.isFinite(number)) return "—";
+    return `$${number.toLocaleString("en-US", {
+      maximumFractionDigits: 0,
+    })}`;
+  };
 
   const formatNumber = (value) => {
-
     const number = Number(value);
-
-    if (Number.isNaN(number)) {
-      return "—";
-    }
-
-    return number.toLocaleString();
+    if (!Number.isFinite(number)) return "—";
+    return number.toLocaleString("en-US");
   };
 
-  /* =========================================================
-     ROUTE PATH
-     ========================================================= */
-
   const getRoutePath = (route) => {
-
-    if (
-      Array.isArray(route.route_path) &&
-      route.route_path.length > 0
-    ) {
+    if (Array.isArray(route?.route_path) && route.route_path.length > 0) {
       return route.route_path.join(" → ");
     }
 
-    if (route.route_display) {
-      return route.route_display;
-    }
+    if (route?.route_display) return route.route_display;
 
-    if (
-      route.origin &&
-      route.destination
-    ) {
+    if (route?.origin && route?.destination) {
       return `${route.origin} → ${route.destination}`;
     }
 
-    return route.route_id || "Route";
+    return route?.route_id || "Maritime Route";
   };
 
-  /* =========================================================
-     ROUTE CARD
-     ========================================================= */
+  const getStops = (route) => {
+    if (Array.isArray(route?.route_path) && route.route_path.length > 0) {
+      return route.route_path;
+    }
 
-  const renderRouteCard = (route, index) => {
+    const display = route?.route_display || "";
+    if (display.includes("→")) {
+      return display.split("→").map((item) => item.trim()).filter(Boolean);
+    }
 
+    if (route?.origin && route?.destination) {
+      return [route.origin, route.destination];
+    }
+
+    return [route?.route_id || "Origin", "Destination"];
+  };
+
+  const getPricing = (route) => {
+    const pricing = route?.pricing || {};
+
+    const baseFreight = Number(
+      pricing.base_freight_usd ?? route?.base_freight_usd
+    );
+
+    const demandFactor = Number(pricing.demand_factor);
+    const targetMargin = Number(pricing.target_margin_percent);
+
+    const customerPrice = Number(
+      pricing.final_selling_price_usd ??
+      pricing.estimated_total_customer_price_usd ??
+      route?.estimated_total_usd
+    );
+
+    const totalCustomerPrice = Number(
+      pricing.estimated_total_customer_price_usd ??
+      (Number.isFinite(customerPrice) ? customerPrice * containers : NaN)
+    );
+
+    return {
+      ...pricing,
+      baseFreight: Number.isFinite(baseFreight) ? baseFreight : null,
+      demandFactor: Number.isFinite(demandFactor) ? demandFactor : null,
+      targetMargin: Number.isFinite(targetMargin) ? targetMargin : null,
+      customerPrice: Number.isFinite(customerPrice) ? customerPrice : null,
+      totalCustomerPrice: Number.isFinite(totalCustomerPrice) ? totalCustomerPrice : null,
+    };
+  };
+
+  const getScore = (route) => {
+    const score = Number(route?.score ?? route?.route_score);
+    return Number.isFinite(score) ? Math.max(0, Math.min(100, score)) : 0;
+  };
+
+  const recommendedPricing = recommendedRoute ? getPricing(recommendedRoute) : null;
+  const recommendedStops = recommendedRoute ? getStops(recommendedRoute) : [];
+
+  const demandPercent =
+    recommendedPricing?.demandFactor != null
+      ? Math.round((recommendedPricing.demandFactor - 1) * 100)
+      : null;
+
+  const recommendationReason =
+    result.reason ||
+    "Best balance of transit time, distance, transshipments and route cost.";
+
+  const getRouteTone = (route) => {
+    const type = String(route?.route_type || "").toLowerCase();
+    if (type.includes("express")) return "Express";
+    if (type.includes("economy")) return "Economy";
+    if (type.includes("multi")) return "Multi-leg";
+    return "Standard";
+  };
+
+  const renderRouteTimeline = (route) => {
+    const stops = getStops(route);
+
+    return (
+      <div className="wp-route-timeline">
+        {stops.slice(0, 5).map((stop, index) => (
+          <div className="wp-route-stop" key={`${stop}-${index}`}>
+            <div className={`wp-route-stop__node wp-route-stop__node--${index}`}>
+              <span>{index + 1}</span>
+            </div>
+
+            <div className="wp-route-stop__body">
+              <strong>{stop}</strong>
+              <small>
+                {index === 0
+                  ? "Origin"
+                  : index === stops.length - 1
+                    ? "Destination"
+                    : "Transshipment hub"}
+              </small>
+            </div>
+
+            {index < Math.min(stops.length - 1, 4) && (
+              <div className="wp-route-stop__connector">
+                <span>⌁</span>
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    );
+  };
+
+  const renderMiniRoute = (route) => {
+    const stops = getStops(route);
+    const score = getScore(route);
+    const pricing = getPricing(route);
+
+    return (
+      <div className="wp-route-mini-map" aria-hidden="true">
+        <div className="wp-mini-map-grid" />
+        <div className="wp-mini-map-line" />
+        {stops.slice(0, 4).map((stop, index) => {
+          const position = stops.length <= 2
+            ? [14, 82][index] ?? 82
+            : [10, 48, 82, 94][index] ?? 94;
+
+          return (
+            <div
+              className={`wp-mini-map-point wp-mini-map-point--${index}`}
+              style={{ left: `${position}%` }}
+              key={`${stop}-${index}`}
+            >
+              <i />
+              <span>{stop}</span>
+            </div>
+          );
+        })}
+        <div className="wp-mini-map-score">
+          <span>ROUTE SCORE</span>
+          <strong>{score.toFixed(1)}</strong>
+        </div>
+        <div className="wp-mini-map-price">
+          <small>Customer</small>
+          <strong>{formatMoneyCompact(pricing.customerPrice)}</strong>
+        </div>
+      </div>
+    );
+  };
+
+  const renderAlternativeCard = (route, index) => {
     const isBest =
       route.is_best === true ||
       route.route_id === recommendedRouteId;
 
-    const score = Number(route.score);
-
-    const scoreValue =
-      Number.isFinite(score)
-        ? Math.max(0, Math.min(100, score))
-        : 0;
+    const pricing = getPricing(route);
+    const score = getScore(route);
+    const tone = getRouteTone(route);
 
     return (
       <article
         key={`${route.route_id}-${index}`}
-        className={`wp-route-card ${
-          isBest
-            ? "wp-route-card--best"
-            : ""
-        }`}
+        className={`wp-alt-card ${isBest ? "wp-alt-card--best" : ""}`}
       >
-
-        {/* =================================================
-            CARD HEADER
-            ================================================= */}
-
-        <div className="wp-route-card__top">
-
-          <div>
-
-            <span className="wp-route-card__number">
-              Option #{index + 1}
-            </span>
-
-            <h3 className="wp-route-card__title">
-              {getRoutePath(route)}
-            </h3>
-
+        <div className="wp-alt-card__visual">
+          {renderMiniRoute(route)}
+          <div className="wp-alt-card__rank">
+            <span>#{index + 1}</span>
+            {isBest ? "RECOMMENDED" : "ALTERNATIVE"}
           </div>
-
-          {isBest && (
-            <span className="wp-route-card__best">
-              ★ BEST ROUTE
-            </span>
-          )}
-
         </div>
 
+        <div className="wp-alt-card__content">
+          <div className="wp-alt-card__heading">
+            <div>
+              <span className="wp-alt-card__eyebrow">{tone} ROUTE</span>
+              <h3>{getRoutePath(route)}</h3>
+            </div>
 
-        {/* =================================================
-            ROUTE TYPE
-            ================================================= */}
-
-        <div className="wp-route-card__type">
-          {route.route_type || "Maritime Route"}
-        </div>
-
-
-        {/* =================================================
-            SCORE
-            ================================================= */}
-
-        <div className="wp-route-card__score">
-
-          <div className="wp-route-card__score-row">
-
-            <span className="wp-route-card__score-label">
-              Route Score
-            </span>
-
-            <strong className="wp-route-card__score-number">
-              {Number.isFinite(score)
-                ? score.toFixed(1)
-                : "—"}
-            </strong>
-
+            <div className="wp-alt-score">
+              <span>Score</span>
+              <strong>{score.toFixed(1)}</strong>
+            </div>
           </div>
 
-          <div className="wp-score-bar">
-
-            <span
-              style={{
-                width: `${scoreValue}%`,
-              }}
-            />
-
+          <div className="wp-alt-card__stats">
+            <div>
+              <span>Transit</span>
+              <strong>{route.transit_days ?? "—"} days</strong>
+            </div>
+            <div>
+              <span>Distance</span>
+              <strong>{formatNumber(route.distance_nm)} NM</strong>
+            </div>
+            <div>
+              <span>Transshipments</span>
+              <strong>{route.transshipments ?? "—"}</strong>
+            </div>
+            <div>
+              <span>Base Freight</span>
+              <strong>{formatMoney(pricing.baseFreight)}</strong>
+            </div>
           </div>
 
-        </div>
-
-
-        {/* =================================================
-            ROUTE PATH
-            ================================================= */}
-
-        <div className="wp-route-card__path">
-
-          <span>
-            {getRoutePath(route)}
-          </span>
-
-        </div>
-
-
-        {/* =================================================
-            STATS
-            ================================================= */}
-
-        <div className="wp-route-card__stats">
-
-          {/* TRANSIT DAYS */}
-
-          <div className="wp-route-card__stat">
-
-            <span className="wp-route-card__stat-label">
-              Transit Days
-            </span>
-
-            <strong className="wp-route-card__stat-value">
-              {route.transit_days != null
-                ? `${route.transit_days} days`
-                : "—"}
-            </strong>
-
-          </div>
-
-
-          {/* DISTANCE */}
-
-          <div className="wp-route-card__stat">
-
-            <span className="wp-route-card__stat-label">
-              Nautical Miles
-            </span>
-
-            <strong className="wp-route-card__stat-value">
-              {formatNumber(
-                route.distance_nm
+          <div className="wp-alt-card__bottom">
+            <div className="wp-alt-price">
+              <span>Customer Price / Container</span>
+              <strong>{formatMoney(pricing.customerPrice)}</strong>
+              {containers > 1 && pricing.totalCustomerPrice != null && (
+                <small>
+                  {formatMoney(pricing.totalCustomerPrice)} total for {containers} containers
+                </small>
               )}
-              {" NM"}
-            </strong>
+            </div>
 
+            <button
+              type="button"
+              className="wp-alt-card__button"
+              onClick={() => handleSelectRoute(route)}
+            >
+              {isBest ? "Request Quotation" : "Select Route"} <span>→</span>
+            </button>
           </div>
-
-
-          {/* TRANSSHIPMENTS */}
-
-          <div className="wp-route-card__stat">
-
-            <span className="wp-route-card__stat-label">
-              Transshipments
-            </span>
-
-            <strong className="wp-route-card__stat-value">
-              {route.transshipments != null
-                ? route.transshipments
-                : "—"}
-            </strong>
-
-          </div>
-
-
-          {/* FREIGHT */}
-
-          <div className="wp-route-card__stat">
-
-            <span className="wp-route-card__stat-label">
-              Freight / Container
-            </span>
-
-            <strong className="wp-route-card__stat-value">
-              {formatMoney(
-                route.base_freight_usd
-              )}
-            </strong>
-
-          </div>
-
         </div>
-
-
-        {/* =================================================
-            FOOTER
-            ================================================= */}
-
-        <div className="wp-route-card__footer">
-
-          <div className="wp-route-card__price">
-
-            <small>
-              Estimated shipment cost
-            </small>
-
-            {formatMoney(
-              route.estimated_total_usd
-            )}
-
-          </div>
-
-
-          <button
-            type="button"
-            className="wp-route-card__button"
-            onClick={() =>
-              handleSelectRoute(route)
-            }
-          >
-            Select Route →
-          </button>
-
-        </div>
-
       </article>
     );
   };
 
-
-  /* =========================================================
-     PAGE
-     ========================================================= */
-
   return (
-    <main className="wp-page wp-route-results">
-
-      {/* =====================================================
-          BACK
-          ===================================================== */}
-
-      <div className="wp-page__back wp-route-back">
-
-        <button
-          type="button"
-          onClick={() => navigate("/")}
-        >
-          ← Back to Waypoint
-        </button>
-
+    <main className="wp-page wp-route-results wp-route-cinematic">
+      <div className="wp-route-background" aria-hidden="true">
+        <div className="wp-route-background__grid" />
+        <div className="wp-route-background__glow wp-route-background__glow--one" />
+        <div className="wp-route-background__glow wp-route-background__glow--two" />
       </div>
 
-
-      {/* =====================================================
-          HEADER
-          ===================================================== */}
-
-      <section className="wp-results-header wp-route-hero-header">
-
-        <div>
-
-          <p className="wp-eyebrow">
-            Route Analysis
-          </p>
-
-          <h1>
-            {result.origin}
-            <span> → </span>
-            {result.destination}
-          </h1>
-
-          <p className="wp-route-header-meta">
-            <span>{result.cargo_type || "Containerized Cargo"}</span>
-            <i />
-            <span>{result.containers || 0} TEU</span>
-            <i />
-            <span>{routes.length} available options</span>
-          </p>
-
+      <div className="wp-route-shell">
+        <div className="wp-page__back wp-route-back">
+          <button type="button" onClick={() => navigate("/")}>
+            ← Back to Waypoint
+          </button>
+          <span>LIVE ROUTE INTELLIGENCE</span>
         </div>
 
-      </section>
-
-
-      {/* =====================================================
-          RECOMMENDED ROUTE
-          ===================================================== */}
-
-      {recommendedRoute && (
-
-        <section className="wp-best-route wp-best-route--cinematic">
-
-          <div>
-
-            <span className="wp-eyebrow">
-              Recommended Route
-            </span>
-
-            <div className="wp-best-route__badge">
-              <span>★</span> TOP RECOMMENDATION
+        <section className="wp-route-hero">
+          <div className="wp-route-hero__main">
+            <div className="wp-route-pill">
+              <span className="wp-route-pill__icon">⌁</span>
+              {getRouteTone(recommendedRoute || routes[0])} ROUTE ANALYSIS
             </div>
 
-            <h2 className="wp-best-route__route">
-              {getRoutePath(recommendedRoute)}
-            </h2>
+            <h1>
+              {result.origin}
+              <span> → </span>
+              {result.destination}
+            </h1>
 
             <p>
-              {result.reason ||
-                "Recommended based on the highest combined route score considering transit time, distance and transshipments."}
+              AI-ranked maritime options with dynamic pricing, route scoring and
+              alternative-path analysis.
             </p>
 
-
-            {/* BEST ROUTE METRICS */}
-
-            <div className="wp-best-route__score-orb">
-              <span>ROUTE SCORE</span>
-              <strong>
-                {Number.isFinite(Number(recommendedRoute.score))
-                  ? Number(recommendedRoute.score).toFixed(1)
-                  : "—"}
-              </strong>
+            <div className="wp-route-hero__meta">
+              <span>{result.cargo_type || "Containerized Cargo"}</span>
+              <i />
+              <span>{containers} {containers === 1 ? "TEU" : "TEUs"}</span>
+              <i />
+              <span>{routes.length} available options</span>
             </div>
-
-            <div className="wp-best-route__meta">
-
-              <span>
-                🚢{" "}
-                {recommendedRoute.route_type ||
-                  "Maritime Route"}
-              </span>
-
-              <span>
-                ⏱{" "}
-                {recommendedRoute.transit_days ??
-                  "—"}
-                {" days"}
-              </span>
-
-              <span>
-                📏{" "}
-                {formatNumber(
-                  recommendedRoute.distance_nm
-                )}
-                {" NM"}
-              </span>
-
-              <span>
-                💰{" "}
-                {formatMoney(
-                  recommendedRoute.base_freight_usd
-                )}
-              </span>
-
-            </div>
-
           </div>
 
+          {recommendedRoute && (
+            <div className="wp-route-hero__map">
+              <div className="wp-map-header">
+                <span>GLOBAL ROUTE VIEW</span>
+                <b>● LIVE</b>
+              </div>
 
-          <button
-            type="button"
-            className="wp-btn wp-btn--primary"
-            onClick={
-              () =>
-                handleSelectRoute(
-                  recommendedRoute
-                )
-            }
-          >
-            Request quotation →
-          </button>
+              <div className="wp-map-ocean">
+                <div className="wp-map-land wp-map-land--asia" />
+                <div className="wp-map-land wp-map-land--africa" />
+                <div className="wp-map-route wp-map-route--one" />
+                <div className="wp-map-route wp-map-route--two" />
+                {recommendedStops.slice(0, 4).map((stop, index) => (
+                  <div
+                    key={`${stop}-${index}`}
+                    className={`wp-map-marker wp-map-marker--${index}`}
+                  >
+                    <i />
+                    <span>{stop}</span>
+                  </div>
+                ))}
+              </div>
 
+              <div className="wp-map-footer">
+                <span>⛴ AI OPTIMIZED</span>
+                <strong>{formatNumber(recommendedRoute.distance_nm)} NM</strong>
+              </div>
+            </div>
+          )}
         </section>
 
-      )}
-
-
-      {/* =====================================================
-          ALL ROUTES
-          ===================================================== */}
-
-      <section className="wp-comparison wp-route-comparison">
-
-        <div className="wp-comparison__heading">
-
-          <div>
-
-            <p className="wp-eyebrow">
-              Available Routes
-            </p>
-
-            <h2>
-              Compare every option
-            </h2>
-
-          </div>
-
-
-          <span className="wp-comparison__count">
-
-            {routes.length}
-
-            {" "}
-
-            {routes.length === 1
-              ? "route"
-              : "routes"}
-
-            {" found"}
-
-          </span>
-
-        </div>
-
-
-        <p className="wp-comparison__description">
-          The recommended route is selected after
-          comparing the available maritime options.
-        </p>
-
-
-        {/* =================================================
-            ROUTE CARDS
-            ================================================= */}
-
-        {routes.length > 0 ? (
-
+        {recommendedRoute && (
           <>
-            <div className="wp-route-network-line" aria-hidden="true">
-              <span />
-              <span />
-              <span />
-              <small>COMPARING AVAILABLE MARITIME OPTIONS</small>
-            </div>
+            <section className="wp-route-timeline-section">
+              <div className="wp-section-label">
+                <span>01</span>
+                ROUTE PATH
+              </div>
+              {renderRouteTimeline(recommendedRoute)}
+            </section>
 
-            <div className="wp-route-grid">
+            <section className="wp-route-metrics">
+              <div className="wp-metric-card">
+                <span className="wp-metric-icon">◷</span>
+                <div>
+                  <small>TRANSIT DAYS</small>
+                  <strong>{recommendedRoute.transit_days ?? "—"} days</strong>
+                </div>
+              </div>
 
-              {routes.map(
-                (route, index) =>
-                  renderRouteCard(
-                    route,
-                    index
-                  )
-              )}
-            </div>
+              <div className="wp-metric-card">
+                <span className="wp-metric-icon">⌖</span>
+                <div>
+                  <small>TOTAL DISTANCE</small>
+                  <strong>{formatNumber(recommendedRoute.distance_nm)} NM</strong>
+                </div>
+              </div>
+
+              <div className="wp-metric-card">
+                <span className="wp-metric-icon">⇄</span>
+                <div>
+                  <small>TRANSSHIPMENTS</small>
+                  <strong>{recommendedRoute.transshipments ?? "—"}</strong>
+                </div>
+              </div>
+
+              <div className="wp-metric-card">
+                <span className="wp-metric-icon">▣</span>
+                <div>
+                  <small>FREIGHT / CONTAINER</small>
+                  <strong>{formatMoneyCompact(recommendedPricing?.baseFreight)}</strong>
+                </div>
+              </div>
+            </section>
+
+            <section className="wp-recommended-panel">
+              <div className="wp-recommended-panel__top">
+                <div className="wp-recommended-title">
+                  <div className="wp-recommended-star">★</div>
+                  <div>
+                    <span className="wp-section-label wp-section-label--green">02 · RECOMMENDED ROUTE</span>
+                    <h2>{getRoutePath(recommendedRoute)}</h2>
+                    <p>Best balance of cost, transit time and route reliability.</p>
+                  </div>
+                </div>
+
+                <div className="wp-feasible-badge">
+                  <span>✓</span> FEASIBLE ROUTE
+                </div>
+              </div>
+
+              <div className="wp-recommended-grid">
+                <div className="wp-route-story">
+                  <div className="wp-story-art">
+                    <div className="wp-story-ocean" />
+                    <div className="wp-story-ship">
+                      <span className="wp-story-ship__smoke" />
+                      <span className="wp-story-ship__body" />
+                      <span className="wp-story-ship__containers" />
+                    </div>
+                    <div className="wp-story-skyline" />
+                    <span className="wp-story-label">WAYPOINT MARITIME</span>
+                  </div>
+
+                  <div className="wp-route-story__quote">
+                    <span>“</span>
+                    <p>{recommendationReason}</p>
+                  </div>
+                </div>
+
+                <div className="wp-pricing-panel">
+                  <div className="wp-pricing-panel__heading">
+                    <span className="wp-pricing-icon">◉</span>
+                    <div>
+                      <h3>Pricing Breakdown</h3>
+                      <p>Dynamic AI pricing · per container</p>
+                    </div>
+                  </div>
+
+                  <div className="wp-pricing-rows">
+                    <div className="wp-pricing-row">
+                      <div>
+                        <span className="wp-pricing-row__icon">▣</span>
+                        <div>
+                          <strong>Base Freight</strong>
+                          <small>Market rate for this route</small>
+                        </div>
+                      </div>
+                      <b>{formatMoney(recommendedPricing?.baseFreight)}</b>
+                    </div>
+
+                    <div className="wp-pricing-row">
+                      <div>
+                        <span className="wp-pricing-row__icon">⚙</span>
+                        <div>
+                          <strong>Demand Factor</strong>
+                          <small>Current market demand adjustment</small>
+                        </div>
+                      </div>
+                      <div className="wp-pricing-value-stack">
+                        <b>
+                          {recommendedPricing?.demandFactor != null
+                            ? recommendedPricing.demandFactor.toFixed(2)
+                            : "—"}
+                        </b>
+                        {demandPercent != null && (
+                          <span className={demandPercent >= 0 ? "wp-factor-up" : "wp-factor-down"}>
+                            {demandPercent >= 0 ? "↑" : "↓"} {Math.abs(demandPercent)}%
+                          </span>
+                        )}
+                      </div>
+                    </div>
+
+                    <div className="wp-pricing-row">
+                      <div>
+                        <span className="wp-pricing-row__icon">◇</span>
+                        <div>
+                          <strong>Target Margin</strong>
+                          <small>Optimized brokerage margin</small>
+                        </div>
+                      </div>
+                      <b>
+                        {recommendedPricing?.targetMargin != null
+                          ? `${recommendedPricing.targetMargin.toFixed(1)}%`
+                          : "—"}
+                      </b>
+                    </div>
+                  </div>
+
+                  <div className="wp-pricing-final">
+                    <div>
+                      <span>FINAL CUSTOMER PRICE</span>
+                      <small>Per container</small>
+                    </div>
+                    <strong>{formatMoney(recommendedPricing?.customerPrice)}</strong>
+                  </div>
+
+                  {containers > 1 && recommendedPricing?.totalCustomerPrice != null && (
+                    <div className="wp-pricing-total">
+                      <span>Total shipment · {containers} containers</span>
+                      <strong>{formatMoney(recommendedPricing.totalCustomerPrice)}</strong>
+                    </div>
+                  )}
+                </div>
+
+                <div className="wp-advantages-panel">
+                  <div className="wp-advantages-panel__heading">
+                    <span>✦</span>
+                    <h3>Key Advantages</h3>
+                  </div>
+
+                  <ul>
+                    <li><span>◷</span> Competitive transit time</li>
+                    <li><span>⬡</span> Reliable maritime connectivity</li>
+                    <li><span>↗</span> Cost-effective route selection</li>
+                    <li><span>▥</span> Data-driven route score</li>
+                  </ul>
+
+                  <div className="wp-score-card">
+                    <div>
+                      <span>ROUTE SCORE</span>
+                      <strong>{getScore(recommendedRoute).toFixed(1)}</strong>
+                    </div>
+                    <div className="wp-score-ring">
+                      <span style={{ "--score": `${getScore(recommendedRoute) * 3.6}deg` }} />
+                    </div>
+                  </div>
+
+                  <button
+                    type="button"
+                    className="wp-request-button"
+                    onClick={() => handleSelectRoute(recommendedRoute)}
+                  >
+                    <span>
+                      <strong>Request Quotation</strong>
+                      <small>Get detailed rates & booking information</small>
+                    </span>
+                    <b>→</b>
+                  </button>
+                </div>
+              </div>
+            </section>
           </>
-        ) : (
-
-          <div className="wp-empty">
-
-            <span>⚓</span>
-
-            <h3>
-              No available routes
-            </h3>
-
-            <p>
-              No maritime route options were
-              returned for this route.
-            </p>
-
-          </div>
-
         )}
 
-      </section>
+        <section className="wp-alternatives-section">
+          <div className="wp-alternatives-heading">
+            <div>
+              <span className="wp-section-label">03 · ALTERNATIVE ROUTES</span>
+              <h2>Compare every option</h2>
+              <p>
+                Every available route carries its own pricing, demand adjustment
+                and customer price.
+              </p>
+            </div>
 
+            <div className="wp-route-count">
+              <strong>{routes.length}</strong>
+              <span>routes analyzed</span>
+            </div>
+          </div>
+
+          {routes.length > 0 ? (
+            <div className="wp-alternatives-list">
+              {routes.map((route, index) => renderAlternativeCard(route, index))}
+            </div>
+          ) : (
+            <div className="wp-empty">
+              <span>⚓</span>
+              <h3>No available routes</h3>
+              <p>No maritime route options were returned for this route.</p>
+            </div>
+          )}
+        </section>
+
+        <footer className="wp-route-footer">
+          <span>WAYPOINT AI · MARITIME BROKERAGE INTELLIGENCE</span>
+          <span>ROUTE + PRICING ENGINE ACTIVE</span>
+        </footer>
+      </div>
     </main>
   );
 }

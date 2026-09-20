@@ -105,6 +105,11 @@ function RequestQuotation() {
   const [loadingQuotations, setLoadingQuotations] =
     useState(false);
 
+  // Holds the completed quotation returned/displayed after submission.
+  // Pricing details come from the route-analysis result already passed
+  // into this page, while the submitted request data comes from the form.
+  const [finalQuotation, setFinalQuotation] = useState(null);
+
 
   /* =====================================================
      INPUT HANDLING
@@ -510,25 +515,68 @@ function RequestQuotation() {
          SUCCESS
          ----------------------------------------------- */
 
-      setMessage(
-        data?.message ||
-        "Quotation request submitted successfully."
-      );
+      /*
+        The backend returns a customer-safe pricing object.
+        Internal operating cost, margin, profit and surcharge
+        fields are intentionally not rendered or copied here.
+      */
 
+      const pricing = data?.pricing || {};
+      const savedQuotation = data?.quotation || {};
 
-      /* Clear shipment fields */
+      setFinalQuotation({
+        id: savedQuotation.id,
+        companyName: savedQuotation.company_name || form.companyName.trim(),
+        origin: savedQuotation.origin || origin,
+        destination: savedQuotation.destination || destination,
+        route_id: savedQuotation.route_id || routeId,
+        cargo_type:
+          savedQuotation.cargo_type ||
+          result?.cargo_type ||
+          route?.cargo_type ||
+          routeType,
+        cargo_weight:
+          savedQuotation.cargo_weight ?? cargoWeight,
+        containers:
+          savedQuotation.containers ?? containers,
+        special_requirements:
+          savedQuotation.special_requirements ??
+          form.requirements.trim(),
+        status:
+          savedQuotation.status ||
+          "Pending",
+        created_at:
+          savedQuotation.created_at || null,
 
-      setForm((previous) => ({
-        ...previous,
+        route_score:
+          pricing.route_score ??
+          result?.route_score ??
+          route?.route_score,
+        route_type:
+          pricing.route_type ||
+          result?.route_type ||
+          routeType,
+        transshipments:
+          pricing.transshipments ??
+          transshipments,
+        transit_time_days:
+          pricing.transit_time_days ??
+          pricing.transit_days ??
+          transitDays,
+        distance_nm:
+          pricing.distance_nm ??
+          distance,
 
-        cargoWeight: "",
-        containers: "",
-        requirements: "",
-      }));
+        final_selling_price_usd:
+          pricing.final_selling_price_usd,
+        total_customer_price_usd:
+          pricing.total_customer_price_usd ??
+          pricing.estimated_total_customer_price_usd,
+      });
 
+      setMessage("");
 
       /* Refresh quotation history */
-
       await loadQuotations();
 
     } catch (err) {
@@ -612,6 +660,313 @@ function RequestQuotation() {
 
       </main>
 
+    );
+  }
+
+
+  /* =====================================================
+     FINAL QUOTATION
+     ===================================================== */
+
+  if (finalQuotation) {
+    const q = finalQuotation;
+
+    const money = (value) => {
+      if (value === undefined || value === null || value === "") {
+        return "—";
+      }
+
+      return `$${Number(value).toLocaleString(undefined, {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+      })}`;
+    };
+
+    const totalCustomerPrice =
+      q.total_customer_price_usd ??
+      (
+        Number(q.final_selling_price_usd || 0) *
+        Number(q.containers || 0)
+      );
+
+    async function downloadQuotationPdf() {
+      const token =
+        localStorage.getItem("waypoint_token");
+
+      if (!token || !q.id) {
+        setError(
+          "Quotation download is unavailable because the quotation ID is missing."
+        );
+        return;
+      }
+
+      try {
+        const response = await fetch(
+          `${API_URL}/api/quotations/${q.id}/pdf`,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+              Accept: "application/pdf",
+            },
+          }
+        );
+
+        if (!response.ok) {
+          throw new Error(
+            "Unable to download the quotation PDF."
+          );
+        }
+
+        const blob = await response.blob();
+        const url = window.URL.createObjectURL(blob);
+        const anchor = document.createElement("a");
+
+        anchor.href = url;
+        anchor.download =
+          `waypoint_quotation_${q.id}.pdf`;
+
+        document.body.appendChild(anchor);
+        anchor.click();
+        anchor.remove();
+        window.URL.revokeObjectURL(url);
+
+      } catch (downloadError) {
+        console.error(
+          "Quotation PDF download error:",
+          downloadError
+        );
+
+        setError(
+          downloadError?.message ||
+          "Unable to download the quotation PDF."
+        );
+      }
+    }
+
+    return (
+      <main className="wp-page wp-quotation-page">
+        <section
+          className="wp-quotation"
+          style={{
+            maxWidth: "980px",
+            margin: "0 auto",
+          }}
+        >
+          <button
+            type="button"
+            className="wp-page__back"
+            onClick={() => setFinalQuotation(null)}
+          >
+            ← Back to quotation request
+          </button>
+
+          <div className="wp-page-header wp-quotation-header">
+            <div className="wp-quotation-live">
+              <span />
+              QUOTATION GENERATED
+            </div>
+
+            <span className="wp-eyebrow">
+              FREIGHT BROKERAGE
+            </span>
+
+            <h1>Quotation Submitted</h1>
+
+            <p>
+              Your quotation request has been generated
+              and submitted for brokerage review.
+            </p>
+          </div>
+
+          {/* REQUEST STATUS */}
+          <section className="wp-quotation-review-banner">
+            <div>
+              <span className="wp-eyebrow">
+                REQUEST ID
+              </span>
+
+              <strong>
+                #{q.id || "—"}
+              </strong>
+            </div>
+
+            <div>
+              <span className="wp-eyebrow">
+                STATUS
+              </span>
+
+              <span
+                className={`wp-quotation-status wp-quotation-status--${String(
+                  q.status || "Pending"
+                ).toLowerCase()}`}
+              >
+                {q.status || "Pending"}
+              </span>
+            </div>
+          </section>
+
+          {/* ROUTE SUMMARY */}
+          <div
+            className="wp-quotation-route wp-quotation-route--cinematic"
+            style={{ marginBottom: "24px" }}
+          >
+            <span className="wp-eyebrow">
+              RECOMMENDED ROUTE
+            </span>
+
+            <h2>
+              {q.origin} {" → "} {q.destination}
+            </h2>
+
+            <div className="wp-quotation-route__meta">
+              <span>
+                Route: {q.route_id || "—"}
+              </span>
+
+              <span>
+                Route Score:{" "}
+                {q.route_score !== undefined &&
+                q.route_score !== null
+                  ? Number(q.route_score).toFixed(2)
+                  : "—"}
+              </span>
+
+              <span>
+                Transit:{" "}
+                {q.transit_time_days !== undefined &&
+                q.transit_time_days !== null
+                  ? `${q.transit_time_days} days`
+                  : "—"}
+              </span>
+
+              <span>
+                Distance:{" "}
+                {q.distance_nm !== undefined &&
+                q.distance_nm !== null
+                  ? `${Number(q.distance_nm).toLocaleString()} NM`
+                  : "—"}
+              </span>
+
+              <span>
+                Transshipments:{" "}
+                {q.transshipments ?? "—"}
+              </span>
+            </div>
+          </div>
+
+          {/* SHIPMENT SUMMARY */}
+          <section className="wp-form-section">
+            <h3>SHIPMENT SUMMARY</h3>
+
+            <div className="wp-form-two">
+              <div>
+                <strong>Company</strong>
+                <p>{q.companyName || "—"}</p>
+              </div>
+
+              <div>
+                <strong>Cargo Type</strong>
+                <p>{q.cargo_type || "—"}</p>
+              </div>
+
+              <div>
+                <strong>Cargo Weight</strong>
+                <p>
+                  {q.cargo_weight !== undefined &&
+                  q.cargo_weight !== null
+                    ? `${Number(
+                        q.cargo_weight
+                      ).toLocaleString()} kg`
+                    : "—"}
+                </p>
+              </div>
+
+              <div>
+                <strong>Containers</strong>
+                <p>{q.containers || "—"}</p>
+              </div>
+            </div>
+          </section>
+
+          {/* CUSTOMER-SAFE PRICE */}
+          <section className="wp-customer-price-card">
+            <span className="wp-eyebrow">
+              FINAL CUSTOMER QUOTATION
+            </span>
+
+            <div className="wp-customer-price">
+              {money(totalCustomerPrice)}
+            </div>
+
+            <p>
+              Total quotation for{" "}
+              {q.containers || "—"} container
+              {Number(q.containers) === 1
+                ? ""
+                : "s"}
+            </p>
+
+            <div className="wp-price-note">
+              Customer-facing quotation price only.
+              Internal brokerage cost and margin data
+              are restricted to the Admin Portal.
+            </div>
+          </section>
+
+          {/* ACTIONS */}
+          <section className="wp-quotation-actions">
+            <button
+              type="button"
+              className="wp-quotation-action wp-quotation-action--primary"
+              onClick={() =>
+                navigate(
+                  `/quotation-review/${q.id}`
+                )
+              }
+              disabled={!q.id}
+            >
+              Review quotation →
+            </button>
+
+            <button
+              type="button"
+              className="wp-quotation-action"
+              onClick={downloadQuotationPdf}
+              disabled={!q.id}
+            >
+              ↓ Download PDF
+            </button>
+
+            <button
+              type="button"
+              className="wp-quotation-action"
+              onClick={() =>
+                navigate("/quotation-reviews")
+              }
+            >
+              View quotation reviews
+            </button>
+          </section>
+
+          <button
+            type="button"
+            className="wp-form-submit"
+            style={{ marginTop: "24px" }}
+            onClick={() => {
+              setFinalQuotation(null);
+
+              setForm((previous) => ({
+                ...previous,
+                cargoWeight: "",
+                containers: "",
+                requirements: "",
+              }));
+            }}
+          >
+            Create another quotation →
+          </button>
+        </section>
+      </main>
     );
   }
 
