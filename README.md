@@ -224,36 +224,12 @@ The platform includes security mechanisms such as:
 
 ## 🏗️ High-Level Architecture
 
-``` text
-                    ┌───────────────────────┐
-                    │      Waypoint UI      │
-                    │      React Frontend   │
-                    └───────────┬───────────┘
-                                │
-                                ▼
-                    ┌───────────────────────┐
-                    │      FastAPI API      │
-                    │      Backend Layer    │
-                    └───────────┬───────────┘
-                                │
-          ┌─────────────────────┼─────────────────────┐
-          ▼                     ▼                     ▼
-   ┌─────────────┐       ┌─────────────┐       ┌─────────────┐
-   │ Route       │       │ Weather     │       │ Quotation   │
-   │ Intelligence│       │ Intelligence│       │ Management  │
-   └──────┬──────┘       └─────────────┘       └──────┬──────┘
-          │                                             │
-          ▼                                             ▼
-   ┌─────────────┐                              ┌─────────────┐
-   │ Route Score │                              │ Brokerage / │
-   │ & Selection │                              │ Commercial  │
-   └─────────────┘                              └─────────────┘
+## 🏗️ High-Level Architecture
 
-                    ┌───────────────────────┐
-                    │      Waypoint AI      │
-                    │ Context-aware Assist. │
-                    └───────────────────────┘
-```
+The Waypoint platform follows a layered architecture connecting the React frontend, FastAPI backend, maritime intelligence services, quotation management, and context-aware Waypoint AI.
+
+![Waypoint System Architecture](screenshots/architecture.png)
+
 
 ## 🔄 Application Data Flow
 
