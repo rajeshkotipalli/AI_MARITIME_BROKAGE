@@ -1,0 +1,123 @@
+:root {
+  /* -- Waypoint token system (v2) --------------------------------------
+     Concept: a shipping ledger / manifest room, not a sci-fi console.
+     Flat, desaturated colors only -- no gradients, no glow, no neon.
+     A characterful serif for headings, a plain grotesk for reading,
+     mono for data readouts.
+  --------------------------------------------------------------------- */
+  --ink-950: #10161d;
+  --ink-900: #161e27;
+  --ink-800: #1e2830;
+  --ink-700: #2a363f;
+  --ink-600: #3c4b55;
+
+  --slate: #7fa39c;
+  --slate-soft: #1c2a29;
+  --ochre: #c3945e;
+  --ochre-soft: #2b241b;
+  --rust: #b6604c;
+
+  --paper: #eceee7;
+  --paper-dim: #aab2ad;
+  --paper-faint: #6c7671;
+
+  --display: "Fraunces", Georgia, "Times New Roman", serif;
+  --body: "Work Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+
+  --radius-sm: 2px;
+  --radius-md: 4px;
+  --edge: 1px solid var(--ink-700);
+
+  color-scheme: dark;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--ink-950);
+  color: var(--paper);
+  font: 16px/1.6 var(--body);
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+  font-family: var(--display);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.05;
+}
+
+p {
+  margin: 0;
+}
+
+button,
+input,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+}
+
+::selection {
+  background: var(--slate);
+  color: var(--ink-950);
+}
+
+:focus-visible {
+  outline: 2px solid var(--slate);
+  outline-offset: 3px;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* Scroll-reveal utility: sections fade + rise into place as they enter
+   the viewport (see the useInView hook in App.jsx). */
+.wp-reveal {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.wp-reveal.wp-inview {
+  opacity: 1;
+  transform: none;
+}

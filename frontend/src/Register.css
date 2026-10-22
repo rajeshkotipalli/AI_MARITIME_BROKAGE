@@ -1,0 +1,173 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
+
+.waypoint-register-page, .waypoint-register-page * { box-sizing: border-box; }
+.waypoint-register-page {
+  position: relative; isolation: isolate; min-height: 100vh; width: 100%;
+  padding: 38px clamp(22px, 4vw, 70px); display: grid;
+  grid-template-columns: minmax(300px, 1fr) minmax(480px, 600px);
+  align-items: center; gap: clamp(35px, 5vw, 80px); overflow: hidden;
+  color: #f7f3eb; background: #07121c; font-family: "DM Sans", sans-serif;
+}
+.waypoint-register-background {
+  position: absolute; z-index: -3; inset: 0;
+  background-image: url("https://images.unsplash.com/photo-1494412519320-aa613dfb7738?auto=format&fit=crop&w=2600&q=90");
+  background-size: cover; background-position: center 48%;
+  transform: scale(1.02);
+}
+.waypoint-register-overlay {
+  position: absolute; z-index: -2; inset: 0;
+  background:
+    linear-gradient(90deg, rgba(3,14,24,.72) 0%, rgba(3,14,24,.48) 43%, rgba(3,14,24,.52) 62%, rgba(3,14,24,.76) 100%),
+    linear-gradient(0deg, rgba(2,10,16,.62), transparent 48%, rgba(2,10,16,.22));
+}
+.waypoint-register-site-brand {
+  position: absolute; top: 28px; left: clamp(22px, 4vw, 70px);
+  display: flex; align-items: center; gap: 13px;
+}
+.waypoint-register-brand-mark {
+  display: grid; place-items: center; width: 52px; height: 52px; flex: 0 0 52px;
+  border: 1px solid #d3a45d; border-radius: 14px; background: rgba(4,21,32,.82);
+  color: #32c7f4; font-size: 27px; box-shadow: inset 0 1px 0 rgba(255,255,255,.08);
+}
+.waypoint-register-brand-mark.small { width: 48px; height: 48px; flex-basis: 48px; font-size: 24px; }
+.waypoint-register-site-brand-text { display: flex; flex-direction: column; gap: 4px; }
+.waypoint-register-site-brand-text strong { color: #fffaf2; font: 800 25px/1 "Manrope", sans-serif; letter-spacing: -.8px; }
+.waypoint-register-site-brand-text span { color: #c0d0d5; font-size: 9px; letter-spacing: 1.8px; }
+.waypoint-register-trust-note {
+  position: absolute; top: 30px; right: clamp(22px, 4vw, 70px);
+  padding-left: 13px; border-left: 1px solid #d3a45d; color: #e1e9eb;
+  font-size: 11px; line-height: 1.55;
+}
+.waypoint-register-intro { align-self: center; max-width: 520px; padding-top: 65px; }
+.waypoint-register-eyebrow {
+  display: flex; align-items: center; gap: 14px; margin-bottom: 15px;
+  color: #efbd6d; font-size: 11px; font-weight: 800; letter-spacing: 1.8px;
+}
+.waypoint-register-eyebrow i { display: inline-block; width: 65px; height: 1px; background: rgba(231,190,124,.58); }
+.waypoint-register-intro h1 {
+  margin: 0 0 17px; color: #fffaf2; font: 800 clamp(37px, 4.1vw, 58px)/1.05 "Manrope", sans-serif;
+  letter-spacing: -2px; text-shadow: 0 4px 30px rgba(0,0,0,.22);
+}
+.waypoint-register-intro-copy { max-width: 440px; margin: 0 0 29px; color: #e0e9ec; font-size: 15px; line-height: 1.8; }
+.waypoint-register-benefits { display: flex; flex-direction: column; gap: 17px; }
+.waypoint-register-benefit { display: flex; align-items: center; gap: 13px; }
+.waypoint-register-benefit-icon {
+  display: grid; place-items: center; width: 46px; height: 46px; flex: 0 0 46px;
+  border: 1px solid rgba(218,178,111,.58); border-radius: 50%;
+  background: rgba(3,17,26,.53); color: #efbd6d; font-size: 25px;
+}
+.waypoint-register-benefit strong { display: block; margin-bottom: 4px; color: #fffaf2; font-size: 12px; font-weight: 700; }
+.waypoint-register-benefit p { margin: 0; color: #c5d4d9; font-size: 11px; }
+.waypoint-register-map-caption { display: flex; align-items: center; gap: 13px; margin-top: 31px; color: #d8e4e8; font-size: 9px; line-height: 1.9; letter-spacing: 2.6px; }
+.waypoint-register-compass { display: grid; place-items: center; width: 43px; height: 43px; border: 1px solid rgba(170,207,218,.45); border-radius: 50%; color: #b8d4dc; font-size: 25px; }
+
+.waypoint-register-card {
+  width: 100%; padding: 25px 29px 21px; border: 1px solid rgba(120,181,201,.62);
+  border-radius: 20px; background: linear-gradient(145deg, rgba(12,26,37,.91), rgba(3,15,24,.96));
+  box-shadow: 0 25px 85px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.06);
+  backdrop-filter: blur(19px);
+}
+.waypoint-register-card-brand { display: flex; align-items: center; gap: 12px; margin-bottom: 22px; }
+.waypoint-register-card-brand .waypoint-register-site-brand-text strong { font-size: 23px; }
+.waypoint-register-card-brand .waypoint-register-site-brand-text span { font-size: 8px; letter-spacing: 1.6px; }
+.waypoint-register-step {
+  margin-left: auto; padding: 8px 10px; border: 1px solid rgba(130,172,189,.36);
+  border-radius: 7px; color: #e0e9eb; font-size: 8px; font-weight: 800; letter-spacing: 1px; white-space: nowrap;
+}
+.waypoint-register-card-heading { margin-bottom: 20px; }
+.waypoint-register-card-heading h2 { margin: 0 0 7px; color: #fffaf2; font: 800 clamp(25px, 2.5vw, 32px)/1.18 "Manrope", sans-serif; letter-spacing: -.8px; }
+.waypoint-register-card-heading p { margin: 0; color: #c2d0d5; font-size: 12px; line-height: 1.65; }
+.waypoint-register-form { display: flex; flex-direction: column; gap: 12px; }
+.waypoint-register-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 13px 17px; }
+.waypoint-register-field { display: flex; flex-direction: column; min-width: 0; gap: 7px; }
+.waypoint-register-field > span:first-child { color: #f0f3f2; font-size: 10px; font-weight: 700; }
+.waypoint-register-field.full { width: 100%; }
+.waypoint-register-input-wrap {
+  display: flex; align-items: center; gap: 10px; min-width: 0; height: 41px; padding: 0 11px;
+  border: 1px solid #435965; border-radius: 8px; background: rgba(3,13,20,.65);
+  transition: border-color .2s, box-shadow .2s, background .2s;
+}
+.waypoint-register-input-wrap:focus-within { border-color: #d9ab68; box-shadow: 0 0 0 3px rgba(217,171,104,.10); background: rgba(4,16,24,.9); }
+.waypoint-register-input-wrap > i { display: grid; place-items: center; flex: 0 0 18px; color: #d5e0e3; font-style: normal; font-size: 17px; }
+.waypoint-register-input-wrap input, .waypoint-register-input-wrap select {
+  width: 100%; min-width: 0; height: 100%; padding: 0; border: 0; outline: 0;
+  background: transparent; color: #f5f4ee; font: 400 11px "DM Sans", sans-serif;
+}
+.waypoint-register-input-wrap input::placeholder { color: #9eb1ba; opacity: 1; }
+.waypoint-register-input-wrap select { color: #b7c7cd; cursor: pointer; }
+.waypoint-register-input-wrap select option { background: #0d1d27; color: #f5f4ee; }
+.waypoint-register-eye { flex: 0 0 24px; border: 0; padding: 3px; background: transparent; color: #c8d6da; font-size: 17px; cursor: pointer; }
+.waypoint-register-hint { margin-top: -2px; color: #8fa6ae; font-size: 9px; line-height: 1.4; }
+.waypoint-register-terms { display: flex; align-items: center; gap: 9px; margin-top: 1px; color: #d6e0e3; font-size: 10px; line-height: 1.5; cursor: pointer; }
+.waypoint-register-terms input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.waypoint-register-checkbox { position: relative; display: block; width: 18px; height: 18px; flex: 0 0 18px; border: 1px solid #d6a65d; border-radius: 4px; background: rgba(3,13,20,.65); }
+.waypoint-register-terms input:checked + .waypoint-register-checkbox { background: #e5b56b; }
+.waypoint-register-terms input:checked + .waypoint-register-checkbox::after { content: "✓"; position: absolute; inset: 0; display: grid; place-items: center; color: #13202a; font-size: 13px; font-weight: 900; }
+.waypoint-register-terms input:focus-visible + .waypoint-register-checkbox { outline: 2px solid #f4ca88; outline-offset: 2px; }
+.waypoint-register-terms a { color: #efbd6d; font-weight: 700; text-decoration: none; }
+.waypoint-register-terms a:hover { text-decoration: underline; }
+.waypoint-register-submit {
+  display: flex; align-items: center; justify-content: center; gap: 12px; width: 100%; min-height: 48px; margin-top: 2px; padding: 13px 15px;
+  border: 1px solid #edbd75; border-radius: 9px; background: linear-gradient(105deg, #f5c878, #bd843f);
+  color: #11181b; font-size: 10px; font-weight: 800; letter-spacing: .8px; cursor: pointer;
+  box-shadow: 0 9px 24px rgba(183,126,54,.15); transition: transform .18s, filter .18s, opacity .18s;
+}
+.waypoint-register-submit:not(:disabled):hover { transform: translateY(-1px); filter: brightness(1.07); }
+.waypoint-register-submit:disabled { cursor: wait; opacity: .65; }
+.waypoint-register-submit span { font-size: 19px; }
+.waypoint-register-message { display: flex; align-items: flex-start; gap: 9px; margin: 0 0 12px; padding: 10px 12px; border-radius: 8px; font-size: 11px; line-height: 1.5; }
+.waypoint-register-message span { display: grid; place-items: center; flex: 0 0 17px; width: 17px; height: 17px; border: 1px solid currentColor; border-radius: 50%; font-weight: 800; }
+.waypoint-register-message.error { border: 1px solid rgba(248,113,113,.32); background: rgba(127,29,29,.23); color: #ffb9b3; }
+.waypoint-register-message.success { border: 1px solid rgba(75,216,177,.28); background: rgba(10,100,77,.16); color: #9be7cd; }
+.waypoint-register-login { display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 7px; margin-top: 18px; color: #c4d1d5; font-size: 10px; }
+.waypoint-register-login button { border: 0; padding: 0; background: transparent; color: #efbd6d; font: inherit; font-weight: 800; cursor: pointer; }
+.waypoint-register-login button:hover { text-decoration: underline; }
+.waypoint-register-security { display: flex; align-items: center; justify-content: center; gap: 9px; padding-top: 15px; margin-top: 15px; border-top: 1px solid rgba(130,172,189,.22); }
+.waypoint-register-security > span { color: #e6b56c; font-size: 20px; }
+.waypoint-register-security p { margin: 0; color: #91a8b1; font-size: 9px; line-height: 1.5; text-align: center; }
+.waypoint-register-mobile-caption { display: none; }
+
+@media (min-width: 1500px) {
+  .waypoint-register-page { grid-template-columns: minmax(400px, 1fr) minmax(550px, 650px); }
+  .waypoint-register-card { padding: 30px 34px 25px; }
+  .waypoint-register-form { gap: 14px; }
+  .waypoint-register-input-wrap { height: 44px; }
+}
+@media (max-width: 1100px) {
+  .waypoint-register-page { grid-template-columns: minmax(250px, .85fr) minmax(440px, 1.15fr); gap: 28px; padding: 95px 24px 35px; }
+  .waypoint-register-site-brand { left: 24px; }
+  .waypoint-register-trust-note { right: 24px; }
+  .waypoint-register-intro h1 { font-size: 39px; }
+  .waypoint-register-intro-copy { font-size: 13px; }
+  .waypoint-register-card { padding: 24px 23px 20px; }
+}
+@media (max-width: 820px) {
+  .waypoint-register-page { display: flex; flex-direction: column; align-items: stretch; gap: 24px; padding: 105px 16px 30px; overflow: visible; }
+  .waypoint-register-intro { display: none; }
+  .waypoint-register-trust-note { top: 30px; right: 16px; font-size: 9px; }
+  .waypoint-register-site-brand { top: 25px; left: 16px; }
+  .waypoint-register-card { width: min(100%, 590px); margin: 0 auto; padding: 24px 22px 20px; }
+  .waypoint-register-card-heading h2 { font-size: 27px; }
+  .waypoint-register-mobile-caption { display: block; color: #9bb0b7; font-size: 8px; text-align: center; letter-spacing: 2px; }
+  .waypoint-register-mobile-caption span { color: #e4b66e; padding: 0 5px; }
+}
+@media (max-width: 480px) {
+  .waypoint-register-page { padding: 93px 12px 22px; }
+  .waypoint-register-brand-mark { width: 43px; height: 43px; flex-basis: 43px; font-size: 22px; }
+  .waypoint-register-site-brand-text strong { font-size: 22px; }
+  .waypoint-register-site-brand-text span { font-size: 7px; letter-spacing: 1.25px; }
+  .waypoint-register-trust-note { font-size: 8px; }
+  .waypoint-register-card { padding: 21px 17px 19px; border-radius: 15px; }
+  .waypoint-register-card-brand { gap: 9px; margin-bottom: 20px; }
+  .waypoint-register-card-brand .waypoint-register-brand-mark { width: 40px; height: 40px; flex-basis: 40px; }
+  .waypoint-register-card-brand .waypoint-register-site-brand-text strong { font-size: 21px; }
+  .waypoint-register-card-brand .waypoint-register-site-brand-text span { font-size: 7px; }
+  .waypoint-register-step { padding: 6px; font-size: 7px; }
+  .waypoint-register-grid { grid-template-columns: 1fr; gap: 12px; }
+  .waypoint-register-form { gap: 12px; }
+  .waypoint-register-card-heading h2 { font-size: 25px; }
+  .waypoint-register-card-heading p { font-size: 11px; }
+  .waypoint-register-input-wrap { height: 43px; }
+  .waypoint-register-terms { align-items: flex-start; }
+  .waypoint-register-security p { font-size: 8px; }
+}

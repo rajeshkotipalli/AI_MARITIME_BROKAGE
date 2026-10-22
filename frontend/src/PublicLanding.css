@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800&display=swap');
+:root{--wl-ink:#10243a;--wl-navy:#071b2b;--wl-blue:#0b3b60;--wl-gold:#f5b744;--wl-gold-deep:#d9982e;--wl-white:#fff;--wl-paper:#f5f8fb;--wl-muted:#62758a;--wl-line:#dce5ed}
+.wl-page{min-height:100vh;background:var(--wl-paper);color:var(--wl-ink);font-family:'DM Sans',sans-serif;overflow:hidden}.wl-page *{box-sizing:border-box}.wl-page button,.wl-page a{font:inherit}.wl-page button{cursor:pointer}.wl-nav{height:66px;display:flex;align-items:center;justify-content:space-between;gap:28px;padding:0 clamp(22px,5.8vw,88px);position:sticky;top:0;z-index:30;background:rgba(5,24,41,.96);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.12)}.wl-brand{display:flex;align-items:center;gap:9px;text-decoration:none;color:#fff;font-size:19px;font-weight:700;letter-spacing:.25px;white-space:nowrap}.wl-brand-mark{font-family:'Playfair Display',serif;color:var(--wl-gold);font-size:34px;line-height:1}.wl-brand b{color:#74d9e7;font-size:.68em;letter-spacing:1px}.wl-nav nav{display:flex;align-items:center;justify-content:center;gap:clamp(13px,2.1vw,32px);flex:1}.wl-nav nav a{color:#e5edf3;text-decoration:none;font-size:12px;font-weight:600;white-space:nowrap;padding:24px 0 20px;border-bottom:2px solid transparent}.wl-nav nav a:hover,.wl-nav nav a:focus-visible{color:#fff;border-bottom-color:var(--wl-gold)}.wl-nav-actions{display:flex;align-items:center;gap:10px}.wl-nav-actions button{height:38px;padding:0 19px;border-radius:9px;font-size:12px;font-weight:700}.wl-login{background:rgba(3,17,29,.55);border:1px solid #9eb0c0;color:#fff}.wl-register,.wl-primary{background:var(--wl-gold);border:1px solid var(--wl-gold);color:#172436;box-shadow:0 5px 18px #f5b74425}.wl-register:hover,.wl-primary:hover{background:#ffd06a;border-color:#ffd06a;transform:translateY(-1px)}.wl-register span{margin-left:8px}.wl-hero{min-height:480px;position:relative;isolation:isolate;display:flex;align-items:center;padding:60px clamp(26px,6.2vw,94px) 78px;color:#fff;background:#10283e url('./assets/waypoint-ship-hero.png') center 55%/cover no-repeat}.wl-hero:before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(5,24,43,.91) 0%,rgba(7,30,51,.76) 36%,rgba(7,30,51,.12) 73%,rgba(7,24,40,.14) 100%),linear-gradient(0deg,rgba(4,19,32,.7),transparent 38%)}.wl-hero-copy{width:min(590px,58%);position:relative;z-index:1}.wl-kicker,.wl-section-kicker{margin:0 0 17px;color:#a8d4e5;font-size:10px;letter-spacing:2px;font-weight:700}.wl-kicker{display:flex;align-items:center;gap:10px;color:#f5dba7}.wl-kicker span,.wl-caption-dot{width:7px;height:7px;display:inline-block;border-radius:50%;background:var(--wl-gold);box-shadow:0 0 0 4px #f5b74424}.wl-hero h1{font:700 clamp(38px,4.3vw,64px)/1.06 'Playfair Display',serif;letter-spacing:-1.1px;max-width:650px;margin:0 0 17px;color:#fff;text-wrap:balance}.wl-hero h1 em{font-style:normal;color:#f5c56e}.wl-hero-description{max-width:510px;margin:0;color:#edf3f8;font-size:14px;line-height:1.7}.wl-hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}.wl-primary,.wl-secondary,.wl-light-outline{min-height:43px;padding:0 19px;border-radius:9px;font-size:12px;font-weight:700;transition:background .2s,transform .2s}.wl-primary span,.wl-secondary span,.wl-light-outline span{margin-left:12px;font-size:17px}.wl-secondary{background:rgba(5,24,41,.68);border:1px solid #b5c8d6;color:#fff}.wl-secondary:hover,.wl-login:hover{background:#173952}.wl-hero-checks{display:flex;gap:20px;flex-wrap:wrap;margin-top:29px;color:#f1f5f8;font-size:10px;font-weight:600}.wl-hero-caption{position:absolute;left:clamp(26px,6.2vw,94px);bottom:18px;color:#f0dfbd;font-size:10px;letter-spacing:1.1px;text-transform:uppercase;display:flex;align-items:center;gap:10px}.wl-caption-dot{width:6px;height:6px}.wl-features-section{padding:42px clamp(22px,4vw,60px) 35px;background:#f8fafc}.wl-section-heading{text-align:center;max-width:760px;margin:0 auto 28px}.wl-section-kicker{color:#53738f;margin-bottom:10px}.wl-section-heading h2,.wl-why h2,.wl-testimonial-intro h2{font:700 clamp(27px,3vw,39px)/1.13 'Playfair Display',serif;letter-spacing:-.5px;margin:0 0 11px;color:#10243a}.wl-section-heading h2 em{font-style:normal;color:#145e9a}.wl-section-heading>p:last-child{margin:0;color:#667b90;font-size:13px;line-height:1.6}.wl-features{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:13px;max-width:1440px;margin:0 auto}.wl-feature-card{position:relative;min-height:158px;padding:19px 17px;background:#fff;border:1px solid #e0e8ef;border-radius:10px;box-shadow:0 5px 15px #163c5810;transition:transform .2s,box-shadow .2s}.wl-feature-card:hover{transform:translateY(-3px);box-shadow:0 12px 24px #163c5817}.wl-feature-icon{width:43px;height:43px;border-radius:50%;display:grid;place-items:center;background:#eaf2fc;border:1px solid #d6e5f7;color:#155aa1;font-size:23px;margin-bottom:13px}.wl-feature-card h3{font:700 14px/1.3 'Playfair Display',serif;margin:0 0 7px;color:#132b43}.wl-feature-card p{font-size:11px;line-height:1.55;color:#5d7184;margin:0}.wl-why{position:relative;isolation:isolate;display:grid;grid-template-columns:.9fr 1.1fr;align-items:center;gap:42px;padding:43px clamp(26px,6.2vw,94px);color:#fff;background:#09233a url('./assets/waypoint-ship-hero.png') center 70%/cover no-repeat}.wl-why:before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(4,23,40,.96),rgba(5,29,49,.8) 52%,rgba(5,26,43,.65))}.wl-why .wl-section-kicker{color:#e9c27a}.wl-why h2{color:#fff;margin-bottom:14px}.wl-why-copy>p:not(.wl-section-kicker){max-width:440px;color:#e0e9f0;font-size:13px;line-height:1.7;margin:0 0 17px}.wl-light-outline{background:rgba(3,18,32,.38);border:1px solid #d4e0e8;color:#fff}.wl-light-outline:hover{background:#173952}.wl-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;text-align:center;align-items:center}.wl-stats>div{display:flex;flex-direction:column;align-items:center;gap:6px;padding:14px 5px;border-right:1px solid #ffffff1c}.wl-stats>div:last-of-type{border-right:0}.wl-stats>div>span{font-size:25px;color:var(--wl-gold)}.wl-stats strong{font:700 clamp(21px,2vw,29px) 'Playfair Display',serif;color:#fff}.wl-stats small{font-size:10px;color:#e1eaf0}.wl-stats>p{grid-column:1/-1;color:#bdcbd5;font-size:9px;margin:7px 0 0}.wl-how{padding:47px clamp(24px,5vw,80px) 43px;text-align:center;background:#fff}.wl-how .wl-section-heading{margin-bottom:30px}.wl-steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:25px;max-width:1320px;margin:0 auto 26px;text-align:left}.wl-steps article{position:relative;padding:0 10px}.wl-step-top{display:flex;align-items:center;gap:12px;margin-bottom:12px}.wl-step-top>span{width:29px;height:29px;display:grid;place-items:center;border-radius:50%;background:#087da5;color:#fff;font-size:11px;font-weight:700}.wl-step-top i{width:42px;height:42px;display:grid;place-items:center;border-radius:50%;background:#eaf2fc;color:#135da3;font-size:23px;font-style:normal}.wl-steps h3{font:700 15px 'Playfair Display',serif;color:#132b43;margin:0 0 7px}.wl-steps p{font-size:11px;line-height:1.6;color:#64788b;margin:0;max-width:245px}.wl-how-cta{margin-top:1px}.wl-testimonials{position:relative;isolation:isolate;display:grid;grid-template-columns:.9fr 2.1fr;gap:30px;align-items:center;padding:42px clamp(24px,5.5vw,84px);color:#fff;background:#0a263d url('./assets/waypoint-ship-hero.png') center 88%/cover no-repeat}.wl-testimonials:before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(5,22,38,.82),rgba(5,24,41,.56))}.wl-testimonial-intro .wl-section-kicker{color:#f4ce87}.wl-testimonial-intro h2{color:#fff}.wl-testimonial-intro>p:not(.wl-section-kicker){font-size:12px;line-height:1.6;color:#e5edf3}.wl-testimonial-intro>small{font-size:9px;line-height:1.5;color:#d2dce4}.wl-review-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.wl-review-card{padding:17px 15px;background:rgba(255,255,255,.96);color:#1b2c3d;border:1px solid #fff;border-radius:9px;box-shadow:0 8px 24px #00111e2a;min-width:0}.wl-review-person{display:flex;align-items:center;gap:9px}.wl-review-person>span{width:36px;height:36px;flex:0 0 36px;display:grid;place-items:center;border-radius:50%;background:#dbe9f7;color:#174f7c;font-size:10px;font-weight:700}.wl-review-person div{display:flex;flex-direction:column;gap:3px;min-width:0}.wl-review-person strong{font-size:10px}.wl-review-person small{font-size:9px;color:#64788a}.wl-review-person b{color:#e6a125;font-size:11px;letter-spacing:1px}.wl-review-card>p{font-size:10px;line-height:1.65;color:#43576b;margin:15px 0 0}.wl-footer{display:grid;grid-template-columns:1.5fr .7fr .8fr 1fr;gap:30px;align-items:start;padding:30px clamp(24px,6vw,90px);background:#061827;color:#dce6ee}.wl-footer .wl-brand{font-size:17px}.wl-footer .wl-brand-mark{font-size:29px}.wl-footer-brand p{font-size:11px;color:#a7bac9;margin:13px 0 0}.wl-footer-column{display:flex;flex-direction:column;gap:8px}.wl-footer-column strong{font-size:11px;color:#fff;margin-bottom:3px}.wl-footer-column button{padding:0;border:0;background:transparent;text-align:left;color:#a9bdcb;font-size:10px}.wl-footer-column button:hover{color:var(--wl-gold)}.wl-footer-note{display:flex;flex-direction:column;gap:7px;align-self:end;justify-self:end;text-align:right;font-size:10px;color:#dbe5ed}.wl-footer-note small{font-size:10px;color:#8198a9}
+@media(min-width:1600px){.wl-hero{min-height:560px}.wl-hero-copy{width:min(650px,55%)}.wl-features-section{padding-top:55px;padding-bottom:48px}.wl-feature-card{min-height:180px;padding:24px}.wl-why,.wl-how,.wl-testimonials{padding-top:60px;padding-bottom:60px}.wl-hero-description{font-size:16px}}
+@media(max-width:1100px){.wl-nav{gap:15px;padding-inline:24px}.wl-brand{font-size:17px}.wl-nav nav{gap:14px}.wl-nav nav a{font-size:11px}.wl-nav-actions button{padding-inline:13px}.wl-hero{min-height:455px;padding-inline:38px}.wl-hero-copy{width:min(560px,62%)}.wl-hero h1{font-size:clamp(38px,5.2vw,56px)}.wl-features{grid-template-columns:repeat(3,minmax(0,1fr))}.wl-feature-card{min-height:145px}.wl-why{gap:24px}.wl-testimonials{grid-template-columns:1fr}.wl-testimonial-intro{max-width:600px}.wl-review-card{padding:16px}}
+@media(max-width:760px){.wl-nav{height:auto;min-height:66px;flex-wrap:wrap;padding:10px 18px;gap:10px}.wl-brand{font-size:17px}.wl-brand-mark{font-size:30px}.wl-nav nav{order:3;flex-basis:100%;justify-content:flex-start;gap:20px;overflow-x:auto;scrollbar-width:none}.wl-nav nav::-webkit-scrollbar{display:none}.wl-nav nav a{padding:8px 0 9px;font-size:11px}.wl-nav-actions{margin-left:auto}.wl-nav-actions button{height:34px;padding:0 12px;font-size:11px}.wl-hero{min-height:500px;padding:45px 24px 66px;background-position:58% center}.wl-hero:before{background:linear-gradient(90deg,rgba(5,24,43,.91),rgba(7,30,51,.64) 70%,rgba(7,30,51,.4)),linear-gradient(0deg,rgba(4,19,32,.68),transparent 45%)}.wl-hero-copy{width:min(100%,570px)}.wl-hero h1{font-size:clamp(37px,7.8vw,55px);max-width:600px}.wl-hero-description{max-width:500px;font-size:13px}.wl-hero-checks{gap:11px 17px;max-width:500px}.wl-hero-caption{left:24px}.wl-features-section{padding:36px 20px 28px}.wl-features{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.wl-feature-card{min-height:145px;padding:15px}.wl-why{grid-template-columns:1fr;padding:36px 24px;background-position:center}.wl-stats{gap:10px}.wl-stats>div{border:0;border-right:1px solid #ffffff1c}.wl-stats>div:nth-child(2){border-right:0}.wl-how{padding:38px 22px}.wl-steps{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 15px}.wl-steps article{padding:0}.wl-testimonials{padding:36px 20px;gap:22px}.wl-review-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.wl-footer{grid-template-columns:1fr 1fr;gap:24px;padding:28px 22px}.wl-footer-note{justify-self:start;text-align:left;align-self:start}}
+@media(max-width:480px){.wl-nav{padding:10px 14px}.wl-brand{font-size:15px}.wl-brand-mark{font-size:28px}.wl-nav-actions{gap:6px}.wl-nav-actions button{padding:0 10px}.wl-nav nav{gap:17px}.wl-nav nav a{font-size:10px}.wl-hero{min-height:515px;padding:38px 18px 66px;background-position:61% center}.wl-hero:before{background:linear-gradient(90deg,rgba(5,24,43,.92),rgba(7,30,51,.73)),linear-gradient(0deg,rgba(4,19,32,.75),transparent 60%)}.wl-kicker{font-size:9px;letter-spacing:1.5px}.wl-hero h1{font-size:clamp(34px,9vw,43px);letter-spacing:-.6px}.wl-hero-description{font-size:12px;line-height:1.7}.wl-hero-actions{gap:8px;margin-top:19px}.wl-primary,.wl-secondary,.wl-light-outline{min-height:41px;padding-inline:13px;font-size:11px}.wl-hero-checks{font-size:9px;gap:10px 13px;margin-top:22px}.wl-hero-caption{left:18px;font-size:8px;letter-spacing:.8px}.wl-features-section{padding:32px 14px 25px}.wl-section-heading h2,.wl-why h2,.wl-testimonial-intro h2{font-size:28px}.wl-section-heading>p:last-child{font-size:12px}.wl-features{grid-template-columns:1fr;gap:9px}.wl-feature-card{min-height:0;display:grid;grid-template-columns:42px 1fr;column-gap:12px;padding:14px}.wl-feature-icon{grid-row:span 2;width:40px;height:40px;margin:0;font-size:21px}.wl-feature-card h3{align-self:end;font-size:13px;margin:0 0 5px}.wl-feature-card p{font-size:11px}.wl-why{padding:32px 18px}.wl-stats{grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 8px}.wl-stats>div{padding:8px 3px}.wl-stats strong{font-size:23px}.wl-stats small{font-size:9px}.wl-how{padding:33px 18px}.wl-steps{grid-template-columns:1fr;gap:19px;margin-top:24px}.wl-steps article{display:grid;grid-template-columns:52px 1fr;column-gap:10px}.wl-step-top{grid-row:span 2;display:flex;flex-direction:column;align-items:center;gap:6px;margin:0}.wl-step-top>span{width:25px;height:25px}.wl-step-top i{width:36px;height:36px;font-size:20px}.wl-steps h3{font-size:14px;margin:2px 0 5px}.wl-steps p{font-size:11px;max-width:none}.wl-testimonials{padding:32px 14px}.wl-review-grid{grid-template-columns:1fr}.wl-review-card{padding:15px}.wl-footer{grid-template-columns:1fr 1fr;gap:22px 15px;padding:25px 17px}.wl-footer-brand{grid-column:1/-1}.wl-footer-note{grid-column:1/-1}.wl-footer .wl-brand{font-size:16px}}
+@media(prefers-reduced-motion:reduce){.wl-page *{scroll-behavior:auto!important;transition:none!important}}
+
+
+/* Layout polish: predictable text flow, restrained depth and responsive motion. */
+.wl-page { width: 100%; max-width: 100%; overflow-x: clip; }
+.wl-page section, .wl-page header, .wl-page footer { min-width: 0; }
+.wl-nav { width: 100%; }
+.wl-nav nav a { line-height: 1.2; }
+.wl-hero { min-height: clamp(470px, 38vw, 590px); padding-top: clamp(48px, 6vw, 86px); padding-bottom: 82px; background-position: center 56%; }
+.wl-hero:before { background: linear-gradient(90deg, rgba(4,20,36,.96) 0%, rgba(5,25,44,.84) 35%, rgba(5,25,44,.38) 63%, rgba(5,25,44,.08) 100%), linear-gradient(0deg, rgba(4,18,31,.74), transparent 42%); }
+.wl-hero-copy { width: min(610px, 54%); max-width: 100%; }
+.wl-hero h1 { display: flex; flex-direction: column; align-items: flex-start; max-width: 620px; margin: 0 0 18px; line-height: 1.02; }
+.wl-title-line { display: block; max-width: 100%; }
+.wl-hero-description { max-width: 500px; }
+.wl-hero-actions { align-items: center; }
+.wl-hero-checks { max-width: 650px; row-gap: 12px; }
+.wl-hero-caption { z-index: 2; }
+.wl-primary, .wl-secondary, .wl-light-outline, .wl-login, .wl-register { transition: transform .22s ease, box-shadow .22s ease, background-color .22s ease, border-color .22s ease; }
+.wl-primary:hover, .wl-secondary:hover, .wl-light-outline:hover, .wl-login:hover, .wl-register:hover { transform: translateY(-2px); box-shadow: 0 9px 22px rgba(0,0,0,.2); }
+.wl-feature-card { transform-style: preserve-3d; transition: transform .28s cubic-bezier(.2,.75,.25,1), box-shadow .28s ease, border-color .28s ease; }
+.wl-feature-card:hover { transform: perspective(900px) translateY(-6px) rotateX(2deg); border-color: #c7d9e9; box-shadow: 0 18px 32px rgba(16,48,76,.14); }
+.wl-feature-icon { transition: transform .28s ease, background-color .28s ease; }
+.wl-feature-card:hover .wl-feature-icon { transform: translateZ(12px) rotate(-5deg); background: #dcecff; }
+.wl-review-card { transition: transform .28s ease, box-shadow .28s ease; }
+.wl-review-card:hover { transform: translateY(-5px) rotateX(1deg); box-shadow: 0 16px 30px rgba(0,12,24,.25); }
+.wl-steps article { transition: transform .25s ease; }
+.wl-steps article:hover { transform: translateY(-4px); }
+.wl-footer-column button { line-height: 1.45; }
+.wl-footer-note { min-width: 0; max-width: 100%; overflow-wrap: anywhere; }
+.wl-testimonial-intro, .wl-review-grid, .wl-footer-brand, .wl-footer-column { min-width: 0; }
+.wl-testimonials { background-position: center 78%; }
+
+@keyframes wl-rise-in {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes wl-soft-glow {
+  0%, 100% { box-shadow: 0 0 0 rgba(245,183,68,0); }
+  50% { box-shadow: 0 0 22px rgba(245,183,68,.16); }
+}
+.wl-hero-copy > * { animation: wl-rise-in .65s both; }
+.wl-hero-copy > *:nth-child(1) { animation-delay: .04s; }
+.wl-hero-copy > *:nth-child(2) { animation-delay: .12s; }
+.wl-hero-copy > *:nth-child(3) { animation-delay: .2s; }
+.wl-hero-copy > *:nth-child(4) { animation-delay: .28s; }
+.wl-hero-copy > *:nth-child(5) { animation-delay: .36s; }
+.wl-hero-copy > *:nth-child(6) { animation-delay: .44s; }
+.wl-register { animation: wl-soft-glow 4s ease-in-out infinite; }
+
+@media (min-width: 1500px) {
+  .wl-hero { min-height: min(650px, 48vw); }
+  .wl-hero-copy { width: min(680px, 52%); }
+  .wl-hero h1 { font-size: clamp(58px, 4.1vw, 76px); }
+  .wl-hero-description { font-size: 16px; }
+  .wl-features-section, .wl-how { padding-top: 58px; padding-bottom: 52px; }
+}
+@media (max-width: 1100px) {
+  .wl-hero-copy { width: min(590px, 63%); }
+  .wl-hero { min-height: 465px; }
+  .wl-hero h1 { font-size: clamp(40px, 5.4vw, 58px); }
+  .wl-why { grid-template-columns: 1fr; gap: 24px; }
+  .wl-stats { max-width: 760px; width: 100%; }
+  .wl-footer { grid-template-columns: 1.3fr .7fr .8fr; }
+  .wl-footer-note { grid-column: 1 / -1; justify-self: start; text-align: left; }
+}
+@media (max-width: 760px) {
+  .wl-hero { min-height: 500px; padding: 48px 24px 76px; background-position: 60% center; }
+  .wl-hero:before { background: linear-gradient(90deg, rgba(4,20,36,.95) 0%, rgba(5,25,44,.82) 58%, rgba(5,25,44,.52) 100%), linear-gradient(0deg, rgba(4,18,31,.72), transparent 52%); }
+  .wl-hero-copy { width: min(100%, 590px); }
+  .wl-hero h1 { font-size: clamp(38px, 7.5vw, 54px); }
+  .wl-hero-description { max-width: 530px; }
+  .wl-hero-checks { max-width: 520px; }
+  .wl-features { grid-template-columns: repeat(2, minmax(0,1fr)); }
+  .wl-why { background-position: 58% center; }
+  .wl-testimonials { grid-template-columns: 1fr; }
+  .wl-review-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+}
+@media (max-width: 480px) {
+  .wl-nav { gap: 8px; }
+  .wl-nav-actions { flex-shrink: 0; }
+  .wl-hero { min-height: 535px; padding: 42px 18px 72px; background-position: 64% center; }
+  .wl-hero h1 { font-size: clamp(34px, 9vw, 43px); letter-spacing: -.7px; line-height: 1.04; }
+  .wl-title-line { max-width: 100%; }
+  .wl-hero-description { font-size: 12px; }
+  .wl-hero-actions { gap: 8px; }
+  .wl-hero-checks { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 10px; font-size: 9px; }
+  .wl-hero-caption { left: 18px; right: 18px; bottom: 16px; font-size: 8px; }
+  .wl-features { grid-template-columns: 1fr; }
+  .wl-review-grid { grid-template-columns: 1fr; }
+  .wl-footer { grid-template-columns: repeat(2, minmax(0,1fr)); }
+  .wl-footer-brand, .wl-footer-note { grid-column: 1 / -1; }
+  .wl-footer-column { overflow-wrap: anywhere; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .wl-hero-copy > *, .wl-register { animation: none !important; }
+  .wl-feature-card, .wl-review-card, .wl-steps article, .wl-page button, .wl-page a { transition: none !important; }
+}

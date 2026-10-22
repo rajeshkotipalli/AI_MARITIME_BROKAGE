@@ -1,0 +1,871 @@
+route_id,origin,destination,distance_nm,transit_days,transshipments,route_type,base_freight_usd
+R0001,Chennai,Mumbai,875,4,0,Economy,450
+R0002,Chennai,Kochi,842,7,1,Standard,450
+R0003,Chennai,Colombo,890,3,0,Alternative,450
+R0004,Chennai,Singapore,2526,8,0,Standard,691
+R0005,Chennai,Shanghai,2388,8,1,Alternative,717
+R0006,Chennai,Ningbo,2528,8,1,Alternative,888
+R0007,Chennai,Busan,2449,10,1,Standard,957
+R0008,Chennai,Hong Kong,2572,10,1,Express,1045
+R0009,Chennai,Dubai,2323,14,3,Alternative,1338
+R0010,Chennai,Rotterdam,6776,23,1,Express,2123
+R0011,Chennai,Hamburg,6522,19,1,Economy,2083
+R0012,Chennai,Antwerp,6988,21,0,Standard,2048
+R0013,Chennai,London,7357,24,1,Express,2377
+R0014,Chennai,Felixstowe,6517,19,0,Express,1975
+R0015,Chennai,Piraeus,7259,22,1,Economy,2249
+R0016,Chennai,Barcelona,6829,20,1,Express,1774
+R0017,Chennai,Genoa,6684,22,1,Alternative,2164
+R0018,Chennai,New York,11654,33,0,Alternative,3385
+R0019,Chennai,Los Angeles,10361,32,1,Express,3781
+R0020,Chennai,Long Beach,11676,31,0,Alternative,2880
+R0021,Chennai,Sydney,4978,16,1,Alternative,1354
+R0022,Chennai,Melbourne,5229,19,1,Express,1831
+R0023,Chennai,Vancouver,11792,37,2,Standard,4528
+R0024,Chennai,Durban,5088,20,3,Economy,2060
+R0025,Chennai,Cape Town,4903,12,0,Alternative,1240
+R0026,Chennai,Jeddah,2250,7,1,Standard,895
+R0027,Chennai,Muscat,2247,7,1,Standard,764
+R0028,Chennai,Suez,2265,10,1,Express,768
+R0029,Chennai,Port Klang,2640,10,1,Economy,758
+R0030,Mumbai,Chennai,936,7,2,Express,751
+R0031,Mumbai,Kochi,831,3,1,Express,450
+R0032,Mumbai,Colombo,937,6,1,Standard,450
+R0033,Mumbai,Singapore,2663,10,1,Alternative,1025
+R0034,Mumbai,Shanghai,2555,11,1,Alternative,1107
+R0035,Mumbai,Ningbo,2621,7,0,Economy,611
+R0036,Mumbai,Busan,2616,9,1,Express,964
+R0037,Mumbai,Hong Kong,2479,14,2,Express,982
+R0038,Mumbai,Dubai,2247,8,1,Alternative,966
+R0039,Mumbai,Rotterdam,7123,22,0,Economy,1908
+R0040,Mumbai,Hamburg,6535,25,2,Standard,2649
+R0041,Mumbai,Antwerp,6663,21,0,Economy,1776
+R0042,Mumbai,London,7500,25,2,Economy,2580
+R0043,Mumbai,Felixstowe,7252,19,0,Alternative,2139
+R0044,Mumbai,Piraeus,7343,22,0,Economy,1972
+R0045,Mumbai,Barcelona,7054,22,0,Standard,2186
+R0046,Mumbai,Genoa,7030,22,0,Economy,1768
+R0047,Mumbai,New York,10491,31,1,Alternative,2941
+R0048,Mumbai,Los Angeles,10694,34,1,Economy,2820
+R0049,Mumbai,Long Beach,10743,34,1,Economy,3642
+R0050,Mumbai,Sydney,5226,19,1,Standard,1903
+R0051,Mumbai,Melbourne,4787,19,3,Alternative,2205
+R0052,Mumbai,Vancouver,10332,30,0,Express,2980
+R0053,Mumbai,Durban,5018,14,0,Standard,1307
+R0054,Mumbai,Cape Town,4491,16,1,Standard,1697
+R0055,Mumbai,Jeddah,2333,10,1,Alternative,889
+R0056,Mumbai,Muscat,2518,11,1,Alternative,1163
+R0057,Mumbai,Suez,2564,11,1,Alternative,759
+R0058,Mumbai,Port Klang,2457,10,1,Standard,835
+R0059,Kochi,Chennai,924,11,3,Standard,1077
+R0060,Kochi,Mumbai,921,4,1,Alternative,450
+R0061,Kochi,Colombo,860,5,0,Economy,450
+R0062,Kochi,Singapore,2633,10,0,Economy,723
+R0063,Kochi,Shanghai,2378,10,1,Standard,793
+R0064,Kochi,Ningbo,2483,11,2,Standard,1062
+R0065,Kochi,Busan,2505,10,0,Standard,793
+R0066,Kochi,Hong Kong,2651,7,0,Express,874
+R0067,Kochi,Dubai,2312,9,0,Economy,704
+R0068,Kochi,Rotterdam,6730,20,0,Economy,1614
+R0069,Kochi,Hamburg,7336,23,0,Economy,1904
+R0070,Kochi,Antwerp,7151,25,3,Express,2669
+R0071,Kochi,London,6736,17,0,Economy,2286
+R0072,Kochi,Felixstowe,7478,21,1,Alternative,2644
+R0073,Kochi,Piraeus,6563,17,0,Express,1655
+R0074,Kochi,Barcelona,7144,22,1,Alternative,2181
+R0075,Kochi,Genoa,6743,28,3,Standard,1890
+R0076,Kochi,New York,11410,35,1,Alternative,3147
+R0077,Kochi,Los Angeles,10307,36,3,Economy,3971
+R0078,Kochi,Long Beach,10812,34,1,Express,3842
+R0079,Kochi,Sydney,4949,18,2,Alternative,1553
+R0080,Kochi,Melbourne,5480,17,0,Standard,1791
+R0081,Kochi,Vancouver,10407,31,0,Economy,3161
+R0082,Kochi,Durban,4876,16,2,Express,1557
+R0083,Kochi,Cape Town,4758,18,1,Express,1843
+R0084,Kochi,Jeddah,2332,6,0,Express,583
+R0085,Kochi,Muscat,2355,9,1,Express,823
+R0086,Kochi,Suez,2506,9,0,Express,616
+R0087,Kochi,Port Klang,2317,6,0,Express,592
+R0088,Colombo,Chennai,966,10,3,Alternative,1273
+R0089,Colombo,Mumbai,914,10,3,Express,776
+R0090,Colombo,Kochi,932,5,2,Alternative,956
+R0091,Colombo,Singapore,2505,12,1,Alternative,1029
+R0092,Colombo,Shanghai,2634,16,3,Standard,1759
+R0093,Colombo,Ningbo,2584,10,2,Alternative,1132
+R0094,Colombo,Busan,2444,9,0,Economy,712
+R0095,Colombo,Hong Kong,2308,9,1,Alternative,836
+R0096,Colombo,Dubai,2235,10,1,Standard,818
+R0097,Colombo,Rotterdam,6971,28,3,Standard,2662
+R0098,Colombo,Hamburg,6670,23,2,Economy,2259
+R0099,Colombo,Antwerp,7460,24,1,Standard,2362
+R0100,Colombo,London,7112,23,1,Express,2437
+R0101,Colombo,Felixstowe,7076,18,0,Economy,1837
+R0102,Colombo,Piraeus,6551,18,0,Economy,1879
+R0103,Colombo,Barcelona,6962,28,3,Standard,2559
+R0104,Colombo,Genoa,7536,23,1,Standard,2026
+R0105,Colombo,New York,11824,35,1,Express,4250
+R0106,Colombo,Los Angeles,10491,30,1,Standard,3361
+R0107,Colombo,Long Beach,10753,34,1,Express,3464
+R0108,Colombo,Sydney,5198,15,1,Economy,1423
+R0109,Colombo,Melbourne,5351,19,1,Express,1672
+R0110,Colombo,Vancouver,10676,34,3,Express,4279
+R0111,Colombo,Durban,4722,16,0,Standard,1237
+R0112,Colombo,Cape Town,4466,15,1,Standard,1407
+R0113,Colombo,Jeddah,2536,8,1,Standard,1030
+R0114,Colombo,Muscat,2567,8,0,Express,680
+R0115,Colombo,Suez,2351,11,1,Standard,1037
+R0116,Colombo,Port Klang,2650,11,1,Alternative,911
+R0117,Singapore,Chennai,2464,10,1,Alternative,756
+R0118,Singapore,Mumbai,2665,9,1,Alternative,907
+R0119,Singapore,Kochi,2419,11,2,Express,1066
+R0120,Singapore,Colombo,2523,8,1,Standard,778
+R0121,Singapore,Shanghai,2600,14,3,Economy,1283
+R0122,Singapore,Ningbo,2807,9,1,Economy,828
+R0123,Singapore,Busan,2465,9,1,Standard,974
+R0124,Singapore,Hong Kong,2629,8,0,Economy,820
+R0125,Singapore,Dubai,4411,15,1,Standard,1485
+R0126,Singapore,Rotterdam,9401,27,1,Alternative,3288
+R0127,Singapore,Hamburg,9840,32,1,Economy,3505
+R0128,Singapore,Antwerp,10749,30,0,Standard,3375
+R0129,Singapore,London,9957,28,1,Economy,3056
+R0130,Singapore,Felixstowe,10685,35,1,Economy,2877
+R0131,Singapore,Piraeus,9558,29,0,Standard,2957
+R0132,Singapore,Barcelona,10554,32,1,Standard,2773
+R0133,Singapore,Genoa,9401,30,1,Standard,2608
+R0134,Singapore,New York,12753,39,1,Economy,3208
+R0135,Singapore,Los Angeles,12101,36,1,Alternative,3334
+R0136,Singapore,Long Beach,11502,37,1,Express,3178
+R0137,Singapore,Sydney,4604,14,0,Economy,1336
+R0138,Singapore,Melbourne,4832,16,2,Express,1867
+R0139,Singapore,Vancouver,12849,37,1,Standard,4235
+R0140,Singapore,Durban,6365,21,1,Standard,2159
+R0141,Singapore,Cape Town,6690,21,0,Standard,2083
+R0142,Singapore,Jeddah,4189,14,1,Alternative,1500
+R0143,Singapore,Muscat,4475,13,1,Express,1592
+R0144,Singapore,Suez,4275,12,0,Economy,1296
+R0145,Singapore,Port Klang,2639,9,1,Standard,1026
+R0146,Shanghai,Chennai,2466,10,2,Standard,1253
+R0147,Shanghai,Mumbai,2653,14,2,Standard,1250
+R0148,Shanghai,Kochi,2376,9,2,Economy,1112
+R0149,Shanghai,Colombo,2636,9,1,Economy,778
+R0150,Shanghai,Singapore,2426,10,1,Standard,957
+R0151,Shanghai,Ningbo,2540,15,3,Express,1041
+R0152,Shanghai,Busan,2685,8,0,Express,749
+R0153,Shanghai,Hong Kong,2544,10,1,Standard,915
+R0154,Shanghai,Dubai,4692,12,0,Economy,1111
+R0155,Shanghai,Rotterdam,9299,28,0,Standard,2486
+R0156,Shanghai,Hamburg,9736,29,1,Standard,3188
+R0157,Shanghai,Antwerp,10679,33,1,Standard,3462
+R0158,Shanghai,London,10214,31,0,Standard,2470
+R0159,Shanghai,Felixstowe,10731,38,3,Economy,4470
+R0160,Shanghai,Piraeus,9990,28,1,Alternative,3498
+R0161,Shanghai,Barcelona,10516,36,3,Alternative,3341
+R0162,Shanghai,Genoa,9937,34,3,Standard,3134
+R0163,Shanghai,New York,11995,34,0,Standard,3477
+R0164,Shanghai,Los Angeles,13461,37,0,Standard,3221
+R0165,Shanghai,Long Beach,12342,38,2,Economy,3453
+R0166,Shanghai,Sydney,4587,19,2,Alternative,2022
+R0167,Shanghai,Melbourne,4687,19,3,Express,1955
+R0168,Shanghai,Vancouver,12008,36,1,Alternative,3167
+R0169,Shanghai,Durban,6139,19,1,Alternative,1841
+R0170,Shanghai,Cape Town,6508,20,0,Standard,2206
+R0171,Shanghai,Jeddah,4143,20,3,Alternative,1700
+R0172,Shanghai,Muscat,4771,12,0,Standard,1412
+R0173,Shanghai,Suez,4560,13,0,Express,1138
+R0174,Shanghai,Port Klang,2500,12,3,Standard,1513
+R0175,Ningbo,Chennai,2440,7,0,Express,573
+R0176,Ningbo,Mumbai,2315,13,2,Alternative,1149
+R0177,Ningbo,Kochi,2571,6,0,Express,600
+R0178,Ningbo,Colombo,2519,6,0,Economy,689
+R0179,Ningbo,Singapore,2456,10,1,Standard,841
+R0180,Ningbo,Shanghai,2562,9,1,Express,894
+R0181,Ningbo,Busan,2628,10,1,Economy,1159
+R0182,Ningbo,Hong Kong,2543,9,0,Economy,642
+R0183,Ningbo,Dubai,4453,11,0,Economy,1069
+R0184,Ningbo,Rotterdam,10613,31,1,Alternative,2637
+R0185,Ningbo,Hamburg,10225,31,1,Standard,3683
+R0186,Ningbo,Antwerp,10007,28,0,Express,2875
+R0187,Ningbo,London,9307,30,1,Economy,3258
+R0188,Ningbo,Felixstowe,9516,29,0,Standard,2694
+R0189,Ningbo,Piraeus,10172,31,2,Economy,3689
+R0190,Ningbo,Barcelona,10519,31,0,Alternative,3131
+R0191,Ningbo,Genoa,10527,28,0,Alternative,3508
+R0192,Ningbo,New York,12267,34,0,Alternative,3800
+R0193,Ningbo,Los Angeles,11885,37,1,Standard,3356
+R0194,Ningbo,Long Beach,12699,39,1,Express,3514
+R0195,Ningbo,Sydney,4447,17,2,Express,1447
+R0196,Ningbo,Melbourne,4143,13,1,Economy,1600
+R0197,Ningbo,Vancouver,13138,45,3,Alternative,3951
+R0198,Ningbo,Durban,6114,18,1,Express,1933
+R0199,Ningbo,Cape Town,6663,17,0,Alternative,2070
+R0200,Ningbo,Jeddah,4659,15,0,Standard,1530
+R0201,Ningbo,Muscat,4825,16,0,Standard,1638
+R0202,Ningbo,Suez,4639,12,0,Alternative,1519
+R0203,Ningbo,Port Klang,2790,15,3,Alternative,1331
+R0204,Busan,Chennai,2326,8,1,Express,934
+R0205,Busan,Mumbai,2662,9,1,Alternative,1117
+R0206,Busan,Kochi,2383,9,1,Alternative,704
+R0207,Busan,Colombo,2461,12,2,Express,1094
+R0208,Busan,Singapore,2722,12,1,Standard,960
+R0209,Busan,Shanghai,2542,14,3,Economy,1722
+R0210,Busan,Ningbo,2765,12,1,Economy,945
+R0211,Busan,Hong Kong,2804,10,1,Alternative,1094
+R0212,Busan,Dubai,4306,14,1,Standard,1414
+R0213,Busan,Rotterdam,10223,36,3,Express,3659
+R0214,Busan,Hamburg,9439,29,1,Economy,2661
+R0215,Busan,Antwerp,9411,25,0,Standard,2167
+R0216,Busan,London,9686,30,1,Express,2845
+R0217,Busan,Felixstowe,10143,29,0,Express,2863
+R0218,Busan,Piraeus,9223,33,3,Alternative,2927
+R0219,Busan,Barcelona,10221,35,3,Express,2954
+R0220,Busan,Genoa,9290,33,3,Express,3490
+R0221,Busan,New York,13374,41,2,Economy,4627
+R0222,Busan,Los Angeles,11623,32,0,Economy,2877
+R0223,Busan,Long Beach,13058,35,0,Alternative,3290
+R0224,Busan,Sydney,4603,19,2,Economy,1505
+R0225,Busan,Melbourne,4186,19,2,Standard,1740
+R0226,Busan,Vancouver,12931,38,0,Economy,4034
+R0227,Busan,Durban,6064,20,2,Economy,2391
+R0228,Busan,Cape Town,6222,17,0,Standard,1944
+R0229,Busan,Jeddah,4819,15,1,Standard,1613
+R0230,Busan,Muscat,4634,15,1,Express,1867
+R0231,Busan,Suez,4296,13,1,Standard,1731
+R0232,Busan,Port Klang,2701,7,0,Express,737
+R0233,Hong Kong,Chennai,2396,13,3,Economy,994
+R0234,Hong Kong,Mumbai,2643,10,1,Alternative,851
+R0235,Hong Kong,Kochi,2457,10,1,Standard,719
+R0236,Hong Kong,Colombo,2311,6,0,Alternative,568
+R0237,Hong Kong,Singapore,2405,8,0,Standard,748
+R0238,Hong Kong,Shanghai,2748,13,3,Express,1629
+R0239,Hong Kong,Ningbo,2763,7,0,Economy,698
+R0240,Hong Kong,Busan,2406,15,3,Standard,1240
+R0241,Hong Kong,Dubai,4484,15,0,Standard,1350
+R0242,Hong Kong,Rotterdam,9711,28,1,Express,2680
+R0243,Hong Kong,Hamburg,9277,34,3,Express,3681
+R0244,Hong Kong,Antwerp,10006,35,3,Express,2950
+R0245,Hong Kong,London,9250,28,1,Standard,3081
+R0246,Hong Kong,Felixstowe,10106,33,2,Standard,3066
+R0247,Hong Kong,Piraeus,9202,27,0,Express,3106
+R0248,Hong Kong,Barcelona,9756,29,0,Economy,3130
+R0249,Hong Kong,Genoa,9991,31,1,Express,2781
+R0250,Hong Kong,New York,11929,38,2,Alternative,3412
+R0251,Hong Kong,Los Angeles,13034,40,1,Standard,3710
+R0252,Hong Kong,Long Beach,13357,42,2,Standard,4411
+R0253,Hong Kong,Sydney,4288,16,1,Economy,1420
+R0254,Hong Kong,Melbourne,4847,20,2,Alternative,1686
+R0255,Hong Kong,Vancouver,13009,42,3,Standard,3877
+R0256,Hong Kong,Durban,6883,20,1,Express,2212
+R0257,Hong Kong,Cape Town,6248,17,0,Alternative,1879
+R0258,Hong Kong,Jeddah,4311,12,0,Express,1325
+R0259,Hong Kong,Muscat,4584,20,2,Alternative,1927
+R0260,Hong Kong,Suez,4516,13,0,Alternative,1133
+R0261,Hong Kong,Port Klang,2789,11,0,Alternative,673
+R0262,Dubai,Chennai,2266,8,0,Express,630
+R0263,Dubai,Mumbai,2250,6,0,Express,614
+R0264,Dubai,Kochi,2213,14,3,Economy,1414
+R0265,Dubai,Colombo,2322,6,0,Alternative,723
+R0266,Dubai,Singapore,4673,21,3,Economy,2172
+R0267,Dubai,Shanghai,4443,14,0,Alternative,1335
+R0268,Dubai,Ningbo,4451,17,1,Standard,1344
+R0269,Dubai,Busan,4653,17,2,Alternative,1719
+R0270,Dubai,Hong Kong,4154,18,3,Economy,2227
+R0271,Dubai,Rotterdam,5696,22,2,Express,2004
+R0272,Dubai,Hamburg,6392,17,0,Standard,1623
+R0273,Dubai,Antwerp,6271,16,0,Express,1839
+R0274,Dubai,London,5717,19,1,Standard,2069
+R0275,Dubai,Felixstowe,5849,20,2,Economy,2186
+R0276,Dubai,Piraeus,6013,18,0,Express,1550
+R0277,Dubai,Barcelona,5904,17,0,Standard,1631
+R0278,Dubai,Genoa,6168,18,1,Express,1827
+R0279,Dubai,New York,11239,36,1,Alternative,3991
+R0280,Dubai,Los Angeles,10016,30,0,Standard,3003
+R0281,Dubai,Long Beach,10739,36,2,Alternative,3183
+R0282,Dubai,Sydney,7667,28,3,Economy,2732
+R0283,Dubai,Melbourne,7680,27,3,Economy,2989
+R0284,Dubai,Vancouver,10843,37,2,Express,3750
+R0285,Dubai,Durban,3682,14,2,Express,1476
+R0286,Dubai,Cape Town,3987,15,1,Standard,1413
+R0287,Dubai,Jeddah,823,3,1,Standard,450
+R0288,Dubai,Muscat,889,4,0,Express,450
+R0289,Dubai,Suez,811,3,0,Express,450
+R0290,Dubai,Port Klang,4755,13,0,Economy,1174
+R0291,Rotterdam,Chennai,6891,22,1,Alternative,2456
+R0292,Rotterdam,Mumbai,7315,24,2,Express,2710
+R0293,Rotterdam,Kochi,6528,26,3,Economy,1975
+R0294,Rotterdam,Colombo,6736,19,0,Alternative,1962
+R0295,Rotterdam,Singapore,9947,27,0,Economy,2468
+R0296,Rotterdam,Shanghai,10581,32,0,Alternative,2978
+R0297,Rotterdam,Ningbo,9996,30,1,Economy,3105
+R0298,Rotterdam,Busan,10282,30,0,Express,2397
+R0299,Rotterdam,Hong Kong,9273,32,2,Express,2675
+R0300,Rotterdam,Dubai,5985,16,0,Standard,1650
+R0301,Rotterdam,Hamburg,877,8,3,Express,1000
+R0302,Rotterdam,Antwerp,939,3,0,Express,450
+R0303,Rotterdam,London,836,4,1,Express,450
+R0304,Rotterdam,Felixstowe,901,7,1,Express,574
+R0305,Rotterdam,Piraeus,845,4,0,Express,450
+R0306,Rotterdam,Barcelona,919,9,3,Standard,876
+R0307,Rotterdam,Genoa,907,3,0,Economy,450
+R0308,Rotterdam,New York,4206,16,1,Standard,1644
+R0309,Rotterdam,Los Angeles,3921,10,0,Standard,1190
+R0310,Rotterdam,Long Beach,4080,13,0,Standard,1328
+R0311,Rotterdam,Sydney,11483,36,2,Standard,4282
+R0312,Rotterdam,Melbourne,10664,36,2,Express,2885
+R0313,Rotterdam,Vancouver,3884,14,1,Standard,1427
+R0314,Rotterdam,Durban,5634,23,3,Economy,2507
+R0315,Rotterdam,Cape Town,5585,21,2,Economy,2431
+R0316,Rotterdam,Jeddah,6462,21,1,Economy,1765
+R0317,Rotterdam,Muscat,5724,16,0,Standard,1322
+R0318,Rotterdam,Suez,5637,21,3,Standard,2032
+R0319,Rotterdam,Port Klang,9228,30,2,Alternative,3550
+R0320,Hamburg,Chennai,6496,26,3,Alternative,2334
+R0321,Hamburg,Mumbai,7064,23,1,Economy,2649
+R0322,Hamburg,Kochi,7520,23,2,Standard,2274
+R0323,Hamburg,Colombo,7209,22,1,Standard,2159
+R0324,Hamburg,Singapore,9466,34,3,Economy,3533
+R0325,Hamburg,Shanghai,10120,32,1,Economy,2793
+R0326,Hamburg,Ningbo,9387,31,2,Alternative,2987
+R0327,Hamburg,Busan,10445,33,1,Express,3228
+R0328,Hamburg,Hong Kong,9648,31,1,Express,3092
+R0329,Hamburg,Dubai,6318,21,1,Express,2295
+R0330,Hamburg,Rotterdam,882,8,2,Economy,902
+R0331,Hamburg,Antwerp,893,6,2,Standard,512
+R0332,Hamburg,London,912,8,3,Standard,1205
+R0333,Hamburg,Felixstowe,953,4,1,Alternative,614
+R0334,Hamburg,Piraeus,907,9,3,Economy,940
+R0335,Hamburg,Barcelona,898,7,1,Alternative,450
+R0336,Hamburg,Genoa,873,3,0,Economy,450
+R0337,Hamburg,New York,4055,12,0,Economy,972
+R0338,Hamburg,Los Angeles,3907,11,0,Alternative,1123
+R0339,Hamburg,Long Beach,4246,14,1,Express,1400
+R0340,Hamburg,Sydney,10494,31,0,Alternative,2748
+R0341,Hamburg,Melbourne,11113,32,1,Alternative,3910
+R0342,Hamburg,Vancouver,3919,12,0,Express,1241
+R0343,Hamburg,Durban,5823,16,0,Express,1728
+R0344,Hamburg,Cape Town,5552,23,3,Economy,2415
+R0345,Hamburg,Jeddah,6268,22,1,Standard,2280
+R0346,Hamburg,Muscat,6104,19,0,Express,1631
+R0347,Hamburg,Suez,5883,15,0,Standard,1592
+R0348,Hamburg,Port Klang,9933,36,3,Standard,3992
+R0349,Antwerp,Chennai,6574,18,0,Express,1681
+R0350,Antwerp,Mumbai,7511,24,2,Economy,2818
+R0351,Antwerp,Kochi,7522,24,2,Alternative,3189
+R0352,Antwerp,Colombo,6834,23,1,Standard,1908
+R0353,Antwerp,Singapore,10021,31,2,Economy,3050
+R0354,Antwerp,Shanghai,9209,27,0,Express,2565
+R0355,Antwerp,Ningbo,9369,28,1,Express,2506
+R0356,Antwerp,Busan,9807,31,1,Alternative,3570
+R0357,Antwerp,Hong Kong,9220,32,2,Alternative,2906
+R0358,Antwerp,Dubai,5732,20,1,Express,1620
+R0359,Antwerp,Rotterdam,966,6,1,Standard,456
+R0360,Antwerp,Hamburg,874,3,0,Economy,450
+R0361,Antwerp,London,860,4,0,Alternative,450
+R0362,Antwerp,Felixstowe,891,3,0,Express,450
+R0363,Antwerp,Piraeus,867,8,3,Express,890
+R0364,Antwerp,Barcelona,844,3,1,Economy,450
+R0365,Antwerp,Genoa,919,10,3,Alternative,686
+R0366,Antwerp,New York,3845,11,0,Express,995
+R0367,Antwerp,Los Angeles,4272,12,0,Economy,1404
+R0368,Antwerp,Long Beach,4213,17,1,Alternative,1282
+R0369,Antwerp,Sydney,11014,33,1,Alternative,3831
+R0370,Antwerp,Melbourne,11047,31,0,Express,3649
+R0371,Antwerp,Vancouver,3857,13,0,Alternative,1108
+R0372,Antwerp,Durban,6203,19,0,Standard,2034
+R0373,Antwerp,Cape Town,5996,18,1,Alternative,2064
+R0374,Antwerp,Jeddah,6123,16,0,Express,1453
+R0375,Antwerp,Muscat,6019,24,3,Standard,2131
+R0376,Antwerp,Suez,6328,22,3,Economy,2625
+R0377,Antwerp,Port Klang,9963,33,3,Express,3488
+R0378,London,Chennai,6481,23,2,Express,2484
+R0379,London,Mumbai,7022,21,1,Standard,2476
+R0380,London,Kochi,7370,24,1,Economy,2597
+R0381,London,Colombo,7418,25,2,Economy,2337
+R0382,London,Singapore,10060,31,0,Alternative,2561
+R0383,London,Shanghai,9469,29,1,Express,3277
+R0384,London,Ningbo,9354,30,2,Alternative,3539
+R0385,London,Busan,10122,32,1,Alternative,2765
+R0386,London,Hong Kong,9350,26,0,Standard,2629
+R0387,London,Dubai,6001,18,1,Standard,1783
+R0388,London,Rotterdam,906,3,0,Alternative,450
+R0389,London,Hamburg,885,11,3,Standard,862
+R0390,London,Antwerp,914,5,1,Standard,603
+R0391,London,Felixstowe,880,7,1,Alternative,587
+R0392,London,Piraeus,969,11,3,Express,652
+R0393,London,Barcelona,875,3,0,Express,450
+R0394,London,Genoa,830,3,0,Alternative,450
+R0395,London,New York,4108,12,0,Alternative,1124
+R0396,London,Los Angeles,3970,10,0,Standard,1193
+R0397,London,Long Beach,4267,15,1,Express,1469
+R0398,London,Sydney,11213,34,1,Standard,3457
+R0399,London,Melbourne,10189,28,0,Express,2531
+R0400,London,Vancouver,4060,12,1,Express,1535
+R0401,London,Durban,5662,18,0,Alternative,1873
+R0402,London,Cape Town,5797,18,0,Standard,1516
+R0403,London,Jeddah,6106,20,1,Alternative,1821
+R0404,London,Muscat,5872,20,1,Express,1832
+R0405,London,Suez,5550,17,1,Alternative,1958
+R0406,London,Port Klang,10137,27,0,Express,3393
+R0407,Felixstowe,Chennai,7063,21,1,Express,2567
+R0408,Felixstowe,Mumbai,6504,19,0,Alternative,1929
+R0409,Felixstowe,Kochi,6933,22,0,Economy,1865
+R0410,Felixstowe,Colombo,6562,19,0,Alternative,1992
+R0411,Felixstowe,Singapore,10281,33,1,Express,3239
+R0412,Felixstowe,Shanghai,10570,35,3,Economy,3947
+R0413,Felixstowe,Ningbo,10664,32,0,Economy,2458
+R0414,Felixstowe,Busan,10080,28,0,Economy,3419
+R0415,Felixstowe,Hong Kong,9869,36,3,Express,3520
+R0416,Felixstowe,Dubai,6338,21,2,Economy,2084
+R0417,Felixstowe,Rotterdam,884,6,1,Economy,494
+R0418,Felixstowe,Hamburg,950,5,1,Economy,450
+R0419,Felixstowe,Antwerp,944,6,1,Economy,561
+R0420,Felixstowe,London,876,11,3,Alternative,848
+R0421,Felixstowe,Piraeus,956,3,0,Standard,450
+R0422,Felixstowe,Barcelona,871,5,1,Express,528
+R0423,Felixstowe,Genoa,947,7,2,Economy,759
+R0424,Felixstowe,New York,4113,15,1,Standard,1309
+R0425,Felixstowe,Los Angeles,3942,14,1,Economy,1448
+R0426,Felixstowe,Long Beach,4243,14,1,Economy,1664
+R0427,Felixstowe,Sydney,11873,34,1,Standard,3496
+R0428,Felixstowe,Melbourne,10252,29,1,Alternative,3643
+R0429,Felixstowe,Vancouver,3900,14,1,Economy,1430
+R0430,Felixstowe,Durban,6011,19,1,Alternative,1666
+R0431,Felixstowe,Cape Town,6099,21,1,Standard,1510
+R0432,Felixstowe,Jeddah,5814,23,2,Standard,1841
+R0433,Felixstowe,Muscat,6083,20,2,Standard,2214
+R0434,Felixstowe,Suez,6064,24,3,Alternative,2062
+R0435,Felixstowe,Port Klang,9433,27,1,Standard,2591
+R0436,Piraeus,Chennai,7025,27,3,Economy,2584
+R0437,Piraeus,Mumbai,7168,23,2,Express,2177
+R0438,Piraeus,Kochi,6630,23,1,Standard,2332
+R0439,Piraeus,Colombo,6831,20,1,Economy,1937
+R0440,Piraeus,Singapore,10132,27,0,Economy,2596
+R0441,Piraeus,Shanghai,9270,28,1,Alternative,3357
+R0442,Piraeus,Ningbo,9929,32,1,Express,3168
+R0443,Piraeus,Busan,9308,31,2,Economy,3150
+R0444,Piraeus,Hong Kong,9695,30,2,Economy,3400
+R0445,Piraeus,Dubai,5687,17,1,Economy,2090
+R0446,Piraeus,Rotterdam,885,4,1,Standard,473
+R0447,Piraeus,Hamburg,886,3,0,Standard,450
+R0448,Piraeus,Antwerp,863,3,0,Economy,450
+R0449,Piraeus,London,868,5,0,Express,450
+R0450,Piraeus,Felixstowe,841,5,1,Alternative,540
+R0451,Piraeus,Barcelona,944,3,0,Express,450
+R0452,Piraeus,Genoa,919,4,1,Alternative,450
+R0453,Piraeus,New York,3825,15,1,Alternative,1552
+R0454,Piraeus,Los Angeles,4256,15,1,Express,1398
+R0455,Piraeus,Long Beach,3816,18,3,Standard,1870
+R0456,Piraeus,Sydney,10596,34,3,Economy,3685
+R0457,Piraeus,Melbourne,10667,33,1,Standard,3523
+R0458,Piraeus,Vancouver,3885,14,2,Standard,1896
+R0459,Piraeus,Durban,6000,17,1,Alternative,1742
+R0460,Piraeus,Cape Town,5797,22,3,Economy,2587
+R0461,Piraeus,Jeddah,5966,23,2,Alternative,1874
+R0462,Piraeus,Muscat,6172,24,2,Express,1997
+R0463,Piraeus,Suez,6191,17,0,Economy,1852
+R0464,Piraeus,Port Klang,9666,31,1,Alternative,2376
+R0465,Barcelona,Chennai,7122,24,1,Alternative,2049
+R0466,Barcelona,Mumbai,6484,21,1,Alternative,1881
+R0467,Barcelona,Kochi,7243,24,1,Economy,2463
+R0468,Barcelona,Colombo,6441,26,3,Express,2848
+R0469,Barcelona,Singapore,10172,30,0,Alternative,2381
+R0470,Barcelona,Shanghai,9536,29,1,Standard,3265
+R0471,Barcelona,Ningbo,10185,29,0,Express,2734
+R0472,Barcelona,Busan,9878,30,1,Economy,3159
+R0473,Barcelona,Hong Kong,9885,30,1,Alternative,2822
+R0474,Barcelona,Dubai,6195,22,3,Express,2433
+R0475,Barcelona,Rotterdam,920,4,1,Express,450
+R0476,Barcelona,Hamburg,878,4,0,Alternative,450
+R0477,Barcelona,Antwerp,930,6,2,Economy,701
+R0478,Barcelona,London,928,4,0,Express,450
+R0479,Barcelona,Felixstowe,848,4,1,Alternative,511
+R0480,Barcelona,Piraeus,889,4,0,Alternative,450
+R0481,Barcelona,Genoa,886,4,0,Standard,450
+R0482,Barcelona,New York,3812,10,0,Express,923
+R0483,Barcelona,Los Angeles,3967,11,0,Alternative,1117
+R0484,Barcelona,Long Beach,3865,11,1,Standard,1438
+R0485,Barcelona,Sydney,11441,35,0,Express,3341
+R0486,Barcelona,Melbourne,11255,33,1,Economy,3363
+R0487,Barcelona,Vancouver,3910,12,0,Express,1302
+R0488,Barcelona,Durban,6191,20,2,Alternative,2145
+R0489,Barcelona,Cape Town,6263,23,3,Alternative,2357
+R0490,Barcelona,Jeddah,6024,20,2,Alternative,2220
+R0491,Barcelona,Muscat,6233,19,1,Economy,2180
+R0492,Barcelona,Suez,5741,18,0,Express,1481
+R0493,Barcelona,Port Klang,9266,30,1,Economy,3320
+R0494,Genoa,Chennai,6914,26,2,Alternative,2569
+R0495,Genoa,Mumbai,6530,21,2,Alternative,2516
+R0496,Genoa,Kochi,6890,20,0,Economy,1750
+R0497,Genoa,Colombo,6443,23,3,Economy,1875
+R0498,Genoa,Singapore,10023,29,1,Express,2659
+R0499,Genoa,Shanghai,10522,33,2,Alternative,3035
+R0500,Genoa,Ningbo,10101,31,1,Alternative,3158
+R0501,Genoa,Busan,9937,32,1,Alternative,3595
+R0502,Genoa,Hong Kong,9330,34,3,Standard,3290
+R0503,Genoa,Dubai,5805,21,1,Economy,1907
+R0504,Genoa,Rotterdam,848,9,3,Express,1205
+R0505,Genoa,Hamburg,855,8,2,Economy,706
+R0506,Genoa,Antwerp,882,5,1,Economy,450
+R0507,Genoa,London,885,3,0,Alternative,450
+R0508,Genoa,Felixstowe,936,4,0,Express,450
+R0509,Genoa,Piraeus,864,5,1,Alternative,466
+R0510,Genoa,Barcelona,928,9,2,Standard,891
+R0511,Genoa,New York,3961,18,3,Standard,2022
+R0512,Genoa,Los Angeles,3745,17,3,Economy,1707
+R0513,Genoa,Long Beach,4040,16,3,Standard,1616
+R0514,Genoa,Sydney,10832,29,0,Express,3328
+R0515,Genoa,Melbourne,10495,33,1,Standard,3233
+R0516,Genoa,Vancouver,3736,17,3,Alternative,2202
+R0517,Genoa,Durban,5860,20,1,Express,1924
+R0518,Genoa,Cape Town,6313,18,0,Alternative,1964
+R0519,Genoa,Jeddah,5863,20,1,Standard,1767
+R0520,Genoa,Muscat,6047,21,3,Standard,2482
+R0521,Genoa,Suez,5764,15,0,Economy,1953
+R0522,Genoa,Port Klang,9382,25,0,Economy,2984
+R0523,New York,Chennai,10384,33,1,Economy,3224
+R0524,New York,Mumbai,11068,38,2,Express,2936
+R0525,New York,Kochi,11870,37,1,Economy,3884
+R0526,New York,Colombo,10251,33,1,Economy,3726
+R0527,New York,Singapore,13190,41,1,Alternative,4039
+R0528,New York,Shanghai,12222,36,1,Alternative,3246
+R0529,New York,Ningbo,11587,34,0,Express,3087
+R0530,New York,Busan,12276,35,1,Express,3791
+R0531,New York,Hong Kong,11953,36,0,Economy,3549
+R0532,New York,Dubai,9905,31,2,Alternative,3032
+R0533,New York,Rotterdam,4314,17,1,Alternative,1251
+R0534,New York,Hamburg,4258,14,0,Alternative,1276
+R0535,New York,Antwerp,3743,18,3,Express,1868
+R0536,New York,London,4281,16,2,Standard,1922
+R0537,New York,Felixstowe,3912,17,3,Alternative,1746
+R0538,New York,Piraeus,3894,16,2,Express,1874
+R0539,New York,Barcelona,3988,15,1,Alternative,1492
+R0540,New York,Genoa,3767,11,0,Economy,1031
+R0541,New York,Los Angeles,2130,5,0,Standard,659
+R0542,New York,Long Beach,2280,7,1,Express,908
+R0543,New York,Sydney,6996,21,0,Express,2369
+R0544,New York,Melbourne,8065,28,2,Economy,3301
+R0545,New York,Vancouver,2195,9,0,Express,637
+R0546,New York,Durban,9463,30,1,Alternative,2606
+R0547,New York,Cape Town,9917,32,1,Express,3138
+R0548,New York,Jeddah,10066,29,0,Alternative,2403
+R0549,New York,Muscat,11031,34,1,Express,2712
+R0550,New York,Suez,10562,32,0,Express,2676
+R0551,New York,Port Klang,13235,37,0,Economy,4033
+R0552,Los Angeles,Chennai,10427,37,3,Economy,3266
+R0553,Los Angeles,Mumbai,10709,31,1,Economy,3112
+R0554,Los Angeles,Kochi,10165,29,1,Express,3309
+R0555,Los Angeles,Colombo,11589,31,0,Standard,2934
+R0556,Los Angeles,Singapore,13034,38,0,Express,3605
+R0557,Los Angeles,Shanghai,12860,43,3,Alternative,4361
+R0558,Los Angeles,Ningbo,11960,37,1,Express,3487
+R0559,Los Angeles,Busan,13052,39,1,Economy,3756
+R0560,Los Angeles,Hong Kong,13382,36,0,Express,3778
+R0561,Los Angeles,Dubai,11019,36,1,Alternative,3104
+R0562,Los Angeles,Rotterdam,4307,11,0,Alternative,1248
+R0563,Los Angeles,Hamburg,4035,14,0,Express,1090
+R0564,Los Angeles,Antwerp,4258,19,3,Alternative,1987
+R0565,Los Angeles,London,3835,16,3,Economy,2257
+R0566,Los Angeles,Felixstowe,4192,14,1,Alternative,1508
+R0567,Los Angeles,Piraeus,4102,14,0,Standard,1356
+R0568,Los Angeles,Barcelona,4233,13,0,Alternative,1164
+R0569,Los Angeles,Genoa,3920,14,2,Alternative,1473
+R0570,Los Angeles,New York,2177,5,0,Express,683
+R0571,Los Angeles,Long Beach,2122,11,1,Alternative,895
+R0572,Los Angeles,Sydney,7936,31,3,Express,2472
+R0573,Los Angeles,Melbourne,7239,23,1,Standard,2515
+R0574,Los Angeles,Vancouver,2137,7,1,Economy,804
+R0575,Los Angeles,Durban,9536,29,2,Express,3429
+R0576,Los Angeles,Cape Town,9492,35,3,Alternative,2812
+R0577,Los Angeles,Jeddah,11012,30,0,Standard,2899
+R0578,Los Angeles,Muscat,10897,31,0,Alternative,2982
+R0579,Los Angeles,Suez,10230,35,2,Economy,3671
+R0580,Los Angeles,Port Klang,12671,34,0,Standard,3618
+R0581,Long Beach,Chennai,11132,37,2,Standard,3276
+R0582,Long Beach,Mumbai,10677,32,0,Standard,3596
+R0583,Long Beach,Kochi,10874,32,0,Alternative,2678
+R0584,Long Beach,Colombo,11080,33,0,Express,3715
+R0585,Long Beach,Singapore,12199,36,0,Alternative,3172
+R0586,Long Beach,Shanghai,11530,37,1,Standard,3013
+R0587,Long Beach,Ningbo,12316,36,1,Express,3384
+R0588,Long Beach,Busan,12806,39,1,Express,4241
+R0589,Long Beach,Hong Kong,12991,38,1,Economy,3958
+R0590,Long Beach,Dubai,11295,36,1,Economy,3925
+R0591,Long Beach,Rotterdam,4319,13,0,Alternative,1433
+R0592,Long Beach,Hamburg,4124,18,2,Economy,1861
+R0593,Long Beach,Antwerp,3754,19,3,Standard,1715
+R0594,Long Beach,London,4037,16,2,Economy,1765
+R0595,Long Beach,Felixstowe,4050,14,1,Economy,1392
+R0596,Long Beach,Piraeus,3830,15,2,Economy,1606
+R0597,Long Beach,Barcelona,4017,12,1,Express,1546
+R0598,Long Beach,Genoa,3823,12,1,Express,1552
+R0599,Long Beach,New York,2278,9,1,Economy,890
+R0600,Long Beach,Los Angeles,2350,9,1,Express,985
+R0601,Long Beach,Sydney,7339,24,2,Alternative,2512
+R0602,Long Beach,Melbourne,7669,27,3,Standard,3032
+R0603,Long Beach,Vancouver,2312,6,0,Economy,596
+R0604,Long Beach,Durban,9784,32,2,Express,2747
+R0605,Long Beach,Cape Town,9665,29,1,Standard,3035
+R0606,Long Beach,Jeddah,9953,28,1,Alternative,2657
+R0607,Long Beach,Muscat,10535,30,0,Express,3352
+R0608,Long Beach,Suez,9690,28,0,Standard,2290
+R0609,Long Beach,Port Klang,12113,38,1,Express,3294
+R0610,Sydney,Chennai,5478,18,0,Economy,1381
+R0611,Sydney,Mumbai,5581,20,1,Express,1920
+R0612,Sydney,Kochi,5089,21,2,Express,1922
+R0613,Sydney,Colombo,5459,17,1,Alternative,1939
+R0614,Sydney,Singapore,4585,18,3,Express,2117
+R0615,Sydney,Shanghai,4191,18,3,Economy,1887
+R0616,Sydney,Ningbo,4814,16,2,Standard,2084
+R0617,Sydney,Busan,4473,19,3,Economy,2243
+R0618,Sydney,Hong Kong,4187,13,1,Economy,1412
+R0619,Sydney,Dubai,7704,26,2,Alternative,2354
+R0620,Sydney,Rotterdam,10637,34,1,Economy,2741
+R0621,Sydney,Hamburg,11612,33,1,Standard,3075
+R0622,Sydney,Antwerp,10500,33,1,Standard,2831
+R0623,Sydney,London,10970,33,0,Economy,2692
+R0624,Sydney,Felixstowe,11558,38,3,Alternative,3203
+R0625,Sydney,Piraeus,10448,32,1,Express,2701
+R0626,Sydney,Barcelona,10569,36,3,Express,3646
+R0627,Sydney,Genoa,11319,33,1,Express,3288
+R0628,Sydney,New York,7928,23,1,Express,2106
+R0629,Sydney,Los Angeles,7683,25,1,Economy,2224
+R0630,Sydney,Long Beach,7862,24,0,Economy,2289
+R0631,Sydney,Melbourne,1555,5,0,Standard,454
+R0632,Sydney,Vancouver,6942,19,0,Economy,2139
+R0633,Sydney,Durban,8606,26,1,Economy,2820
+R0634,Sydney,Cape Town,8484,24,0,Alternative,2548
+R0635,Sydney,Jeddah,7064,19,0,Economy,2341
+R0636,Sydney,Muscat,7785,21,0,Economy,2407
+R0637,Sydney,Suez,7254,19,0,Alternative,2401
+R0638,Sydney,Port Klang,4512,14,1,Standard,1195
+R0639,Melbourne,Chennai,5129,20,2,Express,1845
+R0640,Melbourne,Mumbai,4913,12,0,Alternative,1582
+R0641,Melbourne,Kochi,5415,23,3,Express,2211
+R0642,Melbourne,Colombo,5543,17,1,Alternative,2112
+R0643,Melbourne,Singapore,4306,12,0,Express,1294
+R0644,Melbourne,Shanghai,4611,16,2,Standard,1430
+R0645,Melbourne,Ningbo,4449,15,2,Economy,1691
+R0646,Melbourne,Busan,4613,13,0,Standard,1238
+R0647,Melbourne,Hong Kong,4703,14,0,Alternative,1529
+R0648,Melbourne,Dubai,7601,27,3,Standard,3030
+R0649,Melbourne,Rotterdam,11692,40,3,Alternative,3819
+R0650,Melbourne,Hamburg,11174,30,0,Express,2757
+R0651,Melbourne,Antwerp,10208,31,1,Express,2916
+R0652,Melbourne,London,10761,32,0,Express,3332
+R0653,Melbourne,Felixstowe,10288,33,1,Standard,3258
+R0654,Melbourne,Piraeus,10183,29,0,Standard,3122
+R0655,Melbourne,Barcelona,11137,33,1,Standard,3515
+R0656,Melbourne,Genoa,10753,34,2,Standard,4115
+R0657,Melbourne,New York,7904,24,1,Alternative,2072
+R0658,Melbourne,Los Angeles,7040,22,1,Express,1929
+R0659,Melbourne,Long Beach,7195,23,1,Standard,2095
+R0660,Melbourne,Sydney,1448,9,1,Alternative,764
+R0661,Melbourne,Vancouver,7946,27,1,Alternative,2182
+R0662,Melbourne,Durban,7429,28,3,Alternative,2772
+R0663,Melbourne,Cape Town,7579,30,3,Express,2874
+R0664,Melbourne,Jeddah,7522,22,1,Standard,2368
+R0665,Melbourne,Muscat,7192,28,3,Standard,2270
+R0666,Melbourne,Suez,8080,24,0,Alternative,2473
+R0667,Melbourne,Port Klang,4359,13,0,Economy,1090
+R0668,Vancouver,Chennai,11775,33,1,Economy,3867
+R0669,Vancouver,Mumbai,11411,35,2,Alternative,3327
+R0670,Vancouver,Kochi,10479,31,0,Express,2487
+R0671,Vancouver,Colombo,11513,35,1,Standard,3967
+R0672,Vancouver,Singapore,11638,34,1,Standard,3793
+R0673,Vancouver,Shanghai,12231,37,1,Standard,4369
+R0674,Vancouver,Ningbo,11824,34,1,Economy,4136
+R0675,Vancouver,Busan,12106,36,0,Economy,3853
+R0676,Vancouver,Hong Kong,11829,37,1,Express,3760
+R0677,Vancouver,Dubai,11249,34,0,Standard,3562
+R0678,Vancouver,Rotterdam,4160,17,3,Alternative,1955
+R0679,Vancouver,Hamburg,3831,13,1,Standard,1514
+R0680,Vancouver,Antwerp,4081,20,3,Express,1487
+R0681,Vancouver,London,3826,16,2,Express,1678
+R0682,Vancouver,Felixstowe,4187,12,0,Express,971
+R0683,Vancouver,Piraeus,4242,14,1,Economy,1252
+R0684,Vancouver,Barcelona,3895,11,0,Standard,1258
+R0685,Vancouver,Genoa,3701,15,1,Standard,1254
+R0686,Vancouver,New York,2180,9,2,Alternative,885
+R0687,Vancouver,Los Angeles,2156,6,0,Economy,723
+R0688,Vancouver,Long Beach,2083,8,1,Economy,876
+R0689,Vancouver,Sydney,7508,25,1,Alternative,2727
+R0690,Vancouver,Melbourne,7533,20,0,Alternative,1936
+R0691,Vancouver,Durban,10495,33,1,Express,3838
+R0692,Vancouver,Cape Town,10580,30,1,Economy,3474
+R0693,Vancouver,Jeddah,10779,30,0,Express,3615
+R0694,Vancouver,Muscat,10173,35,2,Economy,3475
+R0695,Vancouver,Suez,11184,33,1,Economy,3887
+R0696,Vancouver,Port Klang,13250,42,2,Standard,4284
+R0697,Durban,Chennai,4810,12,0,Economy,1278
+R0698,Durban,Mumbai,4421,14,1,Alternative,1693
+R0699,Durban,Kochi,4452,16,1,Alternative,1509
+R0700,Durban,Colombo,4898,16,0,Express,1140
+R0701,Durban,Singapore,6997,26,2,Standard,2524
+R0702,Durban,Shanghai,6493,24,2,Express,1974
+R0703,Durban,Ningbo,6847,23,1,Standard,1971
+R0704,Durban,Busan,6189,22,3,Standard,2355
+R0705,Durban,Hong Kong,6689,21,0,Express,2110
+R0706,Durban,Dubai,4296,12,0,Express,1434
+R0707,Durban,Rotterdam,6116,18,1,Economy,1782
+R0708,Durban,Hamburg,5827,22,3,Economy,2467
+R0709,Durban,Antwerp,6118,20,1,Economy,2111
+R0710,Durban,London,5562,19,1,Economy,2003
+R0711,Durban,Felixstowe,6243,19,1,Economy,2301
+R0712,Durban,Piraeus,6299,23,3,Standard,2313
+R0713,Durban,Barcelona,6031,21,2,Express,2345
+R0714,Durban,Genoa,6461,20,0,Standard,1968
+R0715,Durban,New York,10535,36,2,Standard,2905
+R0716,Durban,Los Angeles,10748,36,2,Standard,3618
+R0717,Durban,Long Beach,10464,35,3,Express,3540
+R0718,Durban,Sydney,7808,23,0,Alternative,2243
+R0719,Durban,Melbourne,8547,25,1,Alternative,2943
+R0720,Durban,Vancouver,9861,32,1,Standard,3239
+R0721,Durban,Cape Town,1781,7,0,Express,543
+R0722,Durban,Jeddah,4217,13,0,Alternative,1320
+R0723,Durban,Muscat,3760,14,1,Standard,1470
+R0724,Durban,Suez,3924,14,1,Alternative,1478
+R0725,Durban,Port Klang,6617,22,1,Standard,2192
+R0726,Cape Town,Chennai,4626,13,0,Alternative,1247
+R0727,Cape Town,Mumbai,5165,20,3,Standard,1939
+R0728,Cape Town,Kochi,4510,13,1,Alternative,1484
+R0729,Cape Town,Colombo,4759,18,1,Standard,1656
+R0730,Cape Town,Singapore,6820,18,0,Economy,1737
+R0731,Cape Town,Shanghai,6954,21,1,Alternative,2359
+R0732,Cape Town,Ningbo,6273,23,3,Standard,2483
+R0733,Cape Town,Busan,6505,19,1,Express,2232
+R0734,Cape Town,Hong Kong,6073,17,0,Economy,2034
+R0735,Cape Town,Dubai,3825,19,3,Standard,1836
+R0736,Cape Town,Rotterdam,6152,20,1,Standard,2014
+R0737,Cape Town,Hamburg,5956,20,2,Economy,2029
+R0738,Cape Town,Antwerp,5907,17,1,Alternative,2046
+R0739,Cape Town,London,5941,18,0,Alternative,1498
+R0740,Cape Town,Felixstowe,6193,22,1,Standard,2201
+R0741,Cape Town,Piraeus,5535,18,1,Alternative,2046
+R0742,Cape Town,Barcelona,6213,22,2,Express,2346
+R0743,Cape Town,Genoa,6127,18,1,Express,2184
+R0744,Cape Town,New York,9768,29,0,Economy,2615
+R0745,Cape Town,Los Angeles,9446,33,3,Economy,2817
+R0746,Cape Town,Long Beach,10472,33,1,Alternative,3181
+R0747,Cape Town,Sydney,8010,22,0,Express,1861
+R0748,Cape Town,Melbourne,7607,25,1,Economy,2498
+R0749,Cape Town,Vancouver,10499,34,3,Economy,2892
+R0750,Cape Town,Durban,1866,6,1,Economy,945
+R0751,Cape Town,Jeddah,4183,13,1,Standard,1559
+R0752,Cape Town,Muscat,3725,14,1,Express,1444
+R0753,Cape Town,Suez,4172,11,0,Standard,1375
+R0754,Cape Town,Port Klang,6896,22,0,Alternative,1920
+R0755,Jeddah,Chennai,2433,13,2,Economy,1280
+R0756,Jeddah,Mumbai,2229,8,1,Alternative,960
+R0757,Jeddah,Kochi,2588,13,2,Economy,1002
+R0758,Jeddah,Colombo,2253,7,1,Economy,904
+R0759,Jeddah,Singapore,4305,15,1,Alternative,1450
+R0760,Jeddah,Shanghai,4315,11,0,Standard,1016
+R0761,Jeddah,Ningbo,4818,16,0,Standard,1447
+R0762,Jeddah,Busan,4438,13,0,Alternative,1255
+R0763,Jeddah,Hong Kong,4215,15,2,Standard,1626
+R0764,Jeddah,Dubai,866,5,1,Standard,487
+R0765,Jeddah,Rotterdam,6400,20,0,Standard,1863
+R0766,Jeddah,Hamburg,5602,19,1,Standard,1953
+R0767,Jeddah,Antwerp,5799,19,1,Standard,1614
+R0768,Jeddah,London,6316,23,3,Economy,2809
+R0769,Jeddah,Felixstowe,5719,19,1,Standard,1603
+R0770,Jeddah,Piraeus,5858,18,0,Standard,1895
+R0771,Jeddah,Barcelona,6464,18,0,Express,1707
+R0772,Jeddah,Genoa,5662,20,1,Express,1426
+R0773,Jeddah,New York,9733,32,2,Alternative,3134
+R0774,Jeddah,Los Angeles,11212,36,1,Alternative,3785
+R0775,Jeddah,Long Beach,9794,29,0,Standard,2286
+R0776,Jeddah,Sydney,7062,21,1,Standard,2570
+R0777,Jeddah,Melbourne,7207,22,0,Express,2329
+R0778,Jeddah,Vancouver,10205,29,0,Alternative,3448
+R0779,Jeddah,Durban,4100,13,1,Express,1261
+R0780,Jeddah,Cape Town,4024,14,1,Alternative,1391
+R0781,Jeddah,Muscat,827,11,3,Alternative,970
+R0782,Jeddah,Suez,804,3,0,Express,450
+R0783,Jeddah,Port Klang,4527,14,1,Alternative,1337
+R0784,Muscat,Chennai,2415,10,1,Standard,906
+R0785,Muscat,Mumbai,2556,8,0,Express,621
+R0786,Muscat,Kochi,2276,10,1,Alternative,1002
+R0787,Muscat,Colombo,2358,11,1,Express,887
+R0788,Muscat,Singapore,4291,15,1,Alternative,1546
+R0789,Muscat,Shanghai,4422,14,0,Standard,1278
+R0790,Muscat,Ningbo,4400,14,0,Standard,1326
+R0791,Muscat,Busan,4635,14,1,Economy,1294
+R0792,Muscat,Hong Kong,4424,17,2,Alternative,1620
+R0793,Muscat,Dubai,899,4,1,Express,450
+R0794,Muscat,Rotterdam,6316,20,0,Standard,2010
+R0795,Muscat,Hamburg,5842,21,1,Standard,1512
+R0796,Muscat,Antwerp,5672,21,2,Express,1689
+R0797,Muscat,London,5982,23,3,Standard,2540
+R0798,Muscat,Felixstowe,6080,17,0,Standard,1578
+R0799,Muscat,Piraeus,5645,19,1,Express,1602
+R0800,Muscat,Barcelona,6276,20,1,Express,1933
+R0801,Muscat,Genoa,6358,23,3,Alternative,2614
+R0802,Muscat,New York,9711,33,2,Alternative,3684
+R0803,Muscat,Los Angeles,10274,32,2,Economy,2622
+R0804,Muscat,Long Beach,10775,35,3,Express,3149
+R0805,Muscat,Sydney,7485,22,0,Economy,2127
+R0806,Muscat,Melbourne,7041,24,1,Alternative,2064
+R0807,Muscat,Vancouver,9859,28,0,Express,2776
+R0808,Muscat,Durban,3897,12,0,Standard,1104
+R0809,Muscat,Cape Town,4040,16,3,Economy,2051
+R0810,Muscat,Jeddah,790,5,1,Alternative,450
+R0811,Muscat,Suez,793,7,1,Economy,510
+R0812,Muscat,Port Klang,4235,19,3,Economy,1533
+R0813,Suez,Chennai,2463,8,1,Standard,1056
+R0814,Suez,Mumbai,2307,10,1,Standard,1068
+R0815,Suez,Kochi,2217,9,1,Standard,794
+R0816,Suez,Colombo,2463,6,0,Express,784
+R0817,Suez,Singapore,4372,14,0,Express,1319
+R0818,Suez,Shanghai,4303,17,1,Economy,1183
+R0819,Suez,Ningbo,4752,18,1,Economy,1709
+R0820,Suez,Busan,4679,18,1,Alternative,1556
+R0821,Suez,Hong Kong,4259,13,1,Economy,1433
+R0822,Suez,Dubai,898,8,2,Economy,890
+R0823,Suez,Rotterdam,5728,21,3,Economy,2595
+R0824,Suez,Hamburg,5780,21,3,Express,2057
+R0825,Suez,Antwerp,6162,19,0,Express,1579
+R0826,Suez,London,5520,19,1,Express,1798
+R0827,Suez,Felixstowe,6203,17,0,Express,1509
+R0828,Suez,Piraeus,5919,18,0,Alternative,1939
+R0829,Suez,Barcelona,5681,17,1,Alternative,2121
+R0830,Suez,Genoa,5913,21,1,Alternative,2150
+R0831,Suez,New York,11286,34,2,Economy,3755
+R0832,Suez,Los Angeles,9835,26,0,Express,3077
+R0833,Suez,Long Beach,11122,34,1,Standard,3903
+R0834,Suez,Sydney,7696,26,2,Standard,2663
+R0835,Suez,Melbourne,7604,30,3,Express,3001
+R0836,Suez,Vancouver,10392,32,1,Express,2875
+R0837,Suez,Durban,4292,16,2,Alternative,1769
+R0838,Suez,Cape Town,4114,13,0,Standard,1160
+R0839,Suez,Jeddah,827,3,0,Economy,450
+R0840,Suez,Muscat,912,5,0,Economy,450
+R0841,Suez,Port Klang,4844,14,0,Alternative,1328
+R0842,Port Klang,Chennai,2660,9,0,Express,717
+R0843,Port Klang,Mumbai,2498,12,1,Alternative,1075
+R0844,Port Klang,Kochi,2406,9,0,Alternative,716
+R0845,Port Klang,Colombo,2331,11,1,Economy,875
+R0846,Port Klang,Singapore,2536,13,3,Economy,1641
+R0847,Port Klang,Shanghai,2399,11,2,Alternative,1105
+R0848,Port Klang,Ningbo,2711,15,3,Alternative,1875
+R0849,Port Klang,Busan,2712,11,1,Express,789
+R0850,Port Klang,Hong Kong,2642,13,3,Standard,1320
+R0851,Port Klang,Dubai,4437,13,1,Express,1724
+R0852,Port Klang,Rotterdam,9477,29,2,Alternative,2753
+R0853,Port Klang,Hamburg,10641,34,3,Alternative,3598
+R0854,Port Klang,Antwerp,9342,27,0,Alternative,2224
+R0855,Port Klang,London,9712,31,1,Economy,2927
+R0856,Port Klang,Felixstowe,9334,25,0,Express,2788
+R0857,Port Klang,Piraeus,10758,30,0,Express,3056
+R0858,Port Klang,Barcelona,10168,32,1,Standard,3485
+R0859,Port Klang,Genoa,9816,31,2,Standard,3728
+R0860,Port Klang,New York,12445,34,0,Alternative,3831
+R0861,Port Klang,Los Angeles,12437,42,3,Alternative,4649
+R0862,Port Klang,Long Beach,12630,34,0,Standard,3714
+R0863,Port Klang,Sydney,4745,17,1,Alternative,1586
+R0864,Port Klang,Melbourne,4524,15,2,Standard,1713
+R0865,Port Klang,Vancouver,12526,36,0,Economy,4124
+R0866,Port Klang,Durban,7006,23,2,Express,2095
+R0867,Port Klang,Cape Town,6782,25,3,Express,2484
+R0868,Port Klang,Jeddah,4180,13,1,Express,1215
+R0869,Port Klang,Muscat,4310,13,0,Alternative,1085
+R0870,Port Klang,Suez,4705,19,2,Express,1687
