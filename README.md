@@ -1,451 +1,582 @@
-# ⚓ Waypoint --- AI-Assisted Maritime Brokerage Platform
+<div align="center">
 
-> **Navigate a Smarter Tomorrow.**
+<img src="assets/banner.svg" alt="Waypoint AI banner" width="100%"/>
 
-Waypoint is an AI-assisted maritime brokerage platform designed to
-simplify and digitize marine route analysis, port connectivity, weather
-assessment, quotation management, search history, and operational
-monitoring.
+<a href="https://git.io/typing-svg">
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=20&pause=1200&color=22D3EE&center=true&vCenter=true&width=760&lines=Route+Intelligence+%E2%80%A2+Weather+Intelligence;Vessel+%26+AIS+Intelligence+%E2%80%A2+Freight+%26+Pricing;Customs+%E2%80%A2+Digital+Quotations+%E2%80%A2+AI+Assistant" alt="Typing animation"/>
+</a>
 
-## 🌊 Overview
+<br/>
 
-The platform brings multiple maritime intelligence capabilities into one
-application:
+<img src="https://img.shields.io/badge/Python-3.x-3776AB?style=for-the-badge&logo=python&logoColor=white"/>
+<img src="https://img.shields.io/badge/FastAPI-Backend-009688?style=for-the-badge&logo=fastapi&logoColor=white"/>
+<img src="https://img.shields.io/badge/React-Frontend-61DAFB?style=for-the-badge&logo=react&logoColor=black"/>
+<img src="https://img.shields.io/badge/Vite-Build-646CFF?style=for-the-badge&logo=vite&logoColor=white"/>
+<img src="https://img.shields.io/badge/Pandas-Data-150458?style=for-the-badge&logo=pandas&logoColor=white"/>
+<img src="https://img.shields.io/badge/SQLite-Database-003B57?style=for-the-badge&logo=sqlite&logoColor=white"/>
 
--   🚢 Route intelligence
--   🌦️ Maritime weather information
--   ⚓ Connected-port discovery
--   💼 Digital quotation requests
--   🗂️ Search history
--   📊 Operations analytics
--   🤖 Multilingual, context-aware AI assistance
+<img src="https://img.shields.io/github/stars/rajeshkotipalli/AI_MARITIME_BROKAGE?style=social"/>
+<img src="https://img.shields.io/github/last-commit/rajeshkotipalli/AI_MARITIME_BROKAGE?style=flat-square&color=22d3ee"/>
+<img src="https://img.shields.io/badge/Status-Active%20Development-22c55e?style=flat-square"/>
 
-## 🎯 Problem Statement
+<br/><br/>
 
-Traditional maritime brokerage workflows can involve:
+**🌊 From port selection to route planning, weather analysis, vessel intelligence and quotation management — one intelligent platform.**
 
--   **Manual route planning** --- comparing routes and operational
-    factors manually.
--   **Fragmented information** --- route, weather, port, and operational
-    information may be spread across different sources.
--   **Manual quotation processes** --- quotation requests require
-    repeated manual data entry and coordination.
--   **Limited operational visibility** --- decision-makers may lack a
-    centralized operational view.
--   **Limited intelligent assistance** --- users often have to interpret
-    maritime information themselves.
+[🚀 Quick Start](#-quick-start) · [🧠 Architecture](#-ai-agent-architecture) · [✨ Features](#-key-features) · [🖥️ Screenshots](#%EF%B8%8F-screenshots) · [📈 Roadmap](#-roadmap)
 
-## 💡 Proposed Solution
+</div>
 
-Waypoint provides a centralized digital platform for maritime
-decision-making.
+---
 
-### Core objectives
+## 🌐 Overview
 
-  -----------------------------------------------------------------------
-  Objective                           Capability
-  ----------------------------------- -----------------------------------
-  🚢 Intelligent Route Planning       Analyze available maritime routes
-                                      and recommend a route
+**Waypoint AI** is a full-stack, AI-powered maritime brokerage platform that simplifies planning, evaluating and managing maritime transportation.
 
-  ⚓ Port & Weather Intelligence      Explore connected ports and assess
-                                      weather conditions
+Traditional brokerage means collecting data from many disconnected sources. Waypoint AI unifies them into **one decision-support environment** built on a modular multi-agent backend (FastAPI) and a React + Vite frontend.
 
-  💼 Digital Quotation Management     Request quotations after selecting
-                                      a route
+<div align="center">
 
-  📊 Operational Analytics            Monitor searches, routes,
-                                      quotations, and activity
+| 🗺️ Routes | 🌦️ Weather | ⚓ Ports | 🚢 Vessels |
+|:---:|:---:|:---:|:---:|
+| Discover & compare | Risk & conditions | Connectivity | Profiles & AIS |
 
-  🤖 AI-Powered Assistance            Ask Waypoint AI about routes,
-                                      scores, weather, ports, and
-                                      quotations
-  -----------------------------------------------------------------------
+| 💰 Pricing | 🛃 Customs | 📄 Quotations | 🤖 AI Assistant |
+|:---:|:---:|:---:|:---:|
+| Freight & margin | Cargo analysis | Digital requests | Context-aware help |
 
-## 🧠 Waypoint AI
+</div>
 
-Waypoint AI acts as an intelligent assistant inside the application.
+---
 
-Users can ask about:
+## ✨ Key Features
 
--   Maritime concepts
--   Routes
--   Route scores
--   Transshipments
--   Weather
--   Ports
--   Quotations
+<table>
+<tr>
+<td width="33%" valign="top">
 
-### Context-aware AI
+### 🗺️ Route Intelligence
+- Origin → destination search
+- Route comparison & scoring
+- Distance & transit-time analysis
+- Transshipment analysis
+- Recommended-route identification
 
-Unlike a conventional chatbot that mainly responds to the user's
-message, Waypoint AI is designed to work with application context.
+</td>
+<td width="33%" valign="top">
 
-For example:
+### 🌦️ Weather Intelligence
+- Current conditions
+- Wind, temperature, visibility
+- Route weather risk
+- Operational impact analysis
 
-> **User:** "What is the best route?"
+</td>
+<td width="33%" valign="top">
 
-Instead of giving only a generic explanation, Waypoint AI can use the
-current route information available in the application to provide a more
-relevant response.
+### 🚢 Vessel & AIS
+- Vessel profiles & types
+- Capacity & operational data
+- AIS service layer
+- Vessel tracking & fleet awareness
 
-## 🗺️ Route Intelligence
+</td>
+</tr>
+<tr>
+<td valign="top">
 
-The route analysis workflow evaluates available route options and
-identifies a recommended route.
+### 💰 Pricing & Margin
+- Base freight + distance
+- Route-type & transshipment factors
+- Margin analysis
+- Route-level pricing
 
-The route analysis interface presents information such as:
+</td>
+<td valign="top">
 
--   Origin and destination
--   Cargo type
--   Container quantity
--   Recommended route
--   Transit time
--   Distance
--   Route type
--   Freight information
--   Route score
+### 🛃 Customs
+- Origin / destination checks
+- Cargo-type analysis
+- Container information
 
-The recommendation is based on the application's route-scoring logic,
-considering transit time, distance, and transshipments.
-
-## 🌦️ Weather Intelligence
-
-Waypoint provides weather information for important shipment locations.
-
-### Current conditions
-
-The weather interface can display:
-
--   Temperature
--   Feels-like temperature
--   Humidity
--   Atmospheric pressure
--   Wind speed
--   Wind direction
--   Visibility
--   Weather condition
--   Precipitation / rain probability
-
-### Forecast
-
-The system also provides forecast information for future periods.
-
-## ⚓ Connected Ports
-
-Connected Ports provides port network intelligence.
-
-Users can select an origin port and discover destinations connected
-through the available route network.
-
-The interface displays:
-
--   Origin port
--   Connected destinations
--   Number of routes
--   Network connections
--   Total connected destinations
-
-## 💼 Digital Quotation System
-
-After selecting a route, users can request a quotation digitally.
-
-### Quotation inputs
-
--   Company name
--   Email
--   Phone
--   Origin
--   Destination
--   Route
--   Cargo type
--   Cargo weight
--   Container quantity
--   Special requirements
-
-The quotation workflow is designed to connect route intelligence with
-the commercial brokerage process.
-
-## 🗂️ Search History
-
-Waypoint automatically maintains previous route analyses.
-
-Users can:
-
--   View previous searches
--   See origin and destination
--   View cargo information
--   See the recommended route
--   Review transit time
--   Review distance
--   Open detailed analysis
--   Delete previous searches
-
-This provides a personal routing archive and makes it possible to return
-to earlier routing decisions.
-
-## 📊 Operations Dashboard
-
-The Operations Dashboard provides a centralized view of operational
-activity.
-
-### KPI indicators
-
--   Total searches
--   Available routes
--   Best routes
--   Connected ports
--   Total quotations
--   Average transit time
-
-### Analytics
-
--   Most searched routes
--   Quotation status distribution
--   Route ranking
--   Freight intelligence
--   Recent searches
--   Recent quotations
--   System status
-
-## 🔐 Authentication & Security
-
-The platform includes security mechanisms such as:
-
--   Password hashing
--   JWT authentication
--   Token-based API authorization
--   OTP verification
--   Protected user-specific history and quotations
-
-> **Security note:** API keys, environment variables, virtual
-> environments, databases, and other local secrets should remain
-> excluded from the public repository through `.gitignore`.
-
-## 🏗️ High-Level Architecture
-
-## 🏗️ High-Level Architecture
-
-The Waypoint platform follows a layered architecture connecting the React frontend, FastAPI backend, maritime intelligence services, quotation management, and context-aware Waypoint AI.
-
-![Waypoint System Architecture](screenshots/architecture.png)
-
-
-## 🔄 Application Data Flow
-
-``` text
-Customer / User Request
-          ↓
-     Route Analysis
-          ↓
-   Available Routes
-          ↓
- Recommended Route + Route Score
-          ↓
-   Quotation Request
-          ↓
- Commercial / Operational Processing
-          ↓
-      Final Quotation
+</td>
+<td valign="top">
+
+### 📄 Digital Quotations
+- Company & contact details
+- Cargo weight & containers
+- Custom requirements
+- Quote processing workflow
+
+</td>
+</tr>
+<tr>
+<td valign="top">
+
+### 🤖 Waypoint AI Assistant
+- Unified conversational layer
+- Context-aware across modules
+- Decision support
+
+</td>
+<td valign="top">
+
+### 📊 Operations Dashboard
+- Centralized operational view
+- Analytics & charts
+- Admin dashboard
+
+</td>
+<td valign="top">
+
+### 🕘 History & 🔐 Auth
+- Previous route/search history
+- Registration, Login, Email OTP
+- Password protection
+
+</td>
+</tr>
+</table>
+
+---
+
+## 🧠 AI Agent Architecture
+
+A modular agent-based design where each agent owns one maritime intelligence task, coordinated by a root agent.
+
+```mermaid
+flowchart TD
+    U([👤 User]) --> W[🤖 Waypoint AI<br/>Context Assistant]
+    W --> R{{🌳 Root Agent<br/>Orchestrator}}
+    R --> RA[🗺️ Route Agent]
+    R --> WX[🌦️ Weather Intelligence]
+    R --> PA[💰 Pricing Agent]
+    R --> VA[🚢 Vessel Agent]
+    R --> CI[🛃 Customs Intelligence]
+    R --> MA[📈 Margin Agent]
+    R --> CA[🌱 Carbon Agent]
+    VA --> AIS[📡 AIS Service]
+    PA --> MA
+
+    classDef root fill:#6366f1,stroke:#312e81,color:#fff,stroke-width:2px;
+    classDef agent fill:#0ea5e9,stroke:#0c4a6e,color:#fff;
+    classDef svc fill:#14b8a6,stroke:#134e4a,color:#fff;
+    class R root;
+    class RA,WX,PA,VA,CI,MA,CA agent;
+    class AIS,W svc;
 ```
 
-## 🛠️ Technology Stack
+| Agent | Responsibility |
+|---|---|
+| 🤖 **AI Agent** | Context-aware AI assistance |
+| 🌳 **Root Agent** | Coordinates all intelligence modules |
+| 🗺️ **Route Agent** | Route discovery and analysis |
+| 💰 **Pricing Agent** | Freight and route pricing |
+| 📈 **Margin Agent** | Margin calculations |
+| 🚢 **Vessel Agent** | Vessel intelligence |
+| 🌱 **Carbon Agent** | Carbon-related analysis |
+| 🛃 **Customs Intelligence** | Customs-related analysis |
 
-### Frontend
+---
 
--   React
--   Vite
--   JavaScript / JSX
--   CSS
+## 🔄 End-to-End Workflow
 
-### Backend
+```mermaid
+flowchart LR
+    A[🔐 Authentication] --> B[🏠 Home Dashboard]
+    B --> C[🗺️ Route]
+    B --> D[🌦️ Weather]
+    B --> E[⚓ Ports]
+    C & D & E --> F[🚢 Vessel Data]
+    F --> G[📡 AIS]
+    G --> H[💰 Pricing]
+    H --> I[🛃 Customs]
+    I --> J[📄 Quotation]
+    J --> K[📊 Operations Dashboard]
+    K --> L[🤖 Waypoint AI]
 
--   Python
--   FastAPI
--   Pydantic
--   Pandas
-
-### Authentication & Security
-
--   JWT-based authentication
--   Password hashing
--   OTP verification
--   Token-based authorization
-
-### Data & Intelligence
-
--   Maritime route dataset
--   Weather information
--   Route scoring
--   Operational analytics
--   Context-aware AI assistance
-
-## 📁 Project Structure
-
-``` text
-AI_MARITIME_BROKAGE/
-│
-├── backend/
-│   ├── app/
-│   │   ├── agents/
-│   │   │   ├── ai_agent.py
-│   │   │   ├── rootagent.py
-│   │   │   └── route_agent.py
-│   │   ├── data/
-│   │   │   └── routes.csv
-│   │   ├── auth.py
-│   │   ├── database.py
-│   │   ├── history.py
-│   │   ├── models.py
-│   │   ├── otp.py
-│   │   ├── quotation.py
-│   │   └── security.py
-│   └── main.py
-│
-├── frontend/
-│   ├── public/
-│   └── src/
-│       ├── components/
-│       ├── pages/
-│       ├── App.jsx
-│       ├── App.css
-│       └── main.jsx
-│
-├── screenshots/
-├── docs/
-├── .gitignore
-└── README.md
+    style A fill:#6366f1,color:#fff
+    style J fill:#22c55e,color:#fff
+    style L fill:#0ea5e9,color:#fff
 ```
 
-## ▶️ Running the Project Locally
+<details>
+<summary><b>🗺️ Route Intelligence – data structure & flow</b></summary>
+<br/>
 
-### 1. Clone the repository
+| Field | Description |
+|---|---|
+| `route_id` | Unique route identifier |
+| `origin` | Starting port |
+| `destination` | Destination port |
+| `distance_nm` | Distance in nautical miles |
+| `transit_days` | Estimated transit duration |
+| `transshipments` | Number of transshipments |
+| `route_type` | Type/category of route |
+| `base_freight_usd` | Base freight value |
 
-``` bash
+```mermaid
+flowchart LR
+    O[Origin] --> D[Destination] --> S[Route Search] --> RA[Route Agent]
+    RA --> X1[Distance] & X2[Transit Time] & X3[Transshipments] & X4[Route Type] & X5[Freight]
+    X1 & X2 & X3 & X4 & X5 --> CMP[Route Comparison] --> REC[⭐ Recommended Route]
+```
+
+</details>
+
+<details>
+<summary><b>🌦️ Weather Intelligence – workflow</b></summary>
+<br/>
+
+```mermaid
+flowchart LR
+    R[Route] --> WS[Weather Service]
+    WS --> WD[Weather Data]
+    WS --> RK[Risk Analysis]
+    WD & RK --> WI[Weather Intelligence] --> DS[Route Decision Support]
+```
+
+**Analysis includes:** current conditions · wind · temperature · visibility · weather risk · route conditions · operational impact
+
+</details>
+
+<details>
+<summary><b>💰 Pricing & Freight – workflow</b></summary>
+<br/>
+
+| Parameter | Purpose |
+|---|---|
+| Base Freight | Starting freight value |
+| Distance | Route distance |
+| Route Type | Route classification |
+| Transshipments | Additional route complexity |
+| Transit Days | Estimated transportation duration |
+
+```mermaid
+flowchart LR
+    DS[Route Dataset] --> PA[Pricing Agent] --> FE[Freight Estimate] --> MA[Margin Analysis]
+```
+
+</details>
+
+<details>
+<summary><b>🛃 Customs & 📄 Quotation – workflow</b></summary>
+<br/>
+
+**Customs inputs:** Origin (e.g. Chennai) · Destination (e.g. Rotterdam) · Cargo type (e.g. Electronics) · Containers (e.g. 19)
+
+**Quotation inputs:** Company name · Email · Phone · Cargo weight · Containers · Requirements
+
+```mermaid
+flowchart LR
+    C[Customer] --> RQ[Request Quotation] --> SD[Shipment Details] --> RT[Route Analysis]
+    RT --> P[Pricing] & W[Weather] & CU[Customs]
+    P & W & CU --> QP[Quotation Processing] --> DQ[📄 Digital Quote]
+```
+
+</details>
+
+<details>
+<summary><b>🔐 Authentication flow</b></summary>
+<br/>
+
+```mermaid
+flowchart LR
+    U[👤 User] --> RG[Registration] --> OTP[OTP Verification] --> DB[(User Database)] --> LG[Login] --> AU[🔐 Authenticated] --> WP[Waypoint AI]
+```
+
+| Component | Purpose |
+|---|---|
+| Registration | Create user account |
+| Login | Authenticate users |
+| OTP | Email-based verification |
+| Security | Password protection |
+| Database | Store user information |
+
+</details>
+
+---
+
+## 🛠️ Tech Stack
+
+<div align="center">
+
+| Layer | Technology |
+|:---:|:---:|
+| 🎨 Frontend | ![React](https://img.shields.io/badge/React-20232A?style=flat-square&logo=react&logoColor=61DAFB) ![Vite](https://img.shields.io/badge/Vite-646CFF?style=flat-square&logo=vite&logoColor=white) ![CSS](https://img.shields.io/badge/CSS3-1572B6?style=flat-square&logo=css3&logoColor=white) |
+| 🐍 Backend | ![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white) ![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white) |
+| 📊 Data | ![Pandas](https://img.shields.io/badge/Pandas-150458?style=flat-square&logo=pandas&logoColor=white) ![CSV](https://img.shields.io/badge/CSV-Datasets-22c55e?style=flat-square) |
+| 🗄️ Database | ![SQLite](https://img.shields.io/badge/SQLite-003B57?style=flat-square&logo=sqlite&logoColor=white) |
+| 📧 OTP | ![Gmail](https://img.shields.io/badge/Gmail%20SMTP-EA4335?style=flat-square&logo=gmail&logoColor=white) |
+| 📡 Maritime | AIS / Vessel Services |
+| 🔧 Tools | ![Git](https://img.shields.io/badge/Git-F05032?style=flat-square&logo=git&logoColor=white) ![GitHub](https://img.shields.io/badge/GitHub-181717?style=flat-square&logo=github&logoColor=white) |
+
+</div>
+
+---
+
+## 🖥️ Screenshots
+
+<div align="center">
+
+| 🏠 Home | 🗺️ Route Analysis |
+|:---:|:---:|
+| <img src="screenshots/home.png" width="460"/> | <img src="screenshots/route-analysis.png" width="460"/> |
+
+| 🌦️ Weather Intelligence | ⚓ Connected Ports |
+|:---:|:---:|
+| <img src="screenshots/weather.png" width="460"/> | <img src="screenshots/connected-ports.png" width="460"/> |
+
+| 🕘 History | 🤖 Waypoint AI |
+|:---:|:---:|
+| <img src="screenshots/history.png" width="460"/> | <img src="screenshots/waypoint-ai.png" width="460"/> |
+
+### 🏗️ System Architecture
+<img src="screenshots/architecture.png" width="760"/>
+
+</div>
+
+---
+
+## 📋 Feature Matrix
+
+| Feature | Backend | Frontend | Data / Service | Status |
+|---|:---:|:---:|---|:---:|
+| User Registration | ✅ | ✅ | SQLite | 🟢 Implemented |
+| User Login | ✅ | ✅ | Authentication | 🟢 Implemented |
+| OTP Verification | ✅ | ✅ | Email | 🟢 Implemented |
+| Route Analysis | ✅ | ✅ | `routes.csv` | 🟢 Implemented |
+| Route Comparison | ✅ | ✅ | Route Agent | 🟢 Implemented |
+| Weather Intelligence | ✅ | ✅ | Weather Service | 🟢 Implemented |
+| Connected Ports | ✅ | ✅ | Port Data | 🟢 Implemented |
+| Pricing | ✅ | ✅ | `pricing.csv` | 🟢 Implemented |
+| Margin Analysis | ✅ | ✅ | Margin Agent | 🟢 Implemented |
+| Customs Analysis | ✅ | ✅ | Customs Intelligence | 🟢 Implemented |
+| Vessel Intelligence | ✅ | ✅ | `vessel_profiles.csv` | 🟢 Implemented |
+| AIS Service | ✅ | 🔄 | AIS Service | 🟡 Integrated |
+| Quotations | ✅ | ✅ | Quotation Service | 🟢 Implemented |
+| Search History | ✅ | ✅ | History Module | 🟢 Implemented |
+| Reviews | ✅ | ✅ | Reviews Module | 🟢 Implemented |
+| Operations Dashboard | ✅ | ✅ | Multiple Modules | 🟢 Implemented |
+| Waypoint AI Assistant | ✅ | ✅ | AI Agent | 🟢 Implemented |
+
+---
+
+## 🚀 Quick Start
+
+**Prerequisites:** Python 3.x · Node.js · npm · Git
+
+### 1️⃣ Clone
+
+```bash
 git clone https://github.com/rajeshkotipalli/AI_MARITIME_BROKAGE.git
 cd AI_MARITIME_BROKAGE
 ```
 
-### 2. Backend setup
+### 2️⃣ Backend (FastAPI)
 
-``` powershell
+```bash
 cd backend
-python -m venv venv
-.\venv\Scripts\Activate.ps1
+python -m venv .venv
+
+# Windows
+.venv\Scripts\Activate.ps1
+# macOS / Linux
+# source .venv/bin/activate
+
 pip install -r requirements.txt
+uvicorn main:app --reload
 ```
 
-If a `requirements.txt` file is not yet present, install the backend
-dependencies used by the project and create the file before sharing
-deployment instructions.
+- API → http://127.0.0.1:8000
+- Docs → http://127.0.0.1:8000/docs
 
-Create your local environment file:
+### 3️⃣ Frontend (React + Vite)
 
-``` text
-backend/.env
-```
-
-Keep API keys and credentials inside `.env`; never commit them to
-GitHub.
-
-Start FastAPI:
-
-``` powershell
-python main.py
-```
-
-### 3. Frontend setup
-
-Open another terminal:
-
-``` powershell
+```bash
 cd frontend
 npm install
 npm run dev
 ```
 
-Open the local Vite URL shown in the terminal.
+Vite prints the local frontend URL in the terminal.
 
-## 🔌 API
+### 🔑 Environment Variables
 
-The backend exposes the route analysis endpoint:
+Create a `.env` file in `backend/`:
 
-``` http
-POST /api/routes/analyze
+```env
+GMAIL_SENDER_EMAIL=your-email@example.com
+GMAIL_APP_PASSWORD=your-app-password
 ```
 
-The endpoint accepts route request information such as:
+> [!WARNING]
+> Never commit `.env`, `.env.*`, `*.db`, `*.sqlite`, `*.sqlite3`. They are excluded via `.gitignore`.
 
-``` json
-{
-  "origin": "Chennai",
-  "destination": "Felixstowe",
-  "cargo_type": "Containerized Cargo",
-  "containers": 4
-}
+---
+
+## 🗂️ Project Structure
+
+<details>
+<summary><b>Click to expand</b></summary>
+
+```text
+waypointai_upgraded/
+├── backend/
+│   ├── app/
+│   │   ├── agents/
+│   │   │   ├── ai_agent.py
+│   │   │   ├── carbon_agent.py
+│   │   │   ├── margin_agent.py
+│   │   │   ├── pricing_agent.py
+│   │   │   ├── rootagent.py
+│   │   │   ├── route_agent.py
+│   │   │   └── vessel_agent.py
+│   │   ├── data/
+│   │   │   ├── pricing.csv
+│   │   │   ├── routes.csv
+│   │   │   └── vessel_profiles.csv
+│   │   ├── services/
+│   │   │   ├── ais_service.py
+│   │   │   ├── carbon_service.py
+│   │   │   └── quotation_service.py
+│   │   ├── auth.py        ├── database.py
+│   │   ├── history.py     ├── models.py
+│   │   ├── otp.py         ├── quotation.py
+│   │   └── reviews.py     └── security.py
+│   ├── main.py
+│   ├── test_ais_service.py
+│   ├── test_aisstream.py
+│   └── test_gemini.py
+├── frontend/
+│   ├── public/
+│   ├── src/
+│   │   ├── assets/  components/  pages/
+│   │   ├── AdminDashboard.jsx  AdminLogin.jsx  AdminOTP.jsx
+│   │   ├── App.jsx  ChartCanvas.jsx  Login.jsx
+│   │   ├── OTPVerification.jsx  Register.jsx
+│   │   └── index.css  main.jsx  translations.js
+│   ├── package.json
+│   └── vite.config.js
+├── docs/Waypoint_Project_Presentation.pptx
+├── screenshots/
+├── assets/banner.svg
+└── README.md
 ```
 
-The response contains route-analysis information including the
-recommended route, transit time, distance, transshipments, freight
-information, and route score when the route is successfully analyzed.
+</details>
 
-## 📸 Application Screenshots
+<details>
+<summary><b>🧩 Core backend modules</b></summary>
+<br/>
 
-### Home --- Maritime Intelligence
+| Module | File | Responsibility |
+|---|---|---|
+| AI Agent | `ai_agent.py` | AI assistance |
+| Root Agent | `rootagent.py` | Agent orchestration |
+| Route Agent | `route_agent.py` | Route analysis |
+| Pricing Agent | `pricing_agent.py` | Freight pricing |
+| Margin Agent | `margin_agent.py` | Margin calculations |
+| Vessel Agent | `vessel_agent.py` | Vessel intelligence |
+| Carbon Agent | `carbon_agent.py` | Carbon analysis |
+| AIS Service | `ais_service.py` | AIS integration |
+| Quotation Service | `quotation_service.py` | Quotation processing |
+| Auth / Security / OTP | `auth.py`, `security.py`, `otp.py` | Authentication |
+| Database / Models | `database.py`, `models.py` | Persistence |
+| History / Reviews | `history.py`, `reviews.py` | Activity & feedback |
 
-![Waypoint Home](screenshots/home.png)
+</details>
 
-### Route Analysis
+<details>
+<summary><b>📦 Datasets</b></summary>
+<br/>
 
-![Route Analysis](screenshots/route-analysis.png)
+| Dataset | Location | Purpose |
+|---|---|---|
+| Routes | `backend/app/data/routes.csv` | Maritime route information |
+| Pricing | `backend/app/data/pricing.csv` | Freight / pricing information |
+| Vessel Profiles | `backend/app/data/vessel_profiles.csv` | Vessel information |
 
-### Connected Ports
+</details>
 
-![Connected Ports](screenshots/connected-ports.png)
+---
 
-### Weather Intelligence
+## 🧪 Testing
 
-![Weather Intelligence](screenshots/weather.png)
-
-### Search History
-
-![Search History](screenshots/history.png)
-
-### Waypoint AI
-
-![Waypoint AI](screenshots/waypoint-ai.png)
-
-## 📑 Project Presentation
-
-The project presentation is included under:
-
-``` text
-docs/Waypoint_Project_Presentation.pptx
+```text
+backend/
+├── test_ais_service.py
+├── test_aisstream.py
+└── test_gemini.py
 ```
 
-It covers the project introduction, problem statement, proposed
-solution, architecture, authentication and security, Waypoint AI,
-weather intelligence, connected ports, digital quotations, search
-history, operations dashboard, data flow, and conclusion.
+Run them with your configured Python testing environment (e.g. `pytest`).
 
-## 🚀 Future Enhancements
+---
 
-Potential future enhancements include:
+## 🔒 Security Practices
 
--   More real-time maritime data integrations
--   Advanced route optimization
--   Expanded pricing intelligence
--   Automated quotation workflows
--   More operational forecasting
--   Additional AI-assisted brokerage capabilities
--   Production deployment and cloud infrastructure
+- 🔐 Never commit API keys, email passwords or database files
+- 🔄 Rotate any exposed credentials
+- 🛡️ Validate user input
+- 🔒 Use HTTPS in production
+- 🔑 Use secure authentication mechanisms
 
-## 👨‍💻 Project
+---
 
-**Waypoint --- AI-Assisted Maritime Brokerage Platform**
+## 📈 Roadmap
 
-**Presented by:** Kotipalli Rajesh
+```mermaid
+timeline
+    title Waypoint AI Roadmap
+    Now : Route · Weather · Vessel · Pricing · Customs · Quotations · AI Assistant
+    Next : Live AIS tracking : Real-time vessel positions : ETA prediction
+    Later : Predictive freight pricing : Delay prediction : Storm detection
+    Vision : Carbon & low-emission routing : Fully intelligent maritime operating platform
+```
 
-The project demonstrates how modern web technologies, maritime datasets,
-weather intelligence, and AI assistance can be integrated into a single
-maritime brokerage platform.
+<details>
+<summary><b>See the full enhancement list</b></summary>
+<br/>
+
+- 🌐 **Real-time intelligence:** live AIS, fleet monitoring, port congestion, traffic visualization
+- 🧠 **Advanced AI:** route optimization, predictive pricing, delay prediction, document processing, broker recommendations
+- 🌦️ **Predictive weather:** forecasting, storm detection, route risk prediction, weather-based ETA
+- 💰 **Commercial:** dynamic pricing, automated quotes, profitability prediction, margin optimization
+- 🌱 **Sustainability:** carbon estimation, low-emission routes, fuel optimization
+
+</details>
+
+---
+
+## 🎯 Why Waypoint AI?
+
+| Traditional Maritime Workflow | ⚓ Waypoint AI |
+|---|---|
+| Multiple information sources | Unified platform |
+| Manual route comparison | Route intelligence |
+| Separate weather checking | Integrated weather intelligence |
+| Manual vessel research | Vessel intelligence |
+| Manual freight calculations | Pricing intelligence |
+| Separate customs analysis | Customs intelligence |
+| Manual quotation workflow | Digital quotations |
+| Limited historical visibility | Search history |
+| Fragmented operational data | Operations dashboard |
+| Static workflow | AI-assisted workflow |
+
+---
+
+## 📜 License
+
+This project is currently maintained as a development and academic engineering project. License and contribution terms can be added when it moves toward public production use.
+
+<div align="center">
+
+<br/>
+
+**🚢 WAYPOINT AI**
+*Navigate Smarter. Decide Faster. Operate Better.*
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0891b2,100:6366f1&height=120&section=footer" width="100%"/>
+
+</div>
