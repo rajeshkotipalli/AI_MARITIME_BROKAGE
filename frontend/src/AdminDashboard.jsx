@@ -76,6 +76,7 @@ function AdminDashboard({ admin, onLogout }) {
   const [commercialLoading, setCommercialLoading] = useState(false);
   const [commercialError, setCommercialError] = useState("");
 
+<<<<<<< HEAD
   const [shipments, setShipments] = useState([]);
   const [shipmentOptions, setShipmentOptions] = useState([]);
   const [shipmentsLoading, setShipmentsLoading] = useState(false);
@@ -84,6 +85,8 @@ function AdminDashboard({ admin, onLogout }) {
   const [shipmentVessel, setShipmentVessel] = useState("");
   const [shipmentEta, setShipmentEta] = useState("");
   const [shipmentReference, setShipmentReference] = useState("");
+=======
+>>>>>>> origin/master
   const [operations, setOperations] = useState([]);
   const [operationSummary, setOperationSummary] = useState({});
   const [operationsLoading, setOperationsLoading] = useState(false);
@@ -439,6 +442,7 @@ function AdminDashboard({ admin, onLogout }) {
     } catch (err) { setOperationsError(err?.message || "Unable to update operation status."); }
   }
 
+<<<<<<< HEAD
   async function loadShipments() {
     try {
       setShipmentsLoading(true); setShipmentsError("");
@@ -467,6 +471,8 @@ function AdminDashboard({ admin, onLogout }) {
     } catch (err) { setShipmentsError(err?.message || "Unable to update shipment."); }
   }
 
+=======
+>>>>>>> origin/master
   async function loadAdmins() {
     try {
       setAdminsLoading(true); setAdminsError("");
@@ -565,7 +571,11 @@ function AdminDashboard({ admin, onLogout }) {
       anchor.click();
       anchor.remove();
 
+<<<<<<< HEAD
       window.setTimeout(() => window.URL.revokeObjectURL(blobUrl), 1500);
+=======
+      window.URL.revokeObjectURL(blobUrl);
+>>>>>>> origin/master
     } catch (err) {
       console.error("Quotation download error:", err);
       setQuotationActionError(
@@ -720,9 +730,12 @@ function AdminDashboard({ admin, onLogout }) {
     if (activeSection === "operations") {
       loadOperations();
     }
+<<<<<<< HEAD
     if (activeSection === "shipments") {
       loadShipments();
     }
+=======
+>>>>>>> origin/master
     if (activeSection === "settings") {
       loadAdmins();
     }
@@ -805,8 +818,11 @@ function AdminDashboard({ admin, onLogout }) {
       label: "Operations",
     },
 
+<<<<<<< HEAD
     { id: "shipments", icon: "🚢", label: "Shipments" },
 
+=======
+>>>>>>> origin/master
     {
       id: "settings",
       icon: "⚙️",
@@ -3141,6 +3157,7 @@ function AdminDashboard({ admin, onLogout }) {
     </>;
   }
 
+<<<<<<< HEAD
   function renderShipments() {
     const statuses = ["Booked", "Preparing", "In Transit", "Delayed", "Arrived", "Delivered", "Cancelled"];
     return <>
@@ -3161,11 +3178,17 @@ function AdminDashboard({ admin, onLogout }) {
     </>;
   }
 
+=======
+>>>>>>> origin/master
   function renderReviews() {
     const query = reviewSearch.trim().toLowerCase();
     const filtered = reviews.filter((review) =>
       !query ||
+<<<<<<< HEAD
       [review.customer_name, review.customer_email, review.title, review.review, review.service_area, review.tracking_reference, review.shipment_route]
+=======
+      [review.customer_name, review.customer_email, review.title, review.review, review.service_area]
+>>>>>>> origin/master
         .some((value) => String(value || "").toLowerCase().includes(query))
     );
 
@@ -3202,7 +3225,10 @@ function AdminDashboard({ admin, onLogout }) {
                 <div className="feedback-item__top"><span className="feedback-rating">{"★".repeat(Number(review.rating || 0))}{"☆".repeat(5 - Number(review.rating || 0))}</span><span className={review.admin_replied ? "feedback-replied" : "feedback-unreplied"}>{review.admin_replied ? "Replied" : "Needs reply"}</span></div>
                 <strong>{review.title || "Waypoint experience"}</strong>
                 <span>{review.customer_name} · {review.service_area}</span>
+<<<<<<< HEAD
                 {review.shipment_id && <span className="feedback-shipment-meta">Shipment {review.tracking_reference || `#${review.shipment_id}`} · {review.shipment_route || "Route details unavailable"}</span>}
+=======
+>>>>>>> origin/master
                 <p>{review.review}</p>
                 <small>{formatDate(review.created_at)}</small>
               </button>
@@ -3217,7 +3243,10 @@ function AdminDashboard({ admin, onLogout }) {
                   <div className="feedback-detail__rating">{"★".repeat(Number(selectedReview.rating || 0))}{"☆".repeat(5 - Number(selectedReview.rating || 0))}</div>
                 </div>
                 <div className="feedback-detail__meta"><span>{selectedReview.service_area}</span><span>Submitted {formatDate(selectedReview.created_at)}</span></div>
+<<<<<<< HEAD
                 {selectedReview.shipment_id && <div className="feedback-detail__meta"><span>Tracking: {selectedReview.tracking_reference || `#${selectedReview.shipment_id}`}</span><span>{selectedReview.shipment_route || "Shipment route unavailable"}</span></div>}
+=======
+>>>>>>> origin/master
                 <blockquote>{selectedReview.review}</blockquote>
 
                 {selectedReview.admin_reply && <div className="feedback-existing-reply"><span>YOUR CURRENT RESPONSE</span><p>{selectedReview.admin_reply}</p><small>{selectedReview.admin_reply_at ? `Sent ${formatDate(selectedReview.admin_reply_at)}` : "Response recorded"}</small></div>}
@@ -3492,8 +3521,11 @@ function AdminDashboard({ admin, onLogout }) {
 
           {activeSection === "operations" && renderOperations()}
 
+<<<<<<< HEAD
           {activeSection === "shipments" && renderShipments()}
 
+=======
+>>>>>>> origin/master
           {activeSection === "settings" && renderSettings()}
 
         </section>

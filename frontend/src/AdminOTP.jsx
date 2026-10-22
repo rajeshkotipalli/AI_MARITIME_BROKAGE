@@ -6,17 +6,28 @@ function AdminOTP({ email, onVerified, onBack }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
+<<<<<<< HEAD
   async function handleSubmit(event) {
     event.preventDefault();
     setError("");
 
     if (!/^\d{6}$/.test(otp)) {
       setError("Enter the complete 6-digit security code.");
+=======
+  async function handleSubmit(e) {
+    e.preventDefault();
+
+    setError("");
+
+    if (!/^\d{6}$/.test(otp)) {
+      setError("Please enter the 6-digit OTP.");
+>>>>>>> origin/master
       return;
     }
 
     try {
       setLoading(true);
+<<<<<<< HEAD
       const response = await fetch("http://127.0.0.1:8000/api/admin/verify-otp", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -34,10 +45,34 @@ function AdminOTP({ email, onVerified, onBack }) {
         throw new Error(
           data?.detail?.message ||
           (typeof data?.detail === "string" ? data.detail : "") ||
+=======
+
+      const response = await fetch(
+        "http://127.0.0.1:8000/api/admin/verify-otp",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: email,
+            otp: otp,
+          }),
+        }
+      );
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(
+          data.detail?.message ||
+          data.detail ||
+>>>>>>> origin/master
           "OTP verification failed."
         );
       }
 
+<<<<<<< HEAD
       if (!data?.success) {
         throw new Error(data?.message || "Invalid OTP.");
       }
@@ -48,12 +83,43 @@ function AdminOTP({ email, onVerified, onBack }) {
       onVerified({ token: data.access_token, user: data.admin });
     } catch (err) {
       setError(err.message || "Something went wrong.");
+=======
+      if (!data.success) {
+        throw new Error(
+          data.message || "Invalid OTP."
+        );
+      }
+
+      // Save the ADMIN JWT
+      localStorage.setItem(
+        "waypoint_admin_token",
+        data.access_token
+      );
+
+      // Save admin information
+      localStorage.setItem(
+        "waypoint_admin_user",
+        JSON.stringify(data.admin)
+      );
+
+      // Pass normalized data to App.jsx
+      onVerified({
+        token: data.access_token,
+        user: data.admin,
+      });
+
+    } catch (err) {
+      setError(
+        err.message || "Something went wrong."
+      );
+>>>>>>> origin/master
     } finally {
       setLoading(false);
     }
   }
 
   return (
+<<<<<<< HEAD
     <main className="admin-otp-page">
       <section className="admin-otp-layout" aria-labelledby="admin-otp-title">
         <aside className="admin-otp-visual">
@@ -164,3 +230,85 @@ function AdminOTP({ email, onVerified, onBack }) {
 }
 
 export default AdminOTP;
+=======
+    <div className="admin-otp-page">
+
+      <div className="admin-otp-card">
+
+        <div className="admin-otp-icon">
+          🔐
+        </div>
+
+        <h1>Verify Admin Access</h1>
+
+        <p className="admin-otp-subtitle">
+          Enter the 6-digit OTP sent to
+        </p>
+
+        <p className="admin-otp-email">
+          {email}
+        </p>
+
+        <form onSubmit={handleSubmit}>
+
+          <label htmlFor="admin-otp">
+            Verification Code
+          </label>
+
+          <input
+            id="admin-otp"
+            type="text"
+            inputMode="numeric"
+            maxLength="6"
+            placeholder="000000"
+            value={otp}
+            onChange={(e) => {
+              const value = e.target.value
+                .replace(/\D/g, "")
+                .slice(0, 6);
+
+              setOtp(value);
+            }}
+            disabled={loading}
+            autoFocus
+          />
+
+          {error && (
+            <div className="admin-otp-error">
+              {error}
+            </div>
+          )}
+
+          <button
+            type="submit"
+            disabled={loading || otp.length !== 6}
+          >
+            {loading
+              ? "Verifying..."
+              : "Verify & Enter Dashboard"}
+          </button>
+
+        </form>
+
+        <button
+          type="button"
+          className="admin-otp-back"
+          onClick={onBack}
+          disabled={loading}
+        >
+          ← Use another email
+        </button>
+
+        <div className="admin-otp-security">
+          🛡️ This verification code expires
+          shortly and can only be used once.
+        </div>
+
+      </div>
+
+    </div>
+  );
+}
+
+export default AdminOTP;
+>>>>>>> origin/master

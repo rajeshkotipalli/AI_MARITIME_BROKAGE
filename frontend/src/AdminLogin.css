@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 /* ==========================================
    WAYPOINT AI — ADMIN PORTAL
@@ -897,3 +898,230 @@
     transition: none !important;
   }
 }
+=======
+.admin-login-page {
+  min-height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 24px;
+
+  background: linear-gradient(
+    135deg,
+    #07111f 0%,
+    #0d1b2a 50%,
+    #102a43 100%
+  );
+
+  box-sizing: border-box;
+}
+
+.admin-login-card {
+  width: 100%;
+  max-width: 430px;
+
+  padding: 42px 38px;
+
+  border-radius: 22px;
+
+  background: rgba(255, 255, 255, 0.97);
+
+  box-shadow:
+    0 25px 70px rgba(0, 0, 0, 0.35);
+
+  box-sizing: border-box;
+}
+
+.admin-login-header {
+  text-align: center;
+
+  margin-bottom: 32px;
+}
+
+.admin-icon {
+  width: 64px;
+  height: 64px;
+
+  margin: 0 auto 16px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 18px;
+
+  background: #0d1b2a;
+
+  font-size: 28px;
+}
+
+.admin-login-header h1 {
+  margin: 0 0 8px;
+
+  font-size: 30px;
+  font-weight: 700;
+
+  color: #102a43;
+}
+
+.admin-login-header p {
+  margin: 0;
+
+  color: #667085;
+
+  font-size: 14px;
+}
+
+.admin-login-card form {
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-login-card label {
+  margin-bottom: 8px;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  color: #344054;
+}
+
+.admin-login-card input {
+  width: 100%;
+
+  padding: 14px 15px;
+
+  margin-bottom: 16px;
+
+  border: 1px solid #d0d5dd;
+
+  border-radius: 10px;
+
+  outline: none;
+
+  font-size: 15px;
+
+  box-sizing: border-box;
+
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+}
+
+.admin-login-card input:focus {
+  border-color: #2563eb;
+
+  box-shadow:
+    0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+.admin-login-card form > button {
+  width: 100%;
+
+  padding: 14px;
+
+  border: none;
+
+  border-radius: 10px;
+
+  background: #102a43;
+
+  color: white;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s,
+    opacity 0.2s;
+}
+
+.admin-login-card form > button:hover {
+  transform: translateY(-1px);
+
+  opacity: 0.92;
+}
+
+.admin-login-card button:disabled {
+  cursor: not-allowed;
+
+  opacity: 0.65;
+}
+
+.admin-login-error {
+  margin-bottom: 16px;
+
+  padding: 11px 12px;
+
+  border-radius: 8px;
+
+  background: #fef3f2;
+
+  color: #b42318;
+
+  font-size: 13px;
+}
+
+.admin-back-button {
+  width: 100%;
+
+  margin-top: 16px;
+
+  padding: 11px;
+
+  border: none;
+
+  background: transparent;
+
+  color: #475467;
+
+  font-size: 14px;
+
+  cursor: pointer;
+}
+
+.admin-back-button:hover {
+  color: #102a43;
+}
+
+.admin-security-note {
+  display: flex;
+
+  gap: 9px;
+
+  align-items: flex-start;
+
+  margin-top: 22px;
+
+  padding: 12px;
+
+  border-radius: 10px;
+
+  background: #f2f4f7;
+
+  color: #667085;
+
+  font-size: 12px;
+
+  line-height: 1.5;
+}
+
+@media (max-width: 480px) {
+
+  .admin-login-page {
+    padding: 16px;
+  }
+
+  .admin-login-card {
+    padding: 32px 24px;
+  }
+
+  .admin-login-header h1 {
+    font-size: 26px;
+  }
+}
+>>>>>>> origin/master

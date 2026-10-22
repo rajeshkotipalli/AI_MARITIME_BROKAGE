@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 from pydantic import BaseModel, Field, EmailStr, field_validator
+=======
+from pydantic import BaseModel, Field, EmailStr
+>>>>>>> origin/master
 
 
 # ======================================================
@@ -6,10 +10,24 @@ from pydantic import BaseModel, Field, EmailStr, field_validator
 # ======================================================
 
 class RouteRequest(BaseModel):
+<<<<<<< HEAD
     origin: str
     destination: str
     cargo_type: str
     containers: int = Field(..., gt=0)
+=======
+
+    origin: str
+
+    destination: str
+
+    cargo_type: str
+
+    containers: int = Field(
+        ...,
+        gt=0
+    )
+>>>>>>> origin/master
 
 
 # ======================================================
@@ -17,6 +35,7 @@ class RouteRequest(BaseModel):
 # ======================================================
 
 class RegisterRequest(BaseModel):
+<<<<<<< HEAD
     name: str = Field(..., min_length=2, max_length=100)
     email: EmailStr
     phone: str = Field(..., min_length=10, max_length=15)
@@ -35,6 +54,42 @@ class RegisterRequest(BaseModel):
         if not any(not character.isalnum() for character in value):
             raise ValueError("Password must contain at least one special character.")
         return value
+=======
+
+    name: str = Field(
+        ...,
+        min_length=2,
+        max_length=100
+    )
+
+    email: EmailStr
+
+    phone: str = Field(
+        ...,
+        min_length=10,
+        max_length=15
+    )
+
+    country: str = Field(
+        ...,
+        min_length=2,
+        max_length=60
+    )
+
+    username: str = Field(
+        ...,
+        min_length=3,
+        max_length=30
+    )
+
+    password: str = Field(
+        ...,
+        min_length=8,
+        max_length=100
+    )
+
+    confirm_password: str
+>>>>>>> origin/master
 
 
 # ======================================================
@@ -42,8 +97,21 @@ class RegisterRequest(BaseModel):
 # ======================================================
 
 class LoginRequest(BaseModel):
+<<<<<<< HEAD
     username: str = Field(..., min_length=3)
     password: str = Field(..., min_length=1)
+=======
+
+    username: str = Field(
+        ...,
+        min_length=3
+    )
+
+    password: str = Field(
+        ...,
+        min_length=1
+    )
+>>>>>>> origin/master
 
 
 # ======================================================
@@ -51,5 +119,16 @@ class LoginRequest(BaseModel):
 # ======================================================
 
 class OTPRequest(BaseModel):
+<<<<<<< HEAD
     email: EmailStr
     otp: str = Field(..., min_length=6, max_length=6)
+=======
+
+    email: EmailStr
+
+    otp: str = Field(
+        ...,
+        min_length=6,
+        max_length=6
+    )
+>>>>>>> origin/master

@@ -14,12 +14,43 @@ function Navbar({
   // ==========================================================
 
   const navItems = [
+<<<<<<< HEAD
     { path: "/", label: "Home" },
 { path: "/history", label: "History" },
     { path: "/connected-ports", label: "Connected Ports" },
     { path: "/weather", label: "Weather" },
     { path: "/dashboard", label: "Dashboard" },
     { path: "/my-shipments", label: "My Shipments" },
+=======
+    {
+      path: "/",
+      label: "Home",
+    },
+    {
+      path: "/routes",
+      label: "Plot Route",
+    },
+    {
+      path: "/map-tracing",
+      label: "Intelligent Map",
+    },
+    {
+      path: "/history",
+      label: "History",
+    },
+    {
+      path: "/connected-ports",
+      label: "Connected Ports",
+    },
+    {
+      path: "/weather",
+      label: "Weather",
+    },
+    {
+      path: "/dashboard",
+      label: "Dashboard",
+    },
+>>>>>>> origin/master
   ];
 
   // ==========================================================

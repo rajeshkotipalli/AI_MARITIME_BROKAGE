@@ -1,10 +1,22 @@
+<<<<<<< HEAD
 # =========================
 # ENVIRONMENT / SECRETS
 # =========================
+=======
+# Python
+venv/
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+
+# Environment / secrets
+>>>>>>> origin/master
 .env
 .env.*
 !.env.example
 
+<<<<<<< HEAD
 # =========================
 # PYTHON
 # =========================
@@ -19,10 +31,14 @@ env/
 # =========================
 # DATABASES
 # =========================
+=======
+# Database
+>>>>>>> origin/master
 *.db
 *.sqlite
 *.sqlite3
 
+<<<<<<< HEAD
 # =========================
 # NODE / REACT
 # =========================
@@ -70,3 +86,20 @@ Thumbs.db
 # LOCAL UPLOADS
 # =========================
 uploads/
+=======
+# Node
+node_modules/
+frontend/dist/
+frontend/.vite/
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+>>>>>>> origin/master

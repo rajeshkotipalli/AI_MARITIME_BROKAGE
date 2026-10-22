@@ -39,13 +39,17 @@ import urllib.parse
 import urllib.request
 import urllib.error
 import io
+<<<<<<< HEAD
 import traceback
+=======
+>>>>>>> origin/master
 import csv
 import smtplib
 from email.message import EmailMessage
 
 
 # =========================================================
+<<<<<<< HEAD
 # SAFE PDF FORMATTERS
 # =========================================================
 
@@ -93,6 +97,8 @@ def _pdf_text(value, fallback="-"):
 
 
 # =========================================================
+=======
+>>>>>>> origin/master
 # DATABASE
 # =========================================================
 
@@ -167,9 +173,15 @@ from app.history import (
 # =========================================================
 # QUOTATION
 # =========================================================
+<<<<<<< HEAD
 from app.quotation import Quotation
 from app.reviews import UserReview
 from app.shipment import Shipment
+=======
+
+from app.quotation import Quotation
+from app.reviews import UserReview
+>>>>>>> origin/master
 
 
 # =========================================================
@@ -177,10 +189,14 @@ from app.shipment import Shipment
 # =========================================================
 
 from app.agents.route_agent import RouteAgent
+<<<<<<< HEAD
 from app.agents.weather_agent import WeatherAgent
 from app.agents.customs_agent import CustomsAgent
 from app.services.quotation_service import QuotationService
 from app.services.freight_intelligence_service import FreightIntelligenceService
+=======
+from app.services.quotation_service import QuotationService
+>>>>>>> origin/master
 from app.services.ais_service import ais_service
 
 
@@ -309,6 +325,7 @@ app.add_middleware(
 )
 
 # =========================================================
+<<<<<<< HEAD
 # MARITIME ROUTING GEOMETRY
 # =========================================================
 
@@ -379,6 +396,8 @@ def get_maritime_route(
 
 
 # =========================================================
+=======
+>>>>>>> origin/master
 # AIS LIVE VESSEL SERVICE
 # =========================================================
 
@@ -433,10 +452,14 @@ def get_vessel(mmsi: str):
 # =========================================================
 
 route_agent = RouteAgent()
+<<<<<<< HEAD
 weather_agent = WeatherAgent()
 customs_agent = CustomsAgent()
 quotation_service = QuotationService()
 freight_intelligence_service = FreightIntelligenceService()
+=======
+quotation_service = QuotationService()
+>>>>>>> origin/master
 ai_agent = WaypointAIAgent()
 
 
@@ -458,6 +481,7 @@ class AIChatRequest(BaseModel):
     language: str = "en"
 
 
+<<<<<<< HEAD
 class FreightIntelligenceRequest(BaseModel):
     origin: str
     destination: str
@@ -465,6 +489,8 @@ class FreightIntelligenceRequest(BaseModel):
     containers: int = 1
 
 
+=======
+>>>>>>> origin/master
 # =========================================================
 # MAP TRACING REQUEST MODEL + HELPERS
 # =========================================================
@@ -554,6 +580,7 @@ class AdminLoginRequest(BaseModel):
     email: str
 
 
+<<<<<<< HEAD
 class ShipmentCreateRequest(BaseModel):
     quotation_id: int
     tracking_reference: Optional[str] = None
@@ -589,6 +616,8 @@ SHIPMENT_STATUSES = [
 
 
 
+=======
+>>>>>>> origin/master
 # =========================================================
 # HOME
 # =========================================================
@@ -642,7 +671,10 @@ def home():
             "Quotation PDF Generation",
             "Quotation Status Management",
             "Quotation Details",
+<<<<<<< HEAD
             "Shipment Tracking",
+=======
+>>>>>>> origin/master
 
             "Data Analytics",
 
@@ -861,6 +893,7 @@ def get_current_admin(
         )
 
 
+<<<<<<< HEAD
 def _shipment_record(shipment, quotation=None):
     record = {
         "id": shipment.id,
@@ -1123,6 +1156,8 @@ def update_shipment(
 
 
 
+=======
+>>>>>>> origin/master
 # =========================================================
 # ADMIN OVERVIEW
 # =========================================================
@@ -1630,7 +1665,15 @@ def admin_download_quotation_pdf(
             except (TypeError, ValueError, json.JSONDecodeError):
                 pricing = {}
 
+<<<<<<< HEAD
         money = _pdf_money
+=======
+        def money(value):
+            try:
+                return f"${float(value):,.2f}"
+            except (TypeError, ValueError):
+                return "$0.00"
+>>>>>>> origin/master
 
         buffer = io.BytesIO()
 
@@ -1687,10 +1730,17 @@ def admin_download_quotation_pdf(
 
         customer_data = [
             ["CUSTOMER", "CONTACT"],
+<<<<<<< HEAD
             [_pdf_text(quotation.company_name), _pdf_text(quotation.email)],
             [
                 f"Phone: {_pdf_text(quotation.phone)}",
                 f"Cargo: {_pdf_text(quotation.cargo_type)}"
+=======
+            [quotation.company_name or "-", quotation.email or "-"],
+            [
+                f"Phone: {quotation.phone or '-'}",
+                f"Cargo: {quotation.cargo_type or '-'}"
+>>>>>>> origin/master
             ]
         ]
 
@@ -1709,6 +1759,7 @@ def admin_download_quotation_pdf(
 
         shipment_data = [
             ["SHIPMENT DETAIL", "VALUE"],
+<<<<<<< HEAD
             [
                 "Route",
                 f"{_pdf_text(quotation.origin)} -> {_pdf_text(quotation.destination)}"
@@ -1722,6 +1773,13 @@ def admin_download_quotation_pdf(
                 if quotation.containers is not None
                 else "-"
             ],
+=======
+            ["Route", f"{quotation.origin} → {quotation.destination}"],
+            ["Route ID", quotation.route_id or "-"],
+            ["Cargo Type", quotation.cargo_type or "-"],
+            ["Cargo Weight", f"{float(quotation.cargo_weight):,.2f}" if quotation.cargo_weight is not None else "-"],
+            ["Containers", str(quotation.containers or "-")],
+>>>>>>> origin/master
             ["Special Requirements", quotation.special_requirements or "None"]
         ]
 
@@ -1741,6 +1799,7 @@ def admin_download_quotation_pdf(
         commercial_data = [
             ["INTERNAL COMMERCIAL METRIC", "VALUE"],
             ["Customer Price / Container", money(pricing.get("final_selling_price_usd"))],
+<<<<<<< HEAD
             ["Total Customer Price", money(
                     pricing.get("total_customer_price_usd")
                     if pricing.get("total_customer_price_usd") is not None
@@ -1749,6 +1808,12 @@ def admin_download_quotation_pdf(
             ["Operating Cost", money(pricing.get("operating_cost_usd"))],
             ["Brokerage Profit", money(pricing.get("total_brokerage_profit_usd"))],
             ["Target Margin", _pdf_percent(pricing.get("target_margin_percent"))],
+=======
+            ["Total Customer Price", money(pricing.get("total_customer_price_usd") or pricing.get("estimated_total_customer_price_usd"))],
+            ["Operating Cost", money(pricing.get("operating_cost_usd"))],
+            ["Brokerage Profit", money(pricing.get("total_brokerage_profit_usd"))],
+            ["Target Margin", f"{float(pricing.get('target_margin_percent', 0) or 0):.2f}%"],
+>>>>>>> origin/master
             ["Demand Factor", str(pricing.get("demand_factor", "-"))],
             ["Fuel Surcharge", money(pricing.get("fuel_surcharge_usd"))],
             ["Port Charge", money(pricing.get("port_charge_usd"))],
@@ -2145,6 +2210,7 @@ def register(
 
 
         if len(request.password) < 8:
+<<<<<<< HEAD
             raise HTTPException(
                 status_code=400,
                 detail={
@@ -2168,6 +2234,18 @@ def register(
                 detail={
                     "error": "PASSWORD_SPECIAL_CHARACTER_REQUIRED",
                     "message": "Password must contain at least one special character."
+=======
+
+            raise HTTPException(
+                status_code=400,
+
+                detail={
+                    "error":
+                        "WEAK_PASSWORD",
+
+                    "message":
+                        "Password must contain at least 8 characters."
+>>>>>>> origin/master
                 }
             )
 
@@ -2781,6 +2859,7 @@ def ai_chat(
 
 
 # =========================================================
+<<<<<<< HEAD
 # FREIGHT INTELLIGENCE
 # =========================================================
 
@@ -2840,6 +2919,8 @@ def generate_freight_intelligence(
 
 
 # =========================================================
+=======
+>>>>>>> origin/master
 # ROUTE ANALYSIS
 # =========================================================
 
@@ -4515,7 +4596,15 @@ def generate_quotation_pdf(
 
         pricing = load_customer_safe_pricing(quotation.pricing_snapshot)
 
+<<<<<<< HEAD
         money = _pdf_money
+=======
+        def money(value):
+            try:
+                return f"${float(value):,.2f}"
+            except (TypeError, ValueError):
+                return "$0.00"
+>>>>>>> origin/master
 
         buffer = io.BytesIO()
 
@@ -4587,12 +4676,21 @@ def generate_quotation_pdf(
         customer_data = [
             ["CUSTOMER", "CONTACT"],
             [
+<<<<<<< HEAD
                 _pdf_text(quotation.company_name),
                 _pdf_text(quotation.email)
             ],
             [
                 f"Phone: {_pdf_text(quotation.phone)}",
                 f"Cargo: {_pdf_text(quotation.cargo_type)}"
+=======
+                quotation.company_name,
+                quotation.email
+            ],
+            [
+                f"Phone: {quotation.phone}",
+                f"Cargo: {quotation.cargo_type}"
+>>>>>>> origin/master
             ]
         ]
 
@@ -4615,6 +4713,7 @@ def generate_quotation_pdf(
 
         shipment_data = [
             ["SHIPMENT DETAIL", "VALUE"],
+<<<<<<< HEAD
             [
                 "Route",
                 f"{_pdf_text(quotation.origin)} -> {_pdf_text(quotation.destination)}"
@@ -4628,6 +4727,13 @@ def generate_quotation_pdf(
                 if quotation.containers is not None
                 else "-"
             ]
+=======
+            ["Route", f"{quotation.origin} → {quotation.destination}"],
+            ["Route ID", quotation.route_id],
+            ["Cargo Type", quotation.cargo_type],
+            ["Cargo Weight", f"{quotation.cargo_weight:,.2f}"],
+            ["Containers", str(quotation.containers)]
+>>>>>>> origin/master
         ]
 
         shipment_table = Table(
@@ -4682,7 +4788,11 @@ def generate_quotation_pdf(
         story.append(
             Paragraph(
                 "<b>Special Requirements:</b> "
+<<<<<<< HEAD
                 + _pdf_text(quotation.special_requirements, "None"),
+=======
+                + (quotation.special_requirements or "None"),
+>>>>>>> origin/master
                 styles["Normal"]
             )
         )
@@ -4711,17 +4821,25 @@ def generate_quotation_pdf(
         raise
 
     except Exception as e:
+<<<<<<< HEAD
         print("\n===== QUOTATION PDF ERROR =====")
         print("Quotation ID:", quotation_id)
         print("Error type:", type(e).__name__)
         print("Error:", repr(e))
         traceback.print_exc()
         print("===== END QUOTATION PDF ERROR =====\n")
+=======
+        print("Quotation PDF error:", e)
+>>>>>>> origin/master
         raise HTTPException(
             status_code=500,
             detail={
                 "error": "QUOTATION_PDF_ERROR",
+<<<<<<< HEAD
                 "message": f"Unable to generate quotation PDF: {type(e).__name__}: {str(e)}"
+=======
+                "message": "Unable to generate quotation PDF."
+>>>>>>> origin/master
             }
         )
 
@@ -4776,7 +4894,15 @@ def email_quotation(
 
         pricing = load_customer_safe_pricing(quotation.pricing_snapshot)
 
+<<<<<<< HEAD
         money = _pdf_money
+=======
+        def money(value):
+            try:
+                return f"${float(value):,.2f}"
+            except (TypeError, ValueError):
+                return "$0.00"
+>>>>>>> origin/master
 
         pdf_buffer = io.BytesIO()
 
@@ -5889,6 +6015,7 @@ def get_analytics(
         )
 
 
+<<<<<<< HEAD
 
 # =========================================================
 # CUSTOMS AGENT - CARGO & CLEARANCE INTELLIGENCE
@@ -5992,10 +6119,13 @@ def get_route_weather(route_id: str):
         )
 
 
+=======
+>>>>>>> origin/master
 # =========================================================
 # WEATHER & CONDITIONS
 # =========================================================
 
+<<<<<<< HEAD
 @app.get("/api/weather/route-by-locations")
 def get_route_weather_by_locations(origin: str, destination: str):
     """Resolve a selected origin/destination to the recommended route and return route weather intelligence."""
@@ -6082,6 +6212,8 @@ def get_route_weather_by_locations(origin: str, destination: str):
         )
 
 
+=======
+>>>>>>> origin/master
 @app.get("/api/weather")
 def get_weather(
 
@@ -7226,6 +7358,7 @@ async def global_exception_handler(
         }
 
     )
+<<<<<<< HEAD
 
 
 # =========================================================
@@ -7602,3 +7735,5 @@ def update_shipment(
         "shipment": _shipment_record(shipment, quotation),
     }
 
+=======
+>>>>>>> origin/master
